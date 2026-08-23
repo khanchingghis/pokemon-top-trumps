@@ -4,13 +4,11 @@ A digital Top Trumps card game featuring Pokemon. Compare stats like HP, Attack,
 
 ## Live gallery
 
-After GitHub Pages is enabled, the 40-card draft is at:
-
 https://khanchingghis.github.io/pokemon-top-trumps/
 
-The site is static: `index.html` reads `data/deck.json`. Push to `main` to republish.
+The site is static: `index.html` reads `data/deck.json`. Every push (including this PR branch) republishes it.
 
-If the repository is private, GitHub Pages on a free plan needs the repo set to **public** (Settings → General → Change visibility), then Pages source set to **GitHub Actions** (Settings → Pages).
+One-time setup: Settings → Pages → Source → **GitHub Actions**. If the deploy is skipped, open Settings → Environments → **github-pages** and allow deployments from all branches.
 
 ## Deck
 
