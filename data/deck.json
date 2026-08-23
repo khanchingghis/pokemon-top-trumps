@@ -1,0 +1,915 @@
+{
+  "name": "Pokemon Top Trumps",
+  "source": "PokeAPI (https://pokeapi.co) \u2014 official base stats, height, and weight",
+  "rules": {
+    "players": 2,
+    "deal": "Shuffle 40 cards; each player gets 20. Highest chosen stat wins the opponent card.",
+    "categories": [
+      {
+        "id": "hp",
+        "label": "HP"
+      },
+      {
+        "id": "attack",
+        "label": "Attack"
+      },
+      {
+        "id": "defense",
+        "label": "Defense"
+      },
+      {
+        "id": "special_attack",
+        "label": "Sp. Attack"
+      },
+      {
+        "id": "special_defense",
+        "label": "Sp. Defense"
+      },
+      {
+        "id": "speed",
+        "label": "Speed"
+      },
+      {
+        "id": "height_m",
+        "label": "Height (m)"
+      },
+      {
+        "id": "weight_kg",
+        "label": "Weight (kg)"
+      }
+    ],
+    "tie": "Both cards go to a pile; next winner takes the pile."
+  },
+  "notes": "Mix of fan-favourite fully evolved Pokemon plus specialists so each category has a unique champion. Base stats only (no Mega, Gigantamax, or regional forms).",
+  "cards": [
+    {
+      "card_number": 1,
+      "pokedex": 3,
+      "name": "Venusaur",
+      "slug": "venusaur",
+      "types": [
+        "Grass",
+        "Poison"
+      ],
+      "stats": {
+        "hp": 80,
+        "attack": 82,
+        "defense": 83,
+        "special_attack": 100,
+        "special_defense": 100,
+        "speed": 80,
+        "height_m": 2.0,
+        "weight_kg": 100.0
+      },
+      "base_stat_total": 525,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
+    },
+    {
+      "card_number": 2,
+      "pokedex": 6,
+      "name": "Charizard",
+      "slug": "charizard",
+      "types": [
+        "Fire",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 78,
+        "attack": 84,
+        "defense": 78,
+        "special_attack": 109,
+        "special_defense": 85,
+        "speed": 100,
+        "height_m": 1.7,
+        "weight_kg": 90.5
+      },
+      "base_stat_total": 534,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png"
+    },
+    {
+      "card_number": 3,
+      "pokedex": 9,
+      "name": "Blastoise",
+      "slug": "blastoise",
+      "types": [
+        "Water"
+      ],
+      "stats": {
+        "hp": 79,
+        "attack": 83,
+        "defense": 100,
+        "special_attack": 85,
+        "special_defense": 105,
+        "speed": 78,
+        "height_m": 1.6,
+        "weight_kg": 85.5
+      },
+      "base_stat_total": 530,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png"
+    },
+    {
+      "card_number": 4,
+      "pokedex": 25,
+      "name": "Pikachu",
+      "slug": "pikachu",
+      "types": [
+        "Electric"
+      ],
+      "stats": {
+        "hp": 35,
+        "attack": 55,
+        "defense": 40,
+        "special_attack": 50,
+        "special_defense": 50,
+        "speed": 90,
+        "height_m": 0.4,
+        "weight_kg": 6.0
+      },
+      "base_stat_total": 320,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
+    },
+    {
+      "card_number": 5,
+      "pokedex": 34,
+      "name": "Nidoking",
+      "slug": "nidoking",
+      "types": [
+        "Poison",
+        "Ground"
+      ],
+      "stats": {
+        "hp": 81,
+        "attack": 102,
+        "defense": 77,
+        "special_attack": 85,
+        "special_defense": 75,
+        "speed": 85,
+        "height_m": 1.4,
+        "weight_kg": 62.0
+      },
+      "base_stat_total": 505,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/34.png"
+    },
+    {
+      "card_number": 6,
+      "pokedex": 59,
+      "name": "Arcanine",
+      "slug": "arcanine",
+      "types": [
+        "Fire"
+      ],
+      "stats": {
+        "hp": 90,
+        "attack": 110,
+        "defense": 80,
+        "special_attack": 100,
+        "special_defense": 80,
+        "speed": 95,
+        "height_m": 1.9,
+        "weight_kg": 155.0
+      },
+      "base_stat_total": 555,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/59.png"
+    },
+    {
+      "card_number": 7,
+      "pokedex": 65,
+      "name": "Alakazam",
+      "slug": "alakazam",
+      "types": [
+        "Psychic"
+      ],
+      "stats": {
+        "hp": 55,
+        "attack": 50,
+        "defense": 45,
+        "special_attack": 135,
+        "special_defense": 95,
+        "speed": 120,
+        "height_m": 1.5,
+        "weight_kg": 48.0
+      },
+      "base_stat_total": 500,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/65.png"
+    },
+    {
+      "card_number": 8,
+      "pokedex": 68,
+      "name": "Machamp",
+      "slug": "machamp",
+      "types": [
+        "Fighting"
+      ],
+      "stats": {
+        "hp": 90,
+        "attack": 130,
+        "defense": 80,
+        "special_attack": 65,
+        "special_defense": 85,
+        "speed": 55,
+        "height_m": 1.6,
+        "weight_kg": 130.0
+      },
+      "base_stat_total": 505,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/68.png"
+    },
+    {
+      "card_number": 9,
+      "pokedex": 76,
+      "name": "Golem",
+      "slug": "golem",
+      "types": [
+        "Rock",
+        "Ground"
+      ],
+      "stats": {
+        "hp": 80,
+        "attack": 120,
+        "defense": 130,
+        "special_attack": 55,
+        "special_defense": 65,
+        "speed": 45,
+        "height_m": 1.4,
+        "weight_kg": 300.0
+      },
+      "base_stat_total": 495,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/76.png"
+    },
+    {
+      "card_number": 10,
+      "pokedex": 94,
+      "name": "Gengar",
+      "slug": "gengar",
+      "types": [
+        "Ghost",
+        "Poison"
+      ],
+      "stats": {
+        "hp": 60,
+        "attack": 65,
+        "defense": 60,
+        "special_attack": 130,
+        "special_defense": 75,
+        "speed": 110,
+        "height_m": 1.5,
+        "weight_kg": 40.5
+      },
+      "base_stat_total": 500,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png"
+    },
+    {
+      "card_number": 11,
+      "pokedex": 130,
+      "name": "Gyarados",
+      "slug": "gyarados",
+      "types": [
+        "Water",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 95,
+        "attack": 125,
+        "defense": 79,
+        "special_attack": 60,
+        "special_defense": 100,
+        "speed": 81,
+        "height_m": 6.5,
+        "weight_kg": 235.0
+      },
+      "base_stat_total": 540,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/130.png"
+    },
+    {
+      "card_number": 12,
+      "pokedex": 131,
+      "name": "Lapras",
+      "slug": "lapras",
+      "types": [
+        "Water",
+        "Ice"
+      ],
+      "stats": {
+        "hp": 130,
+        "attack": 85,
+        "defense": 80,
+        "special_attack": 85,
+        "special_defense": 95,
+        "speed": 60,
+        "height_m": 2.5,
+        "weight_kg": 220.0
+      },
+      "base_stat_total": 535,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/131.png"
+    },
+    {
+      "card_number": 13,
+      "pokedex": 134,
+      "name": "Vaporeon",
+      "slug": "vaporeon",
+      "types": [
+        "Water"
+      ],
+      "stats": {
+        "hp": 130,
+        "attack": 65,
+        "defense": 60,
+        "special_attack": 110,
+        "special_defense": 95,
+        "speed": 65,
+        "height_m": 1.0,
+        "weight_kg": 29.0
+      },
+      "base_stat_total": 525,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/134.png"
+    },
+    {
+      "card_number": 14,
+      "pokedex": 135,
+      "name": "Jolteon",
+      "slug": "jolteon",
+      "types": [
+        "Electric"
+      ],
+      "stats": {
+        "hp": 65,
+        "attack": 65,
+        "defense": 60,
+        "special_attack": 110,
+        "special_defense": 95,
+        "speed": 130,
+        "height_m": 0.8,
+        "weight_kg": 24.5
+      },
+      "base_stat_total": 525,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/135.png"
+    },
+    {
+      "card_number": 15,
+      "pokedex": 143,
+      "name": "Snorlax",
+      "slug": "snorlax",
+      "types": [
+        "Normal"
+      ],
+      "stats": {
+        "hp": 160,
+        "attack": 110,
+        "defense": 65,
+        "special_attack": 65,
+        "special_defense": 110,
+        "speed": 30,
+        "height_m": 2.1,
+        "weight_kg": 460.0
+      },
+      "base_stat_total": 540,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/143.png"
+    },
+    {
+      "card_number": 16,
+      "pokedex": 144,
+      "name": "Articuno",
+      "slug": "articuno",
+      "types": [
+        "Ice",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 90,
+        "attack": 85,
+        "defense": 100,
+        "special_attack": 95,
+        "special_defense": 125,
+        "speed": 85,
+        "height_m": 1.7,
+        "weight_kg": 55.4
+      },
+      "base_stat_total": 580,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/144.png"
+    },
+    {
+      "card_number": 17,
+      "pokedex": 145,
+      "name": "Zapdos",
+      "slug": "zapdos",
+      "types": [
+        "Electric",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 90,
+        "attack": 90,
+        "defense": 85,
+        "special_attack": 125,
+        "special_defense": 90,
+        "speed": 100,
+        "height_m": 1.6,
+        "weight_kg": 52.6
+      },
+      "base_stat_total": 580,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/145.png"
+    },
+    {
+      "card_number": 18,
+      "pokedex": 146,
+      "name": "Moltres",
+      "slug": "moltres",
+      "types": [
+        "Fire",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 90,
+        "attack": 100,
+        "defense": 90,
+        "special_attack": 125,
+        "special_defense": 85,
+        "speed": 90,
+        "height_m": 2.0,
+        "weight_kg": 60.0
+      },
+      "base_stat_total": 580,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/146.png"
+    },
+    {
+      "card_number": 19,
+      "pokedex": 149,
+      "name": "Dragonite",
+      "slug": "dragonite",
+      "types": [
+        "Dragon",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 91,
+        "attack": 134,
+        "defense": 95,
+        "special_attack": 100,
+        "special_defense": 100,
+        "speed": 80,
+        "height_m": 2.2,
+        "weight_kg": 210.0
+      },
+      "base_stat_total": 600,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/149.png"
+    },
+    {
+      "card_number": 20,
+      "pokedex": 150,
+      "name": "Mewtwo",
+      "slug": "mewtwo",
+      "types": [
+        "Psychic"
+      ],
+      "stats": {
+        "hp": 106,
+        "attack": 110,
+        "defense": 90,
+        "special_attack": 154,
+        "special_defense": 90,
+        "speed": 130,
+        "height_m": 2.0,
+        "weight_kg": 122.0
+      },
+      "base_stat_total": 680,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png"
+    },
+    {
+      "card_number": 21,
+      "pokedex": 208,
+      "name": "Steelix",
+      "slug": "steelix",
+      "types": [
+        "Steel",
+        "Ground"
+      ],
+      "stats": {
+        "hp": 75,
+        "attack": 85,
+        "defense": 200,
+        "special_attack": 55,
+        "special_defense": 65,
+        "speed": 30,
+        "height_m": 9.2,
+        "weight_kg": 400.0
+      },
+      "base_stat_total": 510,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/208.png"
+    },
+    {
+      "card_number": 22,
+      "pokedex": 212,
+      "name": "Scizor",
+      "slug": "scizor",
+      "types": [
+        "Bug",
+        "Steel"
+      ],
+      "stats": {
+        "hp": 70,
+        "attack": 130,
+        "defense": 100,
+        "special_attack": 55,
+        "special_defense": 80,
+        "speed": 65,
+        "height_m": 1.8,
+        "weight_kg": 118.0
+      },
+      "base_stat_total": 500,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/212.png"
+    },
+    {
+      "card_number": 23,
+      "pokedex": 213,
+      "name": "Shuckle",
+      "slug": "shuckle",
+      "types": [
+        "Bug",
+        "Rock"
+      ],
+      "stats": {
+        "hp": 20,
+        "attack": 10,
+        "defense": 230,
+        "special_attack": 10,
+        "special_defense": 230,
+        "speed": 5,
+        "height_m": 0.6,
+        "weight_kg": 20.5
+      },
+      "base_stat_total": 505,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/213.png"
+    },
+    {
+      "card_number": 24,
+      "pokedex": 214,
+      "name": "Heracross",
+      "slug": "heracross",
+      "types": [
+        "Bug",
+        "Fighting"
+      ],
+      "stats": {
+        "hp": 80,
+        "attack": 125,
+        "defense": 75,
+        "special_attack": 40,
+        "special_defense": 95,
+        "speed": 85,
+        "height_m": 1.5,
+        "weight_kg": 54.0
+      },
+      "base_stat_total": 500,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/214.png"
+    },
+    {
+      "card_number": 25,
+      "pokedex": 242,
+      "name": "Blissey",
+      "slug": "blissey",
+      "types": [
+        "Normal"
+      ],
+      "stats": {
+        "hp": 255,
+        "attack": 10,
+        "defense": 10,
+        "special_attack": 75,
+        "special_defense": 135,
+        "speed": 55,
+        "height_m": 1.5,
+        "weight_kg": 46.8
+      },
+      "base_stat_total": 540,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/242.png"
+    },
+    {
+      "card_number": 26,
+      "pokedex": 248,
+      "name": "Tyranitar",
+      "slug": "tyranitar",
+      "types": [
+        "Rock",
+        "Dark"
+      ],
+      "stats": {
+        "hp": 100,
+        "attack": 134,
+        "defense": 110,
+        "special_attack": 95,
+        "special_defense": 100,
+        "speed": 61,
+        "height_m": 2.0,
+        "weight_kg": 202.0
+      },
+      "base_stat_total": 600,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/248.png"
+    },
+    {
+      "card_number": 27,
+      "pokedex": 257,
+      "name": "Blaziken",
+      "slug": "blaziken",
+      "types": [
+        "Fire",
+        "Fighting"
+      ],
+      "stats": {
+        "hp": 80,
+        "attack": 120,
+        "defense": 70,
+        "special_attack": 110,
+        "special_defense": 70,
+        "speed": 80,
+        "height_m": 1.9,
+        "weight_kg": 52.0
+      },
+      "base_stat_total": 530,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/257.png"
+    },
+    {
+      "card_number": 28,
+      "pokedex": 260,
+      "name": "Swampert",
+      "slug": "swampert",
+      "types": [
+        "Water",
+        "Ground"
+      ],
+      "stats": {
+        "hp": 100,
+        "attack": 110,
+        "defense": 90,
+        "special_attack": 85,
+        "special_defense": 90,
+        "speed": 60,
+        "height_m": 1.5,
+        "weight_kg": 81.9
+      },
+      "base_stat_total": 535,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/260.png"
+    },
+    {
+      "card_number": 29,
+      "pokedex": 282,
+      "name": "Gardevoir",
+      "slug": "gardevoir",
+      "types": [
+        "Psychic",
+        "Fairy"
+      ],
+      "stats": {
+        "hp": 68,
+        "attack": 65,
+        "defense": 65,
+        "special_attack": 125,
+        "special_defense": 115,
+        "speed": 80,
+        "height_m": 1.6,
+        "weight_kg": 48.4
+      },
+      "base_stat_total": 518,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/282.png"
+    },
+    {
+      "card_number": 30,
+      "pokedex": 289,
+      "name": "Slaking",
+      "slug": "slaking",
+      "types": [
+        "Normal"
+      ],
+      "stats": {
+        "hp": 150,
+        "attack": 160,
+        "defense": 100,
+        "special_attack": 95,
+        "special_defense": 65,
+        "speed": 100,
+        "height_m": 2.0,
+        "weight_kg": 130.5
+      },
+      "base_stat_total": 670,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/289.png"
+    },
+    {
+      "card_number": 31,
+      "pokedex": 291,
+      "name": "Ninjask",
+      "slug": "ninjask",
+      "types": [
+        "Bug",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 61,
+        "attack": 90,
+        "defense": 45,
+        "special_attack": 50,
+        "special_defense": 50,
+        "speed": 160,
+        "height_m": 0.8,
+        "weight_kg": 12.0
+      },
+      "base_stat_total": 456,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/291.png"
+    },
+    {
+      "card_number": 32,
+      "pokedex": 330,
+      "name": "Flygon",
+      "slug": "flygon",
+      "types": [
+        "Ground",
+        "Dragon"
+      ],
+      "stats": {
+        "hp": 80,
+        "attack": 100,
+        "defense": 80,
+        "special_attack": 80,
+        "special_defense": 80,
+        "speed": 100,
+        "height_m": 2.0,
+        "weight_kg": 82.0
+      },
+      "base_stat_total": 520,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/330.png"
+    },
+    {
+      "card_number": 33,
+      "pokedex": 376,
+      "name": "Metagross",
+      "slug": "metagross",
+      "types": [
+        "Steel",
+        "Psychic"
+      ],
+      "stats": {
+        "hp": 80,
+        "attack": 135,
+        "defense": 130,
+        "special_attack": 95,
+        "special_defense": 90,
+        "speed": 70,
+        "height_m": 1.6,
+        "weight_kg": 550.0
+      },
+      "base_stat_total": 600,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/376.png"
+    },
+    {
+      "card_number": 34,
+      "pokedex": 392,
+      "name": "Infernape",
+      "slug": "infernape",
+      "types": [
+        "Fire",
+        "Fighting"
+      ],
+      "stats": {
+        "hp": 76,
+        "attack": 104,
+        "defense": 71,
+        "special_attack": 104,
+        "special_defense": 71,
+        "speed": 108,
+        "height_m": 1.2,
+        "weight_kg": 55.0
+      },
+      "base_stat_total": 534,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/392.png"
+    },
+    {
+      "card_number": 35,
+      "pokedex": 395,
+      "name": "Empoleon",
+      "slug": "empoleon",
+      "types": [
+        "Water",
+        "Steel"
+      ],
+      "stats": {
+        "hp": 84,
+        "attack": 86,
+        "defense": 88,
+        "special_attack": 111,
+        "special_defense": 101,
+        "speed": 60,
+        "height_m": 1.7,
+        "weight_kg": 84.5
+      },
+      "base_stat_total": 530,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/395.png"
+    },
+    {
+      "card_number": 36,
+      "pokedex": 445,
+      "name": "Garchomp",
+      "slug": "garchomp",
+      "types": [
+        "Dragon",
+        "Ground"
+      ],
+      "stats": {
+        "hp": 108,
+        "attack": 130,
+        "defense": 95,
+        "special_attack": 80,
+        "special_defense": 85,
+        "speed": 102,
+        "height_m": 1.9,
+        "weight_kg": 95.0
+      },
+      "base_stat_total": 600,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/445.png"
+    },
+    {
+      "card_number": 37,
+      "pokedex": 448,
+      "name": "Lucario",
+      "slug": "lucario",
+      "types": [
+        "Fighting",
+        "Steel"
+      ],
+      "stats": {
+        "hp": 70,
+        "attack": 110,
+        "defense": 70,
+        "special_attack": 115,
+        "special_defense": 70,
+        "speed": 90,
+        "height_m": 1.2,
+        "weight_kg": 54.0
+      },
+      "base_stat_total": 525,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/448.png"
+    },
+    {
+      "card_number": 38,
+      "pokedex": 461,
+      "name": "Weavile",
+      "slug": "weavile",
+      "types": [
+        "Dark",
+        "Ice"
+      ],
+      "stats": {
+        "hp": 70,
+        "attack": 120,
+        "defense": 65,
+        "special_attack": 45,
+        "special_defense": 85,
+        "speed": 125,
+        "height_m": 1.1,
+        "weight_kg": 34.0
+      },
+      "base_stat_total": 510,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/461.png"
+    },
+    {
+      "card_number": 39,
+      "pokedex": 462,
+      "name": "Magnezone",
+      "slug": "magnezone",
+      "types": [
+        "Electric",
+        "Steel"
+      ],
+      "stats": {
+        "hp": 70,
+        "attack": 70,
+        "defense": 115,
+        "special_attack": 130,
+        "special_defense": 90,
+        "speed": 60,
+        "height_m": 1.2,
+        "weight_kg": 180.0
+      },
+      "base_stat_total": 535,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/462.png"
+    },
+    {
+      "card_number": 40,
+      "pokedex": 468,
+      "name": "Togekiss",
+      "slug": "togekiss",
+      "types": [
+        "Fairy",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 85,
+        "attack": 50,
+        "defense": 95,
+        "special_attack": 120,
+        "special_defense": 115,
+        "speed": 80,
+        "height_m": 1.5,
+        "weight_kg": 38.0
+      },
+      "base_stat_total": 545,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/468.png"
+    }
+  ]
+}

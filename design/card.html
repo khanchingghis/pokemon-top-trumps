@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Top Trumps card — draft</title>
+  <style>
+    :root {
+      --cream: #f4ecd8;
+      --ink: #1c1914;
+      --muted: #5c5346;
+      --rule: #d9cbb0;
+      --table: #2a3a2e;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      background: var(--table);
+      color: #e8e2d4;
+      padding: 32px 24px 48px;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .lede {
+      margin: 0 0 28px;
+      max-width: 62ch;
+      color: #c9c2b3;
+      line-height: 1.5;
+      font-size: 15px;
+    }
+
+    .table {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      align-items: flex-start;
+    }
+
+    .trump {
+      --type: #888;
+      width: 300px;
+      background: var(--cream);
+      color: var(--ink);
+      border: 10px solid var(--type);
+      border-radius: 14px;
+      padding: 10px 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .trump.fire { --type: #c45a1a; --on-type: #fff; }
+    .trump.normal { --type: #8a7f4e; --on-type: #fff; }
+    .trump.bug { --type: #7a8f14; --on-type: #fff; }
+    .trump.electric { --type: #e2c01a; --on-type: #1c1914; }
+
+    .head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      background: var(--type);
+      color: var(--on-type, #fff);
+      margin: -10px -10px 0;
+      padding: 10px 12px 8px;
+      border-radius: 4px 4px 0 0;
+    }
+
+    .name {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .no {
+      font-size: 13px;
+      font-weight: 700;
+      opacity: 0.9;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 0 2px;
+    }
+
+    .genus {
+      font-size: 12px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .types {
+      display: flex;
+      gap: 4px;
+    }
+
+    .type-pill {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--cream);
+      padding: 2px 6px;
+      border-radius: 999px;
+    }
+
+    .art {
+      background: #fff;
+      border: 2px solid #2a241c;
+      border-radius: 6px;
+      height: 210px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .art img {
+      width: 92%;
+      height: 92%;
+      object-fit: contain;
+    }
+
+    .blurb {
+      margin: 0;
+      padding: 0 4px;
+      font-size: 12px;
+      line-height: 1.35;
+      color: var(--muted);
+      min-height: 3.9em;
+    }
+
+    .stats {
+      display: flex;
+      flex-direction: column;
+      border-top: 2px solid var(--type);
+    }
+
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 10px;
+      border-bottom: 1px solid var(--rule);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .stat:last-child { border-bottom: 0; }
+
+    .stat span:last-child {
+      font-variant-numeric: tabular-nums;
+      font-size: 16px;
+    }
+
+    .notes {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 40px;
+      max-width: 900px;
+    }
+
+    .notes h2 {
+      margin: 0 0 8px;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e8e2d4;
+    }
+
+    .notes p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #c9c2b3;
+    }
+
+    code {
+      font-family: ui-monospace, Consolas, monospace;
+      font-size: 12px;
+      color: #f0e6c8;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Card draft</h1>
+    <p class="lede">
+      Four playable stats — HP, Attack, Defense, Speed — plus a Pokédex line.
+      Special Attack, Special Defense, height, and weight stay off the card so
+      each round is a clear choice.
+    </p>
+
+    <div class="table">
+      <article class="trump fire">
+        <header class="head">
+          <div class="name">Charizard</div>
+          <div class="no">02</div>
+        </header>
+        <div class="meta">
+          <div class="genus">Flame Pokémon</div>
+          <div class="types">
+            <span class="type-pill">Fire</span>
+            <span class="type-pill">Flying</span>
+          </div>
+        </div>
+        <div class="art">
+          <img
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png"
+            alt="Charizard"
+          />
+        </div>
+        <p class="blurb">It spits fire that is hot enough to melt boulders. It may cause forest fires by blowing flames.</p>
+        <div class="stats">
+          <div class="stat"><span>HP</span><span>78</span></div>
+          <div class="stat"><span>Attack</span><span>84</span></div>
+          <div class="stat"><span>Defense</span><span>78</span></div>
+          <div class="stat"><span>Speed</span><span>100</span></div>
+        </div>
+      </article>
+
+      <article class="trump bug">
+        <header class="head">
+          <div class="name">Shuckle</div>
+          <div class="no">23</div>
+        </header>
+        <div class="meta">
+          <div class="genus">Mold Pokémon</div>
+          <div class="types">
+            <span class="type-pill">Bug</span>
+            <span class="type-pill">Rock</span>
+          </div>
+        </div>
+        <div class="art">
+          <img
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/213.png"
+            alt="Shuckle"
+          />
+        </div>
+        <p class="blurb">It stores berries inside its shell. To avoid attacks, it hides beneath rocks and remains completely still.</p>
+        <div class="stats">
+          <div class="stat"><span>HP</span><span>20</span></div>
+          <div class="stat"><span>Attack</span><span>10</span></div>
+          <div class="stat"><span>Defense</span><span>230</span></div>
+          <div class="stat"><span>Speed</span><span>5</span></div>
+        </div>
+      </article>
+
+      <article class="trump electric">
+        <header class="head">
+          <div class="name">Pikachu</div>
+          <div class="no">04</div>
+        </header>
+        <div class="meta">
+          <div class="genus">Mouse Pokémon</div>
+          <div class="types">
+            <span class="type-pill">Electric</span>
+          </div>
+        </div>
+        <div class="art">
+          <img
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
+            alt="Pikachu"
+          />
+        </div>
+        <p class="blurb">It has small electric sacs on both its cheeks. If threatened, it looses electric charges from the sacs.</p>
+        <div class="stats">
+          <div class="stat"><span>HP</span><span>35</span></div>
+          <div class="stat"><span>Attack</span><span>55</span></div>
+          <div class="stat"><span>Defense</span><span>40</span></div>
+          <div class="stat"><span>Speed</span><span>90</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="notes">
+      <div>
+        <h2>Artwork</h2>
+        <p>
+          Official Pokémon artwork via PokeAPI sprites
+          (<code>other/official-artwork</code>). Same files we already store
+          as URLs in <code>data/deck.json</code>. Download them into the repo
+          so the game does not hotlink GitHub at runtime.
+        </p>
+      </div>
+      <div>
+        <h2>Small text</h2>
+        <p>
+          English Pokédex entries and the genus line (“Flame Pokémon”) from
+          PokeAPI <code>/pokemon-species/{id}</code>. Prefer Sword/Shield
+          wording — short, modern spelling, one or two sentences that fit
+          under the art.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
