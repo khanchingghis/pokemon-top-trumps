@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pokemon Top Trumps — card gallery</title>
+  <style>
+    :root {
+      --cream: #f4ecd8;
+      --ink: #1c1914;
+      --muted: #5c5346;
+      --rule: #d9cbb0;
+      --table: #2a3a2e;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      background: var(--table);
+      color: #e8e2d4;
+      padding: 32px 24px 48px;
+    }
+
+    .page {
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .lede {
+      margin: 0 0 20px;
+      max-width: 68ch;
+      color: #c9c2b3;
+      line-height: 1.5;
+      font-size: 15px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .toolbar label {
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #c9c2b3;
+    }
+
+    .toolbar select {
+      font: inherit;
+      font-size: 14px;
+      padding: 6px 10px;
+      background: #1f2b23;
+      color: #e8e2d4;
+      border: 1px solid #4a5c4e;
+      border-radius: 6px;
+    }
+
+    .status {
+      margin: 0 0 20px;
+      color: #c9c2b3;
+      font-size: 14px;
+    }
+
+    .table {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .trump {
+      --type: #888;
+      --on-type: #fff;
+      width: 300px;
+      background: var(--cream);
+      color: var(--ink);
+      border: 10px solid var(--type);
+      border-radius: 14px;
+      padding: 10px 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .trump.normal { --type: #8a7f4e; --on-type: #fff; }
+    .trump.fire { --type: #c45a1a; --on-type: #fff; }
+    .trump.water { --type: #3b6fb8; --on-type: #fff; }
+    .trump.electric { --type: #e2c01a; --on-type: #1c1914; }
+    .trump.grass { --type: #5a9a32; --on-type: #fff; }
+    .trump.ice { --type: #6bb8b4; --on-type: #1c1914; }
+    .trump.fighting { --type: #9a221c; --on-type: #fff; }
+    .trump.poison { --type: #7a2e78; --on-type: #fff; }
+    .trump.ground { --type: #c9a24a; --on-type: #1c1914; }
+    .trump.flying { --type: #7a68c4; --on-type: #fff; }
+    .trump.psychic { --type: #d94a74; --on-type: #fff; }
+    .trump.bug { --type: #7a8f14; --on-type: #fff; }
+    .trump.rock { --type: #8f7e28; --on-type: #fff; }
+    .trump.ghost { --type: #56406e; --on-type: #fff; }
+    .trump.dragon { --type: #5a28c8; --on-type: #fff; }
+    .trump.dark { --type: #4a3a32; --on-type: #fff; }
+    .trump.steel { --type: #8a8aa0; --on-type: #1c1914; }
+    .trump.fairy { --type: #c46a96; --on-type: #fff; }
+
+    .head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      background: var(--type);
+      color: var(--on-type);
+      margin: -10px -10px 0;
+      padding: 10px 12px 8px;
+      border-radius: 4px 4px 0 0;
+    }
+
+    .name {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .no {
+      font-size: 13px;
+      font-weight: 700;
+      opacity: 0.9;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 0 2px;
+    }
+
+    .genus {
+      font-size: 12px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .types {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .type-pill {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--cream);
+      padding: 2px 6px;
+      border-radius: 999px;
+    }
+
+    .art {
+      background: #fff;
+      border: 2px solid #2a241c;
+      border-radius: 6px;
+      height: 210px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .art img {
+      width: 92%;
+      height: 92%;
+      object-fit: contain;
+    }
+
+    .blurb {
+      margin: 0;
+      padding: 0 4px;
+      font-size: 12px;
+      line-height: 1.35;
+      color: var(--muted);
+      min-height: 3.9em;
+      flex: 1;
+    }
+
+    .stats {
+      display: flex;
+      flex-direction: column;
+      border-top: 2px solid var(--type);
+    }
+
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 10px;
+      border-bottom: 1px solid var(--rule);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .stat:last-child { border-bottom: 0; }
+
+    .stat span:last-child {
+      font-variant-numeric: tabular-nums;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Pokemon Top Trumps</h1>
+    <p class="lede">
+      Forty-card draft. Four playable stats — HP, Attack, Defense, Speed —
+      plus a Pokédex line. Art and text from PokeAPI.
+    </p>
+    <div class="toolbar">
+      <label for="sort">Sort</label>
+      <select id="sort">
+        <option value="n">Card number</option>
+        <option value="hp">HP</option>
+        <option value="attack">Attack</option>
+        <option value="defense">Defense</option>
+        <option value="speed">Speed</option>
+        <option value="name">Name</option>
+      </select>
+    </div>
+    <p class="status" id="status">Loading deck…</p>
+    <div class="table" id="gallery"></div>
+  </div>
+  <script>
+    const gallery = document.getElementById("gallery");
+    const status = document.getElementById("status");
+    const sortEl = document.getElementById("sort");
+    let cards = [];
+
+    function pad(n) {
+      return String(n).padStart(2, "0");
+    }
+
+    function esc(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function render() {
+      const key = sortEl.value;
+      const sorted = [...cards].sort((a, b) => {
+        if (key === "n") return a.card_number - b.card_number;
+        if (key === "name") return a.name.localeCompare(b.name);
+        return (b.stats[key] ?? 0) - (a.stats[key] ?? 0);
+      });
+
+      gallery.replaceChildren(
+        ...sorted.map((card) => {
+          const primary = (card.types[0] || "normal").toLowerCase();
+          const article = document.createElement("article");
+          article.className = "trump " + primary;
+
+          const pills = card.types
+            .map((t) => `<span class="type-pill">${esc(t)}</span>`)
+            .join("");
+
+          article.innerHTML = `
+            <header class="head">
+              <div class="name">${esc(card.name)}</div>
+              <div class="no">${pad(card.card_number)}</div>
+            </header>
+            <div class="meta">
+              <div class="genus">${esc(card.genus || "")}</div>
+              <div class="types">${pills}</div>
+            </div>
+            <div class="art">
+              <img src="${esc(card.artwork)}" alt="${esc(card.name)}" />
+            </div>
+            <p class="blurb">${esc(card.blurb || "")}</p>
+            <div class="stats">
+              <div class="stat"><span>HP</span><span>${card.stats.hp}</span></div>
+              <div class="stat"><span>Attack</span><span>${card.stats.attack}</span></div>
+              <div class="stat"><span>Defense</span><span>${card.stats.defense}</span></div>
+              <div class="stat"><span>Speed</span><span>${card.stats.speed}</span></div>
+            </div>
+          `;
+          return article;
+        })
+      );
+    }
+
+    fetch("data/deck.json")
+      .then((r) => {
+        if (!r.ok) throw new Error("Could not load data/deck.json");
+        return r.json();
+      })
+      .then((deck) => {
+        cards = deck.cards || [];
+        status.textContent = cards.length + " cards";
+        render();
+      })
+      .catch((err) => {
+        status.textContent = err.message;
+      });
+
+    sortEl.addEventListener("change", render);
+  </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 {
   "name": "Pokemon Top Trumps",
-  "source": "PokeAPI (https://pokeapi.co) \u2014 official base stats, height, and weight",
+  "source": "PokeAPI (https://pokeapi.co) — official base stats, genus, and English Pokédex entries",
   "rules": {
     "players": 2,
     "deal": "Shuffle 40 cards; each player gets 20. Highest chosen stat wins the opponent card.",
@@ -18,24 +18,8 @@
         "label": "Defense"
       },
       {
-        "id": "special_attack",
-        "label": "Sp. Attack"
-      },
-      {
-        "id": "special_defense",
-        "label": "Sp. Defense"
-      },
-      {
         "id": "speed",
         "label": "Speed"
-      },
-      {
-        "id": "height_m",
-        "label": "Height (m)"
-      },
-      {
-        "id": "weight_kg",
-        "label": "Weight (kg)"
       }
     ],
     "tie": "Both cards go to a pile; next winner takes the pile."
@@ -62,7 +46,9 @@
         "weight_kg": 100.0
       },
       "base_stat_total": 525,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png",
+      "genus": "Seed Pokémon",
+      "blurb": "Its plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight."
     },
     {
       "card_number": 2,
@@ -84,7 +70,9 @@
         "weight_kg": 90.5
       },
       "base_stat_total": 534,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png",
+      "genus": "Flame Pokémon",
+      "blurb": "It spits fire that is hot enough to melt boulders. It may cause forest fires by blowing flames."
     },
     {
       "card_number": 3,
@@ -105,7 +93,9 @@
         "weight_kg": 85.5
       },
       "base_stat_total": 530,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png",
+      "genus": "Shellfish Pokémon",
+      "blurb": "It crushes its foe under its heavy body to cause fainting. In a pinch, it will withdraw inside its shell."
     },
     {
       "card_number": 4,
@@ -126,7 +116,9 @@
         "weight_kg": 6.0
       },
       "base_stat_total": 320,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+      "genus": "Mouse Pokémon",
+      "blurb": "Pikachu that can generate powerful electricity have cheek sacs that are extra soft and super stretchy."
     },
     {
       "card_number": 5,
@@ -148,7 +140,9 @@
         "weight_kg": 62.0
       },
       "base_stat_total": 505,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/34.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/34.png",
+      "genus": "Drill Pokémon",
+      "blurb": "When it goes on a rampage, it’s impossible to control. But in the presence of a Nidoqueen it’s lived with for a long time, Nidoking calms down."
     },
     {
       "card_number": 6,
@@ -169,7 +163,9 @@
         "weight_kg": 155.0
       },
       "base_stat_total": 555,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/59.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/59.png",
+      "genus": "Legendary Pokémon",
+      "blurb": "The sight of it running over 6,200 miles in a single day and night has captivated many people."
     },
     {
       "card_number": 7,
@@ -190,7 +186,9 @@
         "weight_kg": 48.0
       },
       "base_stat_total": 500,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/65.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/65.png",
+      "genus": "Psi Pokémon",
+      "blurb": "It has an incredibly high level of intelligence. Some say that Alakazam remembers everything that ever happens to it, from birth till death."
     },
     {
       "card_number": 8,
@@ -211,7 +209,9 @@
         "weight_kg": 130.0
       },
       "base_stat_total": 505,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/68.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/68.png",
+      "genus": "Superpower Pokémon",
+      "blurb": "It quickly swings its four arms to rock its opponents with ceaseless punches and chops from all angles."
     },
     {
       "card_number": 9,
@@ -233,7 +233,9 @@
         "weight_kg": 300.0
       },
       "base_stat_total": 495,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/76.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/76.png",
+      "genus": "Megaton Pokémon",
+      "blurb": "It tumbles down mountains, leaving grooves from peak to base. Stay clear of these grooves."
     },
     {
       "card_number": 10,
@@ -255,7 +257,9 @@
         "weight_kg": 40.5
       },
       "base_stat_total": 500,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png",
+      "genus": "Shadow Pokémon",
+      "blurb": "On the night of a full moon, if shadows move on their own and laugh, it must be Gengar’s doing."
     },
     {
       "card_number": 11,
@@ -277,7 +281,9 @@
         "weight_kg": 235.0
       },
       "base_stat_total": 540,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/130.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/130.png",
+      "genus": "Atrocious Pokémon",
+      "blurb": "It has an extremely aggressive nature. The Hyper Beam it shoots from its mouth totally incinerates all targets."
     },
     {
       "card_number": 12,
@@ -299,7 +305,9 @@
         "weight_kg": 220.0
       },
       "base_stat_total": 535,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/131.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/131.png",
+      "genus": "Transport Pokémon",
+      "blurb": "A smart and kindhearted Pokémon, it glides across the surface of the sea while its beautiful song echoes around it."
     },
     {
       "card_number": 13,
@@ -320,7 +328,9 @@
         "weight_kg": 29.0
       },
       "base_stat_total": 525,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/134.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/134.png",
+      "genus": "Bubble Jet Pokémon",
+      "blurb": "When Vaporeon’s fins begin to vibrate, it is a sign that rain will come within a few hours."
     },
     {
       "card_number": 14,
@@ -341,7 +351,9 @@
         "weight_kg": 24.5
       },
       "base_stat_total": 525,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/135.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/135.png",
+      "genus": "Lightning Pokémon",
+      "blurb": "If it is angered or startled, the fur all over its body bristles like sharp needles that pierce foes."
     },
     {
       "card_number": 15,
@@ -362,7 +374,9 @@
         "weight_kg": 460.0
       },
       "base_stat_total": 540,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/143.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/143.png",
+      "genus": "Sleeping Pokémon",
+      "blurb": "It is not satisfied unless it eats over 880 pounds of food every day. When it is done eating, it goes promptly to sleep."
     },
     {
       "card_number": 16,
@@ -384,7 +398,9 @@
         "weight_kg": 55.4
       },
       "base_stat_total": 580,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/144.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/144.png",
+      "genus": "Freeze Pokémon",
+      "blurb": "It’s said that this Pokémon’s beautiful blue wings are made of ice. Articuno flies over snowy mountains, its long tail fluttering along behind it."
     },
     {
       "card_number": 17,
@@ -406,7 +422,9 @@
         "weight_kg": 52.6
       },
       "base_stat_total": 580,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/145.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/145.png",
+      "genus": "Electric Pokémon",
+      "blurb": "This Pokémon has complete control over electricity. There are tales of Zapdos nesting in the dark depths of pitch-black thunderclouds."
     },
     {
       "card_number": 18,
@@ -428,7 +446,9 @@
         "weight_kg": 60.0
       },
       "base_stat_total": 580,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/146.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/146.png",
+      "genus": "Flame Pokémon",
+      "blurb": "It’s one of the legendary bird Pokémon. When Moltres flaps its flaming wings, they glimmer with a dazzling red glow."
     },
     {
       "card_number": 19,
@@ -450,7 +470,9 @@
         "weight_kg": 210.0
       },
       "base_stat_total": 600,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/149.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/149.png",
+      "genus": "Dragon Pokémon",
+      "blurb": "It’s a kindhearted Pokémon. If it spots a drowning person or Pokémon, Dragonite simply must help them."
     },
     {
       "card_number": 20,
@@ -471,7 +493,9 @@
         "weight_kg": 122.0
       },
       "base_stat_total": 680,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png",
+      "genus": "Genetic Pokémon",
+      "blurb": "It was created by a scientist after years of horrific gene-splicing and DNA-engineering experiments."
     },
     {
       "card_number": 21,
@@ -493,7 +517,9 @@
         "weight_kg": 400.0
       },
       "base_stat_total": 510,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/208.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/208.png",
+      "genus": "Iron Snake Pokémon",
+      "blurb": "It is said that if an Onix lives for over 100 years, its composition changes to become diamond-like."
     },
     {
       "card_number": 22,
@@ -515,7 +541,9 @@
         "weight_kg": 118.0
       },
       "base_stat_total": 500,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/212.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/212.png",
+      "genus": "Pincer Pokémon",
+      "blurb": "Bulky pincers account for one third of Scizor’s body weight. A single swing of one of these pincers will crush a boulder completely."
     },
     {
       "card_number": 23,
@@ -537,7 +565,9 @@
         "weight_kg": 20.5
       },
       "base_stat_total": 505,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/213.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/213.png",
+      "genus": "Mold Pokémon",
+      "blurb": "It stores berries inside its shell. To avoid attacks, it hides beneath rocks and remains completely still."
     },
     {
       "card_number": 24,
@@ -559,7 +589,9 @@
         "weight_kg": 54.0
       },
       "base_stat_total": 500,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/214.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/214.png",
+      "genus": "Single Horn Pokémon",
+      "blurb": "Heracross loves sweet sap and will go looking through forests for it. The Pokémon uses its two antennae to pick up scents as it searches."
     },
     {
       "card_number": 25,
@@ -580,7 +612,9 @@
         "weight_kg": 46.8
       },
       "base_stat_total": 540,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/242.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/242.png",
+      "genus": "Happiness Pokémon",
+      "blurb": "Whenever a Blissey finds a weakened Pokémon, it will share its egg and offer its care until the other Pokémon is all better."
     },
     {
       "card_number": 26,
@@ -602,7 +636,9 @@
         "weight_kg": 202.0
       },
       "base_stat_total": 600,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/248.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/248.png",
+      "genus": "Armor Pokémon",
+      "blurb": "Its body can’t be harmed by any sort of attack, so it is very eager to make challenges against enemies."
     },
     {
       "card_number": 27,
@@ -624,7 +660,9 @@
         "weight_kg": 52.0
       },
       "base_stat_total": 530,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/257.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/257.png",
+      "genus": "Blaze Pokémon",
+      "blurb": "It can clear a 30-story building in a leap. Its fiery punches scorch its foes."
     },
     {
       "card_number": 28,
@@ -646,7 +684,9 @@
         "weight_kg": 81.9
       },
       "base_stat_total": 535,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/260.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/260.png",
+      "genus": "Mud Fish Pokémon",
+      "blurb": "Its arms are hard as rock. With one swing, it can break a boulder into pieces."
     },
     {
       "card_number": 29,
@@ -668,7 +708,9 @@
         "weight_kg": 48.4
       },
       "base_stat_total": 518,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/282.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/282.png",
+      "genus": "Embrace Pokémon",
+      "blurb": "It has the power to predict the future. Its power peaks when it is protecting its Trainer."
     },
     {
       "card_number": 30,
@@ -689,7 +731,9 @@
         "weight_kg": 130.5
       },
       "base_stat_total": 670,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/289.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/289.png",
+      "genus": "Lazy Pokémon",
+      "blurb": "The world’s laziest Pokémon. It moves to another spot when there’s no food left within its reach."
     },
     {
       "card_number": 31,
@@ -711,7 +755,9 @@
         "weight_kg": 12.0
       },
       "base_stat_total": 456,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/291.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/291.png",
+      "genus": "Ninja Pokémon",
+      "blurb": "Its cry leaves a lasting headache if heard for too long. It moves so quickly that it is almost invisible."
     },
     {
       "card_number": 32,
@@ -733,7 +779,9 @@
         "weight_kg": 82.0
       },
       "base_stat_total": 520,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/330.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/330.png",
+      "genus": "Mystic Pokémon",
+      "blurb": "This Pokémon hides in the heart of sandstorms it creates and seldom appears where people can see it."
     },
     {
       "card_number": 33,
@@ -755,7 +803,9 @@
         "weight_kg": 550.0
       },
       "base_stat_total": 600,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/376.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/376.png",
+      "genus": "Iron Leg Pokémon",
+      "blurb": "Because the magnetic powers of these Pokémon get stronger in freezing temperatures, Metagross living on snowy mountains are full of energy."
     },
     {
       "card_number": 34,
@@ -777,7 +827,9 @@
         "weight_kg": 55.0
       },
       "base_stat_total": 534,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/392.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/392.png",
+      "genus": "Flame Pokémon",
+      "blurb": "Its crown of fire is indicative of its fiery nature. It is beaten by none in terms of quickness."
     },
     {
       "card_number": 35,
@@ -799,7 +851,9 @@
         "weight_kg": 84.5
       },
       "base_stat_total": 530,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/395.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/395.png",
+      "genus": "Emperor Pokémon",
+      "blurb": "It swims as fast as a jet boat. The edges of its wings are sharp and can slice apart drifting ice."
     },
     {
       "card_number": 36,
@@ -821,7 +875,9 @@
         "weight_kg": 95.0
       },
       "base_stat_total": 600,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/445.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/445.png",
+      "genus": "Mach Pokémon",
+      "blurb": "Garchomp makes its home in volcanic mountains. It flies through the sky as fast as a jet airplane, hunting down as much prey as it can."
     },
     {
       "card_number": 37,
@@ -843,7 +899,9 @@
         "weight_kg": 54.0
       },
       "base_stat_total": 525,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/448.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/448.png",
+      "genus": "Aura Pokémon",
+      "blurb": "It controls waves known as auras, which are powerful enough to pulverize huge rocks. It uses these waves to take down its prey."
     },
     {
       "card_number": 38,
@@ -865,7 +923,9 @@
         "weight_kg": 34.0
       },
       "base_stat_total": 510,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/461.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/461.png",
+      "genus": "Sharp Claw Pokémon",
+      "blurb": "They attack their quarry in packs. Prey as large as Mamoswine easily fall to the teamwork of a group of Weavile."
     },
     {
       "card_number": 39,
@@ -887,7 +947,9 @@
         "weight_kg": 180.0
       },
       "base_stat_total": 535,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/462.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/462.png",
+      "genus": "Magnet Area Pokémon",
+      "blurb": "Some say that Magnezone receives signals from space via the antenna on its head and that it’s being controlled by some mysterious being."
     },
     {
       "card_number": 40,
@@ -909,7 +971,9 @@
         "weight_kg": 38.0
       },
       "base_stat_total": 545,
-      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/468.png"
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/468.png",
+      "genus": "Jubilee Pokémon",
+      "blurb": "These Pokémon are never seen anywhere near conflict or turmoil. In recent times, they’ve hardly been seen at all."
     }
   ]
 }
