@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Balance sim — Pokemon Top Trumps</title>
+  <style>
+    :root {
+      --cream: #f4ecd8;
+      --ink: #1c1914;
+      --muted: #5c5346;
+      --table: #2a3a2e;
+      --line: #4a5c4e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      background: var(--table);
+      color: #e8e2d4;
+      padding: 32px 24px 56px;
+    }
+    .page { max-width: 1080px; margin: 0 auto; }
+    nav { margin-bottom: 18px; font-size: 14px; }
+    nav a { color: #e8e2d4; }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin: 32px 0 10px;
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .lede, p {
+      color: #c9c2b3;
+      line-height: 1.5;
+      font-size: 15px;
+    }
+    .lede { max-width: 72ch; margin: 0 0 22px; }
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 16px 0 8px;
+    }
+    @media (max-width: 800px) { .kpis { grid-template-columns: 1fr; } }
+    .kpi {
+      background: #1f2b23;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+    .kpi .n {
+      font-size: 28px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      color: #f4ecd8;
+    }
+    .kpi .l { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 4px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 8px 0 18px;
+    }
+    th, td {
+      text-align: left;
+      padding: 7px 8px;
+      border-bottom: 1px solid var(--line);
+      font-variant-numeric: tabular-nums;
+    }
+    th { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #c9c2b3; }
+    td.num, th.num { text-align: right; }
+    .bars { display: flex; flex-direction: column; gap: 6px; margin: 10px 0 20px; }
+    .bar-row { display: grid; grid-template-columns: 92px 1fr 48px; gap: 8px; align-items: center; font-size: 13px; }
+    .bar-track { height: 10px; background: #1f2b23; border-radius: 4px; overflow: hidden; }
+    .bar-fill { height: 100%; background: #c9a24a; }
+    .toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; margin: 12px 0 18px; }
+    label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #c9c2b3; }
+    select, button {
+      font: inherit;
+      font-size: 14px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: #1f2b23;
+      color: #e8e2d4;
+    }
+    button {
+      background: #c9a24a;
+      color: var(--ink);
+      font-weight: 700;
+      border-color: #c9a24a;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .live { min-height: 1.4em; color: #e8e2d4; }
+    caption { caption-side: bottom; text-align: left; color: #8f978c; font-size: 12px; padding-top: 8px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav><a href="index.html">Card gallery</a> · Balance sim</nav>
+    <h1>Game length and balance</h1>
+    <p class="lede">
+      8,000 games each for 2, 3, and 4 players. Choosers pick the stat with the
+      highest full-deck percentile on their top card (how people play once they
+      know the set). Highest value wins the cards; ties go to a pot. Three-player
+      deals 13 each (one card sits out).
+    </p>
+
+    <div class="kpis" id="kpis"></div>
+
+    <h2>Rounds until someone has every card</h2>
+    <table id="rounds-table">
+      <thead>
+        <tr>
+          <th>Players</th>
+          <th class="num">Median</th>
+          <th class="num">Mean</th>
+          <th class="num">P10</th>
+          <th class="num">P90</th>
+          <th class="num">Min</th>
+          <th class="num">Max</th>
+          <th class="num">Unfinished</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+      <caption>Source: 8,000 games per player count · seed 42 · skilled percentile picks</caption>
+    </table>
+
+    <h2>How often games end in each round band</h2>
+    <table id="hist-table">
+      <thead>
+        <tr>
+          <th>Rounds</th>
+          <th class="num">2 players</th>
+          <th class="num">3 players</th>
+          <th class="num">4 players</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+      <caption>Percent of finished games in each band</caption>
+    </table>
+
+    <h2>First-player advantage</h2>
+    <table id="seat-table">
+      <thead>
+        <tr>
+          <th>Players</th>
+          <th class="num">Fair share</th>
+          <th class="num">Seat 1 wins</th>
+          <th class="num">Extra vs fair</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h2>Which stats people actually call</h2>
+    <p>2-player skilled games. Win% is how often the chooser won that round after calling the stat.</p>
+    <table id="stat-table">
+      <thead>
+        <tr>
+          <th>Stat</th>
+          <th class="num">Chosen</th>
+          <th class="num">Win when chosen</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h2>Cards that take the most rounds</h2>
+    <p>Unique highest value on the called stat, 2-player games.</p>
+    <table id="card-table">
+      <thead>
+        <tr><th>Card</th><th class="num">Round wins</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h2>Run more games in this browser</h2>
+    <p>Uses the same rules as the batch above. A few hundred games is enough to see the median move.</p>
+    <div class="toolbar">
+      <label>Players
+        <select id="live-players">
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+      </label>
+      <label>Games
+        <select id="live-games">
+          <option>200</option>
+          <option selected>500</option>
+          <option>1000</option>
+          <option>2000</option>
+        </select>
+      </label>
+      <button type="button" id="run">Run sim</button>
+    </div>
+    <p class="live" id="live-out">Precomputed results are above. Run to compare a fresh sample.</p>
+  </div>
+  <script type="module">
+    import { simulate } from "./sim/engine.js";
+
+    const res = await (await fetch("data/sim-results.json")).json();
+    const by = res.by_players;
+
+    const kpis = document.getElementById("kpis");
+    kpis.innerHTML = [2, 3, 4].map((n) => {
+      const r = by[n].rounds;
+      return `<div class="kpi"><div class="n">${r.median}</div><div class="l">${n} players · median rounds</div></div>`;
+    }).join("");
+
+    const roundBody = document.querySelector("#rounds-table tbody");
+    roundBody.innerHTML = [2, 3, 4].map((n) => {
+      const b = by[n];
+      const r = b.rounds;
+      return `<tr>
+        <td>${n}</td>
+        <td class="num">${r.median}</td>
+        <td class="num">${r.mean}</td>
+        <td class="num">${r.p10}</td>
+        <td class="num">${r.p90}</td>
+        <td class="num">${r.min}</td>
+        <td class="num">${r.max}</td>
+        <td class="num">${b.unfinished}</td>
+      </tr>`;
+    }).join("");
+
+    const hist = by["2"].round_histogram;
+    document.querySelector("#hist-table tbody").innerHTML = hist.labels.map((label, i) => {
+      const cells = [2, 3, 4].map((n) => {
+        const c = by[n].round_histogram.counts[i];
+        const pct = (100 * c) / by[n].finished;
+        return `<td class="num">${pct.toFixed(1)}%</td>`;
+      }).join("");
+      return `<tr><td>${label}</td>${cells}</tr>`;
+    }).join("");
+
+    document.querySelector("#seat-table tbody").innerHTML = [2, 3, 4].map((n) => {
+      const b = by[n];
+      const extra = (b.first_player_win_pct - b.fair_share_pct).toFixed(1);
+      return `<tr>
+        <td>${n}</td>
+        <td class="num">${b.fair_share_pct}%</td>
+        <td class="num">${b.first_player_win_pct}%</td>
+        <td class="num">+${extra} pp</td>
+      </tr>`;
+    }).join("");
+
+    document.querySelector("#stat-table tbody").innerHTML = by["2"].stats_chosen
+      .slice()
+      .sort((a, b) => b.chosen_pct - a.chosen_pct)
+      .map((s) => `<tr>
+        <td>${s.label}</td>
+        <td class="num">${s.chosen_pct}%</td>
+        <td class="num">${s.win_when_chosen_pct}%</td>
+      </tr>`)
+      .join("");
+
+    document.querySelector("#card-table tbody").innerHTML = by["2"].top_round_winning_cards
+      .slice(0, 8)
+      .map((c) => `<tr><td>${c.name}</td><td class="num">${c.round_wins.toLocaleString()}</td></tr>`)
+      .join("");
+
+    const deck = await (await fetch("data/deck.json")).json();
+    document.getElementById("run").addEventListener("click", () => {
+      const n = Number(document.getElementById("live-players").value);
+      const games = Number(document.getElementById("live-games").value);
+      const out = document.getElementById("live-out");
+      out.textContent = "Running…";
+      const t0 = performance.now();
+      const r = simulate(deck.cards, n, games, Date.now() % 1_000_000);
+      const ms = Math.round(performance.now() - t0);
+      out.textContent =
+        `${n} players · ${r.finished} finished (${r.unfinished} hit the round cap) · ` +
+        `median ${r.rounds.median} rounds (mean ${r.rounds.mean.toFixed(1)}, range ${r.rounds.min}–${r.rounds.max}) · ` +
+        `first seat wins ${r.firstPlayerWinPct.toFixed(1)}% · ${ms} ms`;
+    });
+  </script>
+</body>
+</html>
