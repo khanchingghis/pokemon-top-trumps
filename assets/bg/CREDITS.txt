@@ -29,5 +29,7 @@ Original drawings for this fan project (not Winning Moves or Nintendo assets):
   assets/backs/pack-keyart.jpg  Poké Ball in elemental storm
   assets/backs/pack-case.jpg    red plastic case lid
 
-Not Nintendo, The Pokémon Company, or Datacraft Sozaijiten TCG stock.
-Pokemon character art on the cards is official artwork via PokeAPI sprites.
+Official Pokémon wordmark (Wikimedia Commons File:International Pokémon logo.svg):
+  assets/backs/pokemon-logo.png
+
+Not for sale. Character art on the cards is official artwork via PokeAPI sprites.

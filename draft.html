@@ -3,15 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>10-card draft — Comic smash / Key art</title>
+  <title>10-card set — Comic smash / Key art</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@500;700&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --table: #151814;
-      --line: #3a4038;
-    }
+    :root { --table: #151814; }
 
     * { box-sizing: border-box; }
 
@@ -39,21 +36,71 @@
       text-transform: uppercase;
     }
 
-    .lede {
+    h2 {
+      margin: 32px 0 8px;
+      font-family: Oswald, sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e2c01a;
+    }
+
+    .lede, .why {
       margin: 0 0 18px;
-      max-width: 70ch;
+      max-width: 72ch;
       color: #c9c2b3;
       line-height: 1.5;
       font-size: 15px;
     }
 
-    .status { color: #c9c2b3; font-size: 14px; margin: 0 0 22px; }
+    .why { font-size: 14px; max-width: 42ch; }
+
+    .status { color: #c9c2b3; font-size: 14px; margin: 0 0 16px; }
+
+    .picker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px;
+    }
+
+    .picker button {
+      font: inherit;
+      background: #1c1a16;
+      color: #f0e6c8;
+      border: 1px solid #5a5040;
+      border-radius: 999px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+
+    .picker button.is-on {
+      border-color: #e2c01a;
+      color: #fff;
+    }
 
     .table {
       display: flex;
       flex-wrap: wrap;
       gap: 28px 24px;
       align-items: flex-start;
+    }
+
+    .example {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .num-badge {
+      display: inline-block;
+      margin-right: 6px;
+      padding: 1px 8px;
+      border-radius: 999px;
+      background: #e2c01a;
+      color: #1c1914;
+      font-size: 13px;
+      font-weight: 700;
     }
 
     .flip-stage {
@@ -92,7 +139,7 @@
       color: #fff;
     }
 
-    /* Comic smash front */
+    /* Comic smash front — no starburst, bigger art */
     .opt3 {
       border-radius: 6px;
       border: 7px solid #111;
@@ -107,13 +154,13 @@
       position: absolute;
       inset: 0;
       background: var(--bg) center/cover no-repeat;
-      filter: contrast(1.15) saturate(1.2);
+      filter: contrast(1.12) saturate(1.15);
     }
 
     .opt3 .halftone {
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(rgba(0,0,0,.42) 1.1px, transparent 1.2px);
+      background-image: radial-gradient(rgba(0,0,0,.38) 1.1px, transparent 1.2px);
       background-size: 5px 5px;
       mix-blend-mode: multiply;
     }
@@ -122,20 +169,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to bottom, rgba(0,0,0,.45), transparent 22%),
-        linear-gradient(to top, rgba(0,0,0,.72) 0 28%, transparent 48%);
-    }
-
-    .opt3 .burst {
-      position: absolute;
-      z-index: 1;
-      width: 200px;
-      height: 200px;
-      left: 50px;
-      top: 118px;
-      background: repeating-conic-gradient(#ffde00 0 8deg, #fff 8deg 10deg, #ff7a18 10deg 16deg);
-      clip-path: polygon(50% 0, 62% 28%, 98% 28%, 70% 48%, 82% 88%, 50% 64%, 18% 88%, 30% 48%, 2% 28%, 38% 28%);
-      opacity: 0.8;
+        linear-gradient(to bottom, rgba(0,0,0,.4), transparent 18%),
+        linear-gradient(to top, rgba(0,0,0,.78) 0 24%, transparent 42%);
     }
 
     .opt3 .head {
@@ -144,11 +179,11 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      padding: 8px 10px 0;
+      padding: 6px 10px 0;
     }
 
     .opt3 .name {
-      font-size: 36px;
+      font-size: 34px;
       line-height: 0.9;
       transform: rotate(-2deg);
       text-shadow: 3px 3px 0 #000, 6px 6px 0 var(--type);
@@ -175,12 +210,10 @@
     .opt3 .genus {
       position: relative;
       z-index: 3;
-      margin: 4px 12px 0;
+      margin: 2px 12px 0;
       font-family: Georgia, "Times New Roman", serif;
       font-style: italic;
       font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.02em;
       color: #fff6d2;
       text-shadow: 0 1px 3px #000, 0 0 8px #000;
     }
@@ -188,36 +221,35 @@
     .opt3 .art {
       position: relative;
       z-index: 2;
-      flex: 1;
-      min-height: 150px;
+      flex: 1.8;
+      min-height: 240px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .opt3 .sprite {
-      width: 86%;
+      width: 118%;
       height: 100%;
-      max-height: 200px;
+      max-height: 310px;
       object-fit: contain;
-      filter: drop-shadow(6px 6px 0 #000);
+      filter: drop-shadow(6px 8px 0 #000);
     }
 
     .opt3 .blurb {
       position: relative;
       z-index: 3;
-      margin: 0 10px 8px;
+      margin: 0 10px 6px;
       font-family: Georgia, "Times New Roman", serif;
       font-style: italic;
       font-size: 11px;
-      line-height: 1.35;
+      line-height: 1.3;
       color: #fff;
       text-shadow: 0 1px 3px #000, 0 0 8px #000;
       display: -webkit-box;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      min-height: 2.7em;
     }
 
     .opt3 .board {
@@ -226,17 +258,16 @@
       margin: 0 8px 8px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 5px;
+      gap: 4px;
     }
 
     .opt3 .stat {
       background: #fff;
       color: #111;
       border: 3px solid #111;
-      padding: 5px 8px 3px;
+      padding: 4px 8px 2px;
       display: flex;
       flex-direction: column;
-      gap: 1px;
       transform: rotate(-0.4deg);
     }
 
@@ -249,59 +280,54 @@
       font-weight: 800;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      line-height: 1.1;
     }
 
     .opt3 .stat b {
-      font-size: 24px;
+      font-size: 22px;
       line-height: 0.95;
-      letter-spacing: 0.02em;
     }
 
-    /* B7 pack key art back */
-    .back-b7 {
+    /* Backs */
+    .back-key {
       background: url("assets/backs/pack-keyart.jpg") center/cover no-repeat;
       box-shadow: 0 0 0 4px #111;
       border-radius: 8px;
     }
 
-    .back-b7 .back-inner {
+    .back-inner {
       position: relative;
       z-index: 2;
       height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      padding: 18px 12px 22px;
+      padding: 16px 12px 18px;
       text-align: center;
     }
 
-    .tt-img {
-      width: 100%;
+    .pk-logo {
+      width: 86%;
       max-width: 260px;
+      height: auto;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,.65));
+      display: block;
+    }
+
+    .tt-img {
+      width: 78%;
+      max-width: 230px;
       border-radius: 8px;
       display: block;
-      box-shadow: 0 10px 24px rgba(0,0,0,.45);
+      box-shadow: 0 8px 20px rgba(0,0,0,.4);
     }
 
-    .pack-title {
-      margin-top: 12px;
-      font-family: Oswald, sans-serif;
-      font-size: 22px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      text-shadow: 0 2px 10px #000;
-    }
-
-    .pack-sub {
-      margin-top: 6px;
-      font-size: 12px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      opacity: 0.9;
-      text-shadow: 0 2px 8px #000;
-    }
+    .back-a .back-inner { justify-content: space-between; }
+    .back-b .back-inner { justify-content: flex-start; gap: 14px; }
+    .back-b .pk-logo { width: 96%; margin-top: 70px; }
+    .back-c .back-inner { justify-content: center; }
+    .back-c .pk-logo { width: 94%; }
+    .back-d .back-inner { justify-content: space-between; }
+    .back-d .stack { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 
     .hint {
       margin: 18px 0 0;
@@ -315,21 +341,31 @@
     <nav>
       <a href="index.html">Card gallery</a> ·
       <a href="designs.html">Design options</a> ·
-      10-card draft ·
+      10-card set ·
       <a href="simulate.html">Balance sim</a>
     </nav>
-    <h1>10-card draft</h1>
+    <h1>10-card set</h1>
     <p class="lede">
-      Front is <strong>comic smash</strong> with full stat names (Attack, Defence,
-      Sp. Attack…) and a small italic genus plus Pokédex line. Back is
-      <strong>pack key art (B7)</strong> — the same reverse on every card.
-      Click a card to flip it.
+      Comic smash front with the starburst gone and bigger art. Backs use the
+      official Pokémon wordmark on the key-art reverse — no “draft” line.
+      Four back lockups below; tap 1–4 to apply one to the ten cards, then
+      click a card to flip.
     </p>
+
+    <h2>Back examples — pick a number</h2>
+    <p class="lede">
+      Same key-art painting. Official yellow-and-blue Pokémon logo.
+      Reply with 1, 2, 3, or 4.
+    </p>
+    <div class="table" id="back-examples"></div>
+
+    <h2>The ten cards</h2>
+    <div class="picker" id="back-picker"></div>
     <p class="status" id="status">Loading deck…</p>
     <div class="table" id="table"></div>
     <p class="hint">
-      Character art via PokeAPI. Scene photos by type. Wordmark and key art are
-      original drawings for this fan project.
+      Pokémon wordmark: official International Pokémon logo (Wikimedia Commons).
+      Character art via PokeAPI. Fan project, not for sale.
     </p>
   </div>
   <script>
@@ -351,10 +387,20 @@
       steel: "#8a8aa0", fairy: "#c46a96",
     };
 
-    const DRAFT = [
+    const SET = [
       "venusaur", "charizard", "blastoise", "pikachu", "alakazam",
       "machamp", "gengar", "snorlax", "dragonite", "mewtwo",
     ];
+
+    const BACKS = [
+      { id: "a", n: 1, label: "1 Pokémon top" },
+      { id: "b", n: 2, label: "2 Pokémon on the ball" },
+      { id: "c", n: 3, label: "3 Pokémon only" },
+      { id: "d", n: 4, label: "4 Both logos" },
+    ];
+
+    const PK = "assets/backs/pokemon-logo.png";
+    const TT = "assets/backs/tt-wordmark.jpg";
 
     function esc(value) {
       return String(value)
@@ -384,7 +430,7 @@
           `<div class="stat"><i>${s.label}</i><b>${fmt(s.id, card.stats[s.id])}</b></div>`
       ).join("");
       return `<article class="card opt3" style="--type:${TYPE_HEX[type]};--bg:url('assets/bg/${type}.jpg')">
-        <div class="scene"></div><div class="halftone"></div><div class="veil"></div><div class="burst"></div>
+        <div class="scene"></div><div class="halftone"></div><div class="veil"></div>
         <div class="head">
           <div class="name">${esc(card.name).toUpperCase()}</div>
           <div class="no">${pad(card.card_number)}</div>
@@ -397,16 +443,41 @@
       </article>`;
     }
 
-    function renderBack() {
-      return `<article class="card back-b7">
-        <div class="back-inner">
-          <img class="tt-img" src="assets/backs/tt-wordmark.jpg" alt="Top Trumps">
-          <div>
-            <div class="pack-title">Pokémon</div>
-            <div class="pack-sub">40-card draft</div>
+    function renderBack(kind) {
+      const pk = `<img class="pk-logo" src="${PK}" alt="Pokémon">`;
+      const tt = `<img class="tt-img" src="${TT}" alt="Top Trumps">`;
+      if (kind === "a") {
+        return `<article class="card back-key back-a"><div class="back-inner">${pk}${tt}</div></article>`;
+      }
+      if (kind === "b") {
+        return `<article class="card back-key back-b"><div class="back-inner">${tt}${pk}</div></article>`;
+      }
+      if (kind === "c") {
+        return `<article class="card back-key back-c"><div class="back-inner">${pk}</div></article>`;
+      }
+      return `<article class="card back-key back-d"><div class="back-inner"><div class="stack">${pk}${tt}</div></div></article>`;
+    }
+
+    const CAPTIONS = {
+      a: "Official Pokémon logo at the top, Top Trumps plate at the bottom.",
+      b: "Top Trumps plate at the top, Pokémon logo large over the Poké Ball.",
+      c: "Pokémon logo only — cleanest, most official.",
+      d: "Both logos stacked at the top as a lockup.",
+    };
+
+    let activeBack = "a";
+    let cards = [];
+
+    function renderSet() {
+      const table = document.getElementById("table");
+      table.innerHTML = cards.map((card, i) => {
+        return `<div class="flip-stage">
+          <div class="flipper" data-i="${i}" title="Click to flip">
+            <div class="face face-front">${renderFront(card)}</div>
+            <div class="face face-back">${renderBack(activeBack)}</div>
           </div>
-        </div>
-      </article>`;
+        </div>`;
+      }).join("");
     }
 
     fetch("data/deck.json")
@@ -416,21 +487,41 @@
       })
       .then((deck) => {
         const bySlug = Object.fromEntries((deck.cards || []).map((c) => [c.slug, c]));
-        const cards = DRAFT.map((slug) => bySlug[slug]).filter(Boolean);
+        cards = SET.map((slug) => bySlug[slug]).filter(Boolean);
         document.getElementById("status").textContent =
-          cards.length + " cards · click to flip · comic smash front · key art back";
+          cards.length + " cards · click to flip · back style " + activeBack.toUpperCase();
 
-        const table = document.getElementById("table");
-        table.innerHTML = cards.map((card, i) => {
-          return `<div class="flip-stage">
-            <div class="flipper" data-i="${i}" title="Click to flip">
-              <div class="face face-front">${renderFront(card)}</div>
-              <div class="face face-back">${renderBack()}</div>
-            </div>
+        document.getElementById("back-examples").innerHTML = BACKS.map((b) => {
+          return `<div class="example">
+            <div>${renderBack(b.id)}</div>
+            <p class="why"><span class="num-badge">${b.n}</span>${CAPTIONS[b.id]}</p>
           </div>`;
         }).join("");
 
-        table.addEventListener("click", (e) => {
+        const picker = document.getElementById("back-picker");
+        picker.innerHTML = BACKS.map(
+          (b) => `<button type="button" data-back="${b.id}">${b.label}</button>`
+        ).join("");
+
+        function markPicker() {
+          picker.querySelectorAll("button").forEach((btn) => {
+            btn.classList.toggle("is-on", btn.dataset.back === activeBack);
+          });
+        }
+
+        picker.addEventListener("click", (e) => {
+          const btn = e.target.closest("button[data-back]");
+          if (!btn) return;
+          activeBack = btn.dataset.back;
+          markPicker();
+          document.getElementById("status").textContent =
+            cards.length + " cards · click to flip · back style " + activeBack.toUpperCase();
+          renderSet();
+        });
+        markPicker();
+        renderSet();
+
+        document.getElementById("table").addEventListener("click", (e) => {
           const flipper = e.target.closest(".flipper");
           if (flipper) flipper.classList.toggle("is-flipped");
         });
