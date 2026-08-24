@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>10-card set — front studies</title>
+  <title>10-card set — clean photo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@500;700&display=swap" rel="stylesheet" />
@@ -36,48 +36,15 @@
       text-transform: uppercase;
     }
 
-    h2 {
-      margin: 32px 0 8px;
-      font-family: Oswald, sans-serif;
-      font-size: 18px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #e2c01a;
-    }
-
-    .lede, .why {
-      margin: 0 0 18px;
+    .lede {
+      margin: 0 0 22px;
       max-width: 72ch;
       color: #c9c2b3;
       line-height: 1.5;
       font-size: 15px;
     }
 
-    .why { font-size: 14px; max-width: 36ch; margin-bottom: 0; }
-
     .status { color: #c9c2b3; font-size: 14px; margin: 0 0 16px; }
-
-    .picker {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 0 0 18px;
-    }
-
-    .picker button {
-      font: inherit;
-      background: #1c1a16;
-      color: #f0e6c8;
-      border: 1px solid #5a5040;
-      border-radius: 999px;
-      padding: 6px 12px;
-      cursor: pointer;
-    }
-
-    .picker button.is-on {
-      border-color: #e2c01a;
-      color: #fff;
-    }
 
     .table {
       display: flex;
@@ -86,26 +53,9 @@
       align-items: flex-start;
     }
 
-    .example {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .num-badge {
-      display: inline-block;
-      margin-right: 6px;
-      padding: 1px 8px;
-      border-radius: 999px;
-      background: #e2c01a;
-      color: #1c1914;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
     .flip-stage {
       width: 300px;
-      height: 580px;
+      height: 560px;
       perspective: 1200px;
     }
 
@@ -134,12 +84,11 @@
       --bg: none;
       position: relative;
       width: 300px;
-      height: 580px;
+      height: 560px;
       overflow: hidden;
       color: #fff;
     }
 
-    /* Shared comic shell */
     .front {
       border-radius: 6px;
       border: 7px solid #111;
@@ -154,7 +103,7 @@
       position: absolute;
       inset: 0;
       background: var(--bg) center/cover no-repeat;
-      filter: contrast(1.12) saturate(1.15);
+      filter: contrast(1.05) saturate(1.05);
     }
 
     .front .halftone {
@@ -163,14 +112,15 @@
       background-image: radial-gradient(rgba(0,0,0,.38) 1.1px, transparent 1.2px);
       background-size: 5px 5px;
       mix-blend-mode: multiply;
+      opacity: 0.12;
     }
 
     .front .veil {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to bottom, rgba(0,0,0,.4), transparent 18%),
-        linear-gradient(to top, rgba(0,0,0,.78) 0 24%, transparent 42%);
+        linear-gradient(to bottom, rgba(0,0,0,.38), transparent 16%),
+        linear-gradient(to top, rgba(0,0,0,.78) 0 22%, transparent 40%);
     }
 
     .front .head {
@@ -179,7 +129,7 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      padding: 6px 10px 0;
+      padding: 8px 10px 0;
     }
 
     .front .name {
@@ -197,7 +147,7 @@
     .front .types {
       position: relative;
       z-index: 3;
-      margin: 0 12px;
+      margin: 0 12px 4px;
       font-size: 13px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -205,22 +155,11 @@
       text-shadow: 2px 2px 0 #000;
     }
 
-    .front .genus {
-      position: relative;
-      z-index: 3;
-      margin: 2px 12px 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-style: italic;
-      font-size: 13px;
-      color: #fff6d2;
-      text-shadow: 0 1px 3px #000;
-    }
-
     .front .art {
       position: relative;
       z-index: 2;
       flex: 1.8;
-      min-height: 220px;
+      min-height: 240px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -229,25 +168,22 @@
     .front .sprite {
       width: 118%;
       height: 100%;
-      max-height: 310px;
+      max-height: 320px;
       object-fit: contain;
-      filter: drop-shadow(6px 8px 0 #000);
+      filter: drop-shadow(0 10px 14px rgba(0,0,0,.55));
     }
 
-    .front .blurb {
+    .front .caption {
       position: relative;
       z-index: 3;
-      margin: 0 10px 6px;
+      margin: 0 14px 10px;
       font-family: Georgia, "Times New Roman", serif;
       font-style: italic;
-      font-size: 11px;
-      line-height: 1.3;
-      color: #fff;
-      text-shadow: 0 1px 3px #000;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      font-size: 12px;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+      color: rgba(255, 246, 220, 0.92);
+      text-shadow: 0 1px 8px #000, 0 0 12px #000;
     }
 
     .front .board {
@@ -282,84 +218,6 @@
 
     .front .stat b { font-size: 22px; line-height: 0.95; }
 
-    /* 2 Caption boxes */
-    .f2 .genus,
-    .f2 .blurb {
-      background: #fff8e4;
-      color: #1c1914;
-      text-shadow: none;
-      border: 3px solid #111;
-      margin-left: 10px;
-      margin-right: 10px;
-      padding: 4px 8px;
-      transform: rotate(-1deg);
-    }
-
-    .f2 .blurb { transform: rotate(0.8deg); margin-bottom: 8px; }
-
-    /* 3 Art-first overlay */
-    .f3 .art {
-      position: absolute;
-      inset: 0 0 168px 0;
-      min-height: 0;
-      z-index: 1;
-    }
-
-    .f3 .sprite {
-      width: 130%;
-      max-height: none;
-      height: 105%;
-    }
-
-    .f3 .head,
-    .f3 .types,
-    .f3 .genus {
-      position: relative;
-      z-index: 3;
-    }
-
-    .f3 .copy {
-      position: absolute;
-      z-index: 3;
-      left: 0; right: 0; bottom: 0;
-      padding-top: 12px;
-      background: linear-gradient(transparent, rgba(0,0,0,.88) 28%);
-    }
-
-    .f3 .blurb { margin-bottom: 6px; }
-
-    /* 4 Yellow Top Trumps bars */
-    .f4 .board {
-      grid-template-columns: 1fr;
-      gap: 3px;
-    }
-
-    .f4 .stat {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      background: #f0c92a;
-      transform: none;
-      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
-      padding: 5px 16px 5px 10px;
-    }
-
-    .f4 .stat:nth-child(even) { transform: none; }
-
-    .f4 .stat i { font-size: 12px; }
-
-    .f4 .stat b { font-size: 20px; }
-
-    .f4 .art { min-height: 200px; }
-
-    .f4 .sprite { max-height: 240px; }
-
-    /* 5 Clean photo */
-    .f5 .halftone { opacity: 0.12; }
-    .f5 .scene { filter: contrast(1.05) saturate(1.05); }
-    .f5 .sprite { filter: drop-shadow(0 10px 14px rgba(0,0,0,.55)); }
-
-    /* Locked back 2 */
     .back-key {
       background: url("assets/backs/pack-keyart.jpg") center/cover no-repeat;
       box-shadow: 0 0 0 4px #111;
@@ -411,25 +269,17 @@
       10-card set ·
       <a href="simulate.html">Balance sim</a>
     </nav>
-    <h1>Front studies</h1>
+    <h1>10-card set</h1>
     <p class="lede">
-      Back is locked to <strong>2</strong> — Top Trumps plate at the top, official
-      Pokémon logo over the Poké Ball. Fronts below are five takes on the comic
-      card (no starburst, full stat words, italic genus). Same Charizard so you
-      can compare. Reply with a front number. Click a study card to see the locked back.
+      Clean photo front, no genus line. Captions are older, more atmospheric
+      Pokédex lines (Gold, Silver, Crystal, Yellow, FireRed) instead of the
+      modern encyclopedia entries. Back is locked to 2. Click a card to flip.
     </p>
-
-    <h2>Front examples — pick a number</h2>
-    <div class="table" id="front-examples"></div>
-
-    <h2>The ten cards</h2>
-    <p class="lede">Applies your picked front to the set. Default is 1 (what you have now).</p>
-    <div class="picker" id="front-picker"></div>
     <p class="status" id="status">Loading deck…</p>
     <div class="table" id="table"></div>
     <p class="hint">
-      Pokémon wordmark: official International Pokémon logo. Character art via PokeAPI.
-      Fan project, not for sale.
+      Captions via PokeAPI from the named game Pokédex. Official Pokémon wordmark
+      on the reverse. Fan project, not for sale.
     </p>
   </div>
   <script>
@@ -456,14 +306,6 @@
       "machamp", "gengar", "snorlax", "dragonite", "mewtwo",
     ];
 
-    const FRONTS = [
-      { id: "f1", n: 1, label: "1 Stacked", caption: "What you have now: name and italic genus up top, big art, two-column white boxes." },
-      { id: "f2", n: 2, label: "2 Captions", caption: "Genus and Pokédex line in cream comic caption boxes — easier to read, more comic." },
-      { id: "f3", n: 3, label: "3 Art-first", caption: "Sprite fills most of the card. Stats sit on a dark strip at the bottom." },
-      { id: "f4", n: 4, label: "4 Yellow bars", caption: "Comic name and photo, Winning Moves yellow chevrons with full stat words." },
-      { id: "f5", n: 5, label: "5 Clean photo", caption: "Halftone almost gone so the type photo and sprite stay sharp." },
-    ];
-
     const PK = "assets/backs/pokemon-logo.png";
     const TT = "assets/backs/tt-wordmark.jpg";
 
@@ -488,26 +330,24 @@
       return (card.types[0] || "normal").toLowerCase();
     }
 
-    function renderFront(card, style) {
+    function renderFront(card) {
       const type = primary(card);
       const rows = STATS.map(
         (s) =>
           `<div class="stat"><i>${s.label}</i><b>${fmt(s.id, card.stats[s.id])}</b></div>`
       ).join("");
-      const inner = `
+      const caption = card.caption || card.blurb || "";
+      return `<article class="card front" style="--type:${TYPE_HEX[type]};--bg:url('assets/bg/${type}.jpg')">
         <div class="scene"></div><div class="halftone"></div><div class="veil"></div>
         <div class="head">
           <div class="name">${esc(card.name).toUpperCase()}</div>
           <div class="no">${pad(card.card_number)}</div>
         </div>
         <div class="types">${esc(card.types.join("  /  "))}</div>
-        <div class="genus">${esc(card.genus || "")}</div>
         <div class="art"><img class="sprite" src="${esc(card.artwork)}" alt="${esc(card.name)}" /></div>
-        <div class="copy">
-          <p class="blurb">${esc(card.blurb || "")}</p>
-          <div class="board">${rows}</div>
-        </div>`;
-      return `<article class="card front ${style}" style="--type:${TYPE_HEX[type]};--bg:url('assets/bg/${type}.jpg')">${inner}</article>`;
+        <p class="caption">${esc(caption)}</p>
+        <div class="board">${rows}</div>
+      </article>`;
     }
 
     function renderBack() {
@@ -519,25 +359,6 @@
       </article>`;
     }
 
-    function flipCard(frontHtml) {
-      return `<div class="flip-stage">
-        <div class="flipper" title="Click to flip">
-          <div class="face face-front">${frontHtml}</div>
-          <div class="face face-back">${renderBack()}</div>
-        </div>
-      </div>`;
-    }
-
-    let activeFront = "f1";
-    let cards = [];
-    let charizard = null;
-
-    function renderSet() {
-      document.getElementById("table").innerHTML = cards
-        .map((card) => flipCard(renderFront(card, activeFront)))
-        .join("");
-    }
-
     fetch("data/deck.json")
       .then((r) => {
         if (!r.ok) throw new Error("Could not load data/deck.json");
@@ -545,42 +366,18 @@
       })
       .then((deck) => {
         const bySlug = Object.fromEntries((deck.cards || []).map((c) => [c.slug, c]));
-        cards = SET.map((slug) => bySlug[slug]).filter(Boolean);
-        charizard = bySlug.charizard;
+        const cards = SET.map((slug) => bySlug[slug]).filter(Boolean);
         document.getElementById("status").textContent =
-          cards.length + " cards · click to flip · front " + activeFront.slice(1) + " · back 2";
-
-        document.getElementById("front-examples").innerHTML = FRONTS.map((f) => {
-          return `<div class="example">
-            ${flipCard(renderFront(charizard, f.id))}
-            <p class="why"><span class="num-badge">${f.n}</span>${f.caption}</p>
+          cards.length + " cards · click to flip · clean photo · back 2";
+        document.getElementById("table").innerHTML = cards.map((card) => {
+          return `<div class="flip-stage">
+            <div class="flipper" title="Click to flip">
+              <div class="face face-front">${renderFront(card)}</div>
+              <div class="face face-back">${renderBack()}</div>
+            </div>
           </div>`;
         }).join("");
-
-        const picker = document.getElementById("front-picker");
-        picker.innerHTML = FRONTS.map(
-          (f) => `<button type="button" data-front="${f.id}">${f.label}</button>`
-        ).join("");
-
-        function markPicker() {
-          picker.querySelectorAll("button").forEach((btn) => {
-            btn.classList.toggle("is-on", btn.dataset.front === activeFront);
-          });
-        }
-
-        picker.addEventListener("click", (e) => {
-          const btn = e.target.closest("button[data-front]");
-          if (!btn) return;
-          activeFront = btn.dataset.front;
-          markPicker();
-          document.getElementById("status").textContent =
-            cards.length + " cards · click to flip · front " + activeFront.slice(1) + " · back 2";
-          renderSet();
-        });
-        markPicker();
-        renderSet();
-
-        document.querySelector(".page").addEventListener("click", (e) => {
+        document.getElementById("table").addEventListener("click", (e) => {
           const flipper = e.target.closest(".flipper");
           if (flipper) flipper.classList.toggle("is-flipped");
         });
