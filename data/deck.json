@@ -18,8 +18,20 @@
         "label": "Defense"
       },
       {
+        "id": "special_attack",
+        "label": "Sp. Attack"
+      },
+      {
         "id": "speed",
         "label": "Speed"
+      },
+      {
+        "id": "height_m",
+        "label": "Height (m)"
+      },
+      {
+        "id": "weight_kg",
+        "label": "Weight (kg)"
       }
     ],
     "tie": "Both cards go to a pile; next winner takes the pile."
