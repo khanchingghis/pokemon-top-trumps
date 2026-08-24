@@ -1011,6 +1011,87 @@
       to { transform: translateX(40%); }
     }
 
+    .tt-img {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 8px;
+      display: block;
+      box-shadow: 0 10px 24px rgba(0,0,0,.35);
+    }
+
+    .logo-study {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      margin: 8px 0 6px;
+    }
+
+    .logo-study img {
+      width: 280px;
+      border-radius: 8px;
+      border: 1px solid #3a5aaa;
+    }
+
+    /* B7 pack key art */
+    .back-b7 {
+      background: url("assets/backs/pack-keyart.jpg") center/cover no-repeat;
+      box-shadow: 0 0 0 4px #111;
+    }
+
+    .back-b7 .back-inner {
+      justify-content: space-between;
+      padding: 16px 12px 18px;
+    }
+
+    .back-b7 .pack-title {
+      text-shadow: 0 2px 10px #000;
+    }
+
+    /* B8 plastic case */
+    .back-b8 {
+      background: url("assets/backs/pack-case.jpg") center/cover no-repeat;
+      box-shadow: 0 12px 28px rgba(0,0,0,.45);
+    }
+
+    .back-b8 .back-inner {
+      justify-content: center;
+      padding: 0 36px;
+    }
+
+    .back-b8 .tt-img {
+      max-width: 210px;
+      border-radius: 10px;
+    }
+
+    .back-b8 .pack-title,
+    .back-b8 .pack-sub {
+      color: #fff3c8;
+      text-shadow: 0 2px 6px rgba(0,0,0,.5);
+    }
+
+    .back-picker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .back-picker button {
+      font: inherit;
+      background: #1c1a16;
+      color: #f0e6c8;
+      border: 1px solid #5a5040;
+      border-radius: 999px;
+      padding: 4px 10px;
+      cursor: pointer;
+    }
+
+    .back-picker button.is-on {
+      border-color: #e2c01a;
+      color: #fff;
+    }
+
     .flip-wrap {
       display: flex;
       flex-wrap: wrap;
@@ -1066,7 +1147,7 @@
       fog, lightning, aurora, nebula). Backs must look the same on every card
       or the pile leaks which Pokémon is coming — except B5, which is a
       collectible puzzle, not a play back.
-      Reply with a front number (1–6) and a back (B1–B6).
+      Reply with a front number (1–6) and a back (B1–B8).
     </p>
 
     <div class="picker">
@@ -1082,6 +1163,8 @@
       <a href="#back-b4">B4 Felt</a>
       <a href="#back-b5">B5 Puzzle</a>
       <a href="#back-b6">B6 Holo</a>
+      <a href="#back-b7">B7 Key art</a>
+      <a href="#back-b8">B8 Plastic case</a>
     </div>
 
     <h3 class="section">Type photo library</h3>
@@ -1151,17 +1234,26 @@
 
     <p class="group-label" id="backs">Back of the card</p>
     <p class="lede">
-      Physical Top Trumps packs (Winning Moves) print one identical reverse so
-      you cannot read the deck. Their wordmark is stacked yellow
-      <strong>TOP / TRUMPS</strong> with a thick black outline, often on blue,
-      plus the line “Collectable, Competitive, Compulsive!” The drawings below
-      follow that colour language in our own lettering — not their trademarked
-      artwork. Click the demo to flip a cinematic front onto B1.
+      On a real Winning Moves pack the reverse is the same on every play card,
+      so you cannot read the pile. It is usually the yellow stacked
+      <strong>TOP / TRUMPS</strong> wordmark (thick black outline, oversized O,
+      condensed TRUMPS, tagline “Collectable, Competitive, Compulsive!”) plus
+      the pack’s title or a single piece of key art. Some packs print a
+      30-piece poster puzzle instead. Extra cards (rules, barcode) get different
+      backs; the play deck does not.
     </p>
+    <div class="logo-study">
+      <img src="assets/backs/tt-wordmark.jpg" alt="Original stacked yellow TOP TRUMPS wordmark on blue" />
+      <p class="why" style="margin:0;max-width:42ch">
+        Our drawing of that lockup — not Winning Moves’ trademark file.
+        Yellow fill, black outline, chunky TOP, condensed TRUMPS, blue field.
+        B1 uses this plate; B7–B8 put it on pack art and a plastic case.
+      </p>
+    </div>
 
     <section class="option" id="flip-demo-sec">
       <h2>Flip demo</h2>
-      <p class="why">Click the card. Front = option 1 (Charizard). Back = B1.</p>
+      <p class="why">Click the card to turn it. Front is option 1 (Charizard). Use the buttons to try each back.</p>
       <div class="flip-wrap">
         <div class="flip-stage">
           <div class="flipper" id="flipper" title="Click to flip">
@@ -1169,18 +1261,21 @@
             <div class="face face-back" id="flip-back"></div>
           </div>
         </div>
-        <p class="flip-hint">
-          In play this is the facedown pile and the opponent’s hidden hand.
-          One back for all 40 cards.
-        </p>
+        <div>
+          <p class="flip-hint">
+            In play this is the facedown pile and the opponent’s hidden hand.
+            One back for all 40 cards.
+          </p>
+          <div class="back-picker" id="flip-backs"></div>
+        </div>
       </div>
     </section>
 
     <section class="option" id="back-b1">
       <h2><span class="num-badge">B1</span> Classic wordmark</h2>
       <p class="why">
-        Closest to a Winning Moves pack: navy field, gold pinstripe, yellow
-        stacked title, pack name underneath. Safest “this is Top Trumps” back.
+        Closest to a Winning Moves pack: the yellow/blue lockup as the whole
+        reverse, pack name under it. Safest “this is Top Trumps” back.
       </p>
       <div class="row" data-back="b1"></div>
     </section>
@@ -1189,7 +1284,7 @@
       <h2><span class="num-badge">B2</span> Pokéball</h2>
       <p class="why">
         Red / white split, black belt, centre button. Reads from across a table
-        and in a digital pile. Wordmark sits on the white half.
+        and in a digital pile. CSS wordmark on the white half.
       </p>
       <div class="row" data-back="b2"></div>
     </section>
@@ -1232,10 +1327,32 @@
       <div class="row" data-back="b6"></div>
     </section>
 
+    <section class="option" id="back-b7">
+      <h2><span class="num-badge">B7</span> Pack key art</h2>
+      <p class="why">
+        How licensed packs usually look: one illustration for the whole deck
+        (Poké Ball in fire, water, lightning, aurora) with the wordmark stuck
+        on like a title plate. Same picture on all 40 cards.
+      </p>
+      <div class="row" data-back="b7"></div>
+    </section>
+
+    <section class="option" id="back-b8">
+      <h2><span class="num-badge">B8</span> Plastic case</h2>
+      <p class="why">
+        The other thing people remember: the hard red travel case. Glossy
+        moulded lid, gold pinstripe, wordmark in the recessed label. Feels like
+        the object you pull out of a backpack.
+      </p>
+      <div class="row" data-back="b8"></div>
+    </section>
+
     <p class="note">
       Character art: official Pokémon artwork via PokeAPI.
       Scenes: Unsplash, Wikimedia Commons, NASA / USGS (see
-      <code>assets/bg/CREDITS.txt</code>). Fan project, not for sale.
+      <code>assets/bg/CREDITS.txt</code>). Wordmark, key art, and case are
+      original drawings for this fan project, not Winning Moves or Nintendo
+      assets. Not for sale.
     </p>
   </div>
 
@@ -1405,6 +1522,10 @@
       </div>`;
     }
 
+    function ttLogo() {
+      return `<img class="tt-img" src="assets/backs/tt-wordmark.jpg" alt="Top Trumps">`;
+    }
+
     function puzzlePos(index) {
       const cols = 5;
       const rows = 8;
@@ -1418,7 +1539,7 @@
     function renderBack(kind, tileIndex) {
       const title = `<div class="pack-title">Pokémon</div><div class="pack-sub">40-card draft</div>`;
       if (kind === "b1") {
-        return `<article class="card back back-b1"><div class="back-inner">${ttMark()}${title}</div></article>`;
+        return `<article class="card back back-b1"><div class="back-inner">${ttLogo()}${title}</div></article>`;
       }
       if (kind === "b2") {
         return `<article class="card back back-b2">
@@ -1444,6 +1565,12 @@
           <div class="sheen"></div>
           <div class="back-inner">${ttMark()}${title}</div>
         </article>`;
+      }
+      if (kind === "b7") {
+        return `<article class="card back back-b7"><div class="back-inner">${ttLogo()}${title}</div></article>`;
+      }
+      if (kind === "b8") {
+        return `<article class="card back back-b8"><div class="back-inner">${ttLogo()}${title}</div></article>`;
       }
       return "";
     }
@@ -1488,12 +1615,40 @@
           renderPuzzlePoster() + renderBack("b5", 0) + renderBack("b5", 17);
         document.querySelector('[data-back="b6"]').innerHTML =
           renderBack("b6") + renderBack("b6") + renderBack("b6");
+        document.querySelector('[data-back="b7"]').innerHTML =
+          renderBack("b7") + renderBack("b7") + renderBack("b7");
+        document.querySelector('[data-back="b8"]').innerHTML =
+          renderBack("b8") + renderBack("b8") + renderBack("b8");
+
+        const BACK_IDS = ["b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8"];
+        let activeBack = "b7";
+        const flipBack = document.getElementById("flip-back");
+        const flipper = document.getElementById("flipper");
+        const picker = document.getElementById("flip-backs");
+
+        function setFlipBack(kind) {
+          activeBack = kind;
+          const tile = kind === "b5" ? 0 : undefined;
+          flipBack.innerHTML = renderBack(kind, tile);
+          picker.querySelectorAll("button").forEach((btn) => {
+            btn.classList.toggle("is-on", btn.dataset.flip === kind);
+          });
+        }
+
+        picker.innerHTML = BACK_IDS.map(
+          (id) => `<button type="button" data-flip="${id}">${id.toUpperCase()}</button>`
+        ).join("");
+        picker.addEventListener("click", (e) => {
+          const btn = e.target.closest("button[data-flip]");
+          if (!btn) return;
+          setFlipBack(btn.dataset.flip);
+          flipper.classList.add("is-flipped");
+        });
 
         if (featured[0]) {
           document.getElementById("flip-front").innerHTML = renderOpt1(featured[0]);
-          document.getElementById("flip-back").innerHTML = renderBack("b1");
+          setFlipBack(activeBack);
         }
-        const flipper = document.getElementById("flipper");
         flipper.addEventListener("click", () => flipper.classList.toggle("is-flipped"));
       })
       .catch((err) => {

@@ -24,5 +24,10 @@ NASA / public domain:
   dark.jpg     galactic plane composite (NASA PIA15482)
   rock.jpg     planetary surface (NASA PIA17944)
 
+Original drawings for this fan project (not Winning Moves or Nintendo assets):
+  assets/backs/tt-wordmark.jpg  stacked yellow TOP / TRUMPS lockup on blue
+  assets/backs/pack-keyart.jpg  Poké Ball in elemental storm
+  assets/backs/pack-case.jpg    red plastic case lid
+
 Not Nintendo, The Pokémon Company, or Datacraft Sozaijiten TCG stock.
 Pokemon character art on the cards is official artwork via PokeAPI sprites.
