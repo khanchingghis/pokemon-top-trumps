@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>10-card draft — Comic smash / Key art</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --table: #151814;
+      --line: #3a4038;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(ellipse at 20% 0%, #2a2418, transparent 50%),
+        var(--table);
+      color: #e8e2d4;
+      padding: 28px 20px 72px;
+    }
+
+    .page { max-width: 1280px; margin: 0 auto; }
+
+    nav { margin-bottom: 16px; font-size: 14px; }
+    nav a { color: #e8e2d4; }
+
+    h1 {
+      margin: 0 0 8px;
+      font-family: Oswald, sans-serif;
+      font-size: 30px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .lede {
+      margin: 0 0 18px;
+      max-width: 70ch;
+      color: #c9c2b3;
+      line-height: 1.5;
+      font-size: 15px;
+    }
+
+    .status { color: #c9c2b3; font-size: 14px; margin: 0 0 22px; }
+
+    .table {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px 24px;
+      align-items: flex-start;
+    }
+
+    .flip-stage {
+      width: 300px;
+      height: 580px;
+      perspective: 1200px;
+    }
+
+    .flipper {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.7s ease;
+      cursor: pointer;
+    }
+
+    .flipper.is-flipped { transform: rotateY(180deg); }
+
+    .face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .face-back { transform: rotateY(180deg); }
+
+    .card {
+      --type: #888;
+      --bg: none;
+      position: relative;
+      width: 300px;
+      height: 580px;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    /* Comic smash front */
+    .opt3 {
+      border-radius: 6px;
+      border: 7px solid #111;
+      outline: 4px solid #ffde00;
+      font-family: Bangers, "Comic Sans MS", sans-serif;
+      box-shadow: 8px 8px 0 #111;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .opt3 .scene {
+      position: absolute;
+      inset: 0;
+      background: var(--bg) center/cover no-repeat;
+      filter: contrast(1.15) saturate(1.2);
+    }
+
+    .opt3 .halftone {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(0,0,0,.42) 1.1px, transparent 1.2px);
+      background-size: 5px 5px;
+      mix-blend-mode: multiply;
+    }
+
+    .opt3 .veil {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,.45), transparent 22%),
+        linear-gradient(to top, rgba(0,0,0,.72) 0 28%, transparent 48%);
+    }
+
+    .opt3 .burst {
+      position: absolute;
+      z-index: 1;
+      width: 200px;
+      height: 200px;
+      left: 50px;
+      top: 118px;
+      background: repeating-conic-gradient(#ffde00 0 8deg, #fff 8deg 10deg, #ff7a18 10deg 16deg);
+      clip-path: polygon(50% 0, 62% 28%, 98% 28%, 70% 48%, 82% 88%, 50% 64%, 18% 88%, 30% 48%, 2% 28%, 38% 28%);
+      opacity: 0.8;
+    }
+
+    .opt3 .head {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 8px 10px 0;
+    }
+
+    .opt3 .name {
+      font-size: 36px;
+      line-height: 0.9;
+      transform: rotate(-2deg);
+      text-shadow: 3px 3px 0 #000, 6px 6px 0 var(--type);
+      letter-spacing: 0.02em;
+    }
+
+    .opt3 .no {
+      font-size: 16px;
+      text-shadow: 2px 2px 0 #000;
+      opacity: 0.9;
+    }
+
+    .opt3 .types {
+      position: relative;
+      z-index: 3;
+      margin: 0 12px;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ffde00;
+      text-shadow: 2px 2px 0 #000;
+    }
+
+    .opt3 .genus {
+      position: relative;
+      z-index: 3;
+      margin: 4px 12px 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: #fff6d2;
+      text-shadow: 0 1px 3px #000, 0 0 8px #000;
+    }
+
+    .opt3 .art {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      min-height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .opt3 .sprite {
+      width: 86%;
+      height: 100%;
+      max-height: 200px;
+      object-fit: contain;
+      filter: drop-shadow(6px 6px 0 #000);
+    }
+
+    .opt3 .blurb {
+      position: relative;
+      z-index: 3;
+      margin: 0 10px 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-size: 11px;
+      line-height: 1.35;
+      color: #fff;
+      text-shadow: 0 1px 3px #000, 0 0 8px #000;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 2.7em;
+    }
+
+    .opt3 .board {
+      position: relative;
+      z-index: 3;
+      margin: 0 8px 8px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
+    }
+
+    .opt3 .stat {
+      background: #fff;
+      color: #111;
+      border: 3px solid #111;
+      padding: 5px 8px 3px;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      transform: rotate(-0.4deg);
+    }
+
+    .opt3 .stat:nth-child(even) { transform: rotate(0.5deg); }
+
+    .opt3 .stat i {
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      font-style: normal;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .opt3 .stat b {
+      font-size: 24px;
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+    }
+
+    /* B7 pack key art back */
+    .back-b7 {
+      background: url("assets/backs/pack-keyart.jpg") center/cover no-repeat;
+      box-shadow: 0 0 0 4px #111;
+      border-radius: 8px;
+    }
+
+    .back-b7 .back-inner {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 12px 22px;
+      text-align: center;
+    }
+
+    .tt-img {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 8px;
+      display: block;
+      box-shadow: 0 10px 24px rgba(0,0,0,.45);
+    }
+
+    .pack-title {
+      margin-top: 12px;
+      font-family: Oswald, sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 10px #000;
+    }
+
+    .pack-sub {
+      margin-top: 6px;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.9;
+      text-shadow: 0 2px 8px #000;
+    }
+
+    .hint {
+      margin: 18px 0 0;
+      font-size: 13px;
+      color: #9a9182;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav>
+      <a href="index.html">Card gallery</a> ·
+      <a href="designs.html">Design options</a> ·
+      10-card draft ·
+      <a href="simulate.html">Balance sim</a>
+    </nav>
+    <h1>10-card draft</h1>
+    <p class="lede">
+      Front is <strong>comic smash</strong> with full stat names (Attack, Defence,
+      Sp. Attack…) and a small italic genus plus Pokédex line. Back is
+      <strong>pack key art (B7)</strong> — the same reverse on every card.
+      Click a card to flip it.
+    </p>
+    <p class="status" id="status">Loading deck…</p>
+    <div class="table" id="table"></div>
+    <p class="hint">
+      Character art via PokeAPI. Scene photos by type. Wordmark and key art are
+      original drawings for this fan project.
+    </p>
+  </div>
+  <script>
+    const STATS = [
+      { id: "hp", label: "HP" },
+      { id: "attack", label: "Attack" },
+      { id: "defense", label: "Defence" },
+      { id: "special_attack", label: "Sp. Attack" },
+      { id: "speed", label: "Speed" },
+      { id: "height_m", label: "Height (m)" },
+      { id: "weight_kg", label: "Weight (kg)" },
+    ];
+
+    const TYPE_HEX = {
+      normal: "#8a7f4e", fire: "#c45a1a", water: "#3b6fb8", electric: "#e2c01a",
+      grass: "#5a9a32", ice: "#6bb8b4", fighting: "#9a221c", poison: "#7a2e78",
+      ground: "#c9a24a", flying: "#7a68c4", psychic: "#d94a74", bug: "#7a8f14",
+      rock: "#8f7e28", ghost: "#56406e", dragon: "#5a28c8", dark: "#4a3a32",
+      steel: "#8a8aa0", fairy: "#c46a96",
+    };
+
+    const DRAFT = [
+      "venusaur", "charizard", "blastoise", "pikachu", "alakazam",
+      "machamp", "gengar", "snorlax", "dragonite", "mewtwo",
+    ];
+
+    function esc(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function fmt(id, n) {
+      if (id === "height_m" || id === "weight_kg") return Number(n).toFixed(1);
+      return String(n);
+    }
+
+    function pad(n) {
+      return String(n).padStart(2, "0");
+    }
+
+    function primary(card) {
+      return (card.types[0] || "normal").toLowerCase();
+    }
+
+    function renderFront(card) {
+      const type = primary(card);
+      const rows = STATS.map(
+        (s) =>
+          `<div class="stat"><i>${s.label}</i><b>${fmt(s.id, card.stats[s.id])}</b></div>`
+      ).join("");
+      return `<article class="card opt3" style="--type:${TYPE_HEX[type]};--bg:url('assets/bg/${type}.jpg')">
+        <div class="scene"></div><div class="halftone"></div><div class="veil"></div><div class="burst"></div>
+        <div class="head">
+          <div class="name">${esc(card.name).toUpperCase()}</div>
+          <div class="no">${pad(card.card_number)}</div>
+        </div>
+        <div class="types">${esc(card.types.join("  /  "))}</div>
+        <div class="genus">${esc(card.genus || "")}</div>
+        <div class="art"><img class="sprite" src="${esc(card.artwork)}" alt="${esc(card.name)}" /></div>
+        <p class="blurb">${esc(card.blurb || "")}</p>
+        <div class="board">${rows}</div>
+      </article>`;
+    }
+
+    function renderBack() {
+      return `<article class="card back-b7">
+        <div class="back-inner">
+          <img class="tt-img" src="assets/backs/tt-wordmark.jpg" alt="Top Trumps">
+          <div>
+            <div class="pack-title">Pokémon</div>
+            <div class="pack-sub">40-card draft</div>
+          </div>
+        </div>
+      </article>`;
+    }
+
+    fetch("data/deck.json")
+      .then((r) => {
+        if (!r.ok) throw new Error("Could not load data/deck.json");
+        return r.json();
+      })
+      .then((deck) => {
+        const bySlug = Object.fromEntries((deck.cards || []).map((c) => [c.slug, c]));
+        const cards = DRAFT.map((slug) => bySlug[slug]).filter(Boolean);
+        document.getElementById("status").textContent =
+          cards.length + " cards · click to flip · comic smash front · key art back";
+
+        const table = document.getElementById("table");
+        table.innerHTML = cards.map((card, i) => {
+          return `<div class="flip-stage">
+            <div class="flipper" data-i="${i}" title="Click to flip">
+              <div class="face face-front">${renderFront(card)}</div>
+              <div class="face face-back">${renderBack()}</div>
+            </div>
+          </div>`;
+        }).join("");
+
+        table.addEventListener("click", (e) => {
+          const flipper = e.target.closest(".flipper");
+          if (flipper) flipper.classList.toggle("is-flipped");
+        });
+      })
+      .catch((err) => {
+        document.getElementById("status").textContent = err.message;
+      });
+  </script>
+</body>
+</html>

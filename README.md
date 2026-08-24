@@ -10,6 +10,10 @@ Numbered card design options (photo backgrounds + typefaces):
 
 https://khanchingghis.github.io/pokemon-top-trumps/designs.html
 
+10-card draft (comic smash front, pack key art back):
+
+https://khanchingghis.github.io/pokemon-top-trumps/draft.html
+
 Balance sim (8,000 games each for 2 / 3 / 4 players):
 
 https://khanchingghis.github.io/pokemon-top-trumps/simulate.html
