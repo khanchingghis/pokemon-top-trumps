@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>10-card set — iterations</title>
+  <title>10-card set — stat bars</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@500;700&display=swap" rel="stylesheet" />
   <style>
-    :root { --table: #151814; }
+    :root { --table: #151814; --bar: #f0c92a; }
 
     * { box-sizing: border-box; }
 
@@ -54,6 +54,12 @@
     }
 
     .why { font-size: 14px; max-width: 34ch; margin: 0; }
+
+    .lock {
+      margin: 0 0 22px;
+      color: #9a9182;
+      font-size: 14px;
+    }
 
     .status { color: #c9c2b3; font-size: 14px; margin: 0 0 16px; }
 
@@ -155,7 +161,6 @@
 
     .front .scene,
     .front .halftone,
-    .front .wash,
     .front .veil {
       position: absolute;
       inset: 0;
@@ -164,27 +169,28 @@
 
     .front .scene {
       background: var(--bg) center/cover no-repeat;
-      filter: contrast(1.05) saturate(1.05);
+      filter: contrast(1.2) saturate(0.8) brightness(0.68);
     }
 
     .front .halftone {
       background-image: radial-gradient(rgba(0,0,0,.38) 1.1px, transparent 1.2px);
       background-size: 5px 5px;
       mix-blend-mode: multiply;
-      opacity: 0.12;
+      opacity: 0.1;
     }
-
-    .front .wash { display: none; }
 
     .front .veil {
       background:
-        linear-gradient(to bottom, rgba(0,0,0,.38), transparent 16%),
-        linear-gradient(to top, rgba(0,0,0,.78) 0 22%, transparent 40%);
+        radial-gradient(ellipse at 50% 34%, transparent 24%, rgba(0,0,0,.8) 100%),
+        linear-gradient(to top, rgba(0,0,0,.9) 0 22%, transparent 48%);
     }
 
     .front .head {
-      position: relative;
-      z-index: 3;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 4;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
@@ -192,7 +198,7 @@
     }
 
     .front .name {
-      font-size: 34px;
+      font-size: 32px;
       line-height: 0.9;
       transform: rotate(-2deg);
       text-shadow: 3px 3px 0 #000, 6px 6px 0 var(--type);
@@ -201,10 +207,11 @@
     .front .no { font-size: 16px; text-shadow: 2px 2px 0 #000; }
 
     .front .types {
-      position: relative;
-      z-index: 3;
-      margin: 0 12px 4px;
-      font-size: 13px;
+      position: absolute;
+      top: 42px;
+      left: 12px;
+      z-index: 4;
+      font-size: 12px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: #ffde00;
@@ -214,167 +221,152 @@
     .front .art {
       position: relative;
       z-index: 2;
-      flex: 1.8;
-      min-height: 240px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
     }
 
     .front .sprite {
-      width: 118%;
+      position: absolute;
+      width: 100%;
       height: 100%;
-      max-height: 320px;
       object-fit: contain;
+      object-position: center;
       filter: drop-shadow(0 10px 14px rgba(0,0,0,.55));
     }
 
-    .front .caption {
+    .front .copy {
       position: relative;
       z-index: 3;
-      margin: 0 14px 10px;
+      flex: 0 0 auto;
+      padding-top: 4px;
+      background: linear-gradient(transparent, rgba(0,0,0,.35) 18%);
+    }
+
+    .front .caption {
+      margin: 0 12px 8px;
       font-family: Georgia, "Times New Roman", serif;
       font-style: italic;
-      font-size: 12px;
-      line-height: 1.4;
+      font-size: 11px;
+      line-height: 1.35;
       color: rgba(255, 246, 220, 0.92);
       text-shadow: 0 1px 8px #000, 0 0 12px #000;
     }
 
-    .front.text-none .caption { display: none; }
-
-    .front .copy { position: relative; z-index: 3; }
-
     .front .board {
-      position: relative;
-      z-index: 3;
       margin: 0 8px 8px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4px;
+      grid-template-columns: 1fr;
+      gap: 3px;
     }
 
     .front .stat {
-      background: #fff;
-      color: #111;
-      border: 3px solid #111;
-      padding: 4px 8px 2px;
       display: flex;
-      flex-direction: column;
-      transform: rotate(-0.4deg);
-    }
-
-    .front .stat:nth-child(even) { transform: rotate(0.5deg); }
-
-    .front .stat i {
-      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
-      font-style: normal;
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .front .stat b { font-size: 22px; line-height: 0.95; }
-
-    /* Backgrounds */
-    .photo-cinema .scene {
-      filter: contrast(1.2) saturate(0.8) brightness(0.68);
-    }
-    .photo-cinema .veil {
-      background:
-        radial-gradient(ellipse at 50% 38%, transparent 28%, rgba(0,0,0,.82) 100%),
-        linear-gradient(to top, #000 0 18%, transparent 42%);
-    }
-
-    .photo-wash .scene,
-    .photo-wash .halftone {
-      display: none !important;
-      background: none !important;
-    }
-    .photo-wash .wash {
-      display: block;
-      background:
-        radial-gradient(circle at 50% 34%, rgba(255,255,255,.38), transparent 26%),
-        radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--type) 42%, white), var(--type) 55%, #0c0704 100%);
-    }
-    .photo-wash .veil {
-      background: linear-gradient(to top, rgba(0,0,0,.62) 0 14%, transparent 38%);
-    }
-
-    .photo-stage .scene {
-      filter: blur(12px) brightness(0.5) saturate(1.25);
-      transform: scale(1.18);
-    }
-    .photo-stage .halftone { opacity: 0; }
-    .photo-stage .sprite {
-      width: 126%;
-      max-height: 340px;
-    }
-
-    /* Looks */
-    .look-quiet {
-      outline: none;
-      border: 3px solid #1a1714;
-      border-radius: 10px;
-      box-shadow: 0 14px 32px rgba(0,0,0,.4);
-      font-family: Oswald, sans-serif;
-    }
-    .look-quiet .name {
-      transform: none;
-      font-size: 26px;
-      letter-spacing: 0.08em;
-      text-shadow: 0 2px 10px #000;
-    }
-    .look-quiet .types { font-family: Oswald, sans-serif; color: #fff; }
-    .look-quiet .stat {
-      transform: none;
-      border-width: 0;
-      border-bottom: 1px solid #d9cbb0;
-      background: rgba(255,255,255,.92);
-      border-radius: 0;
-    }
-    .look-quiet .stat:nth-child(even) { transform: none; }
-    .look-quiet .stat b { font-family: Oswald, sans-serif; font-size: 20px; }
-
-    .look-overlay {
-      outline-width: 3px;
-    }
-    .look-overlay .art {
-      position: absolute;
-      inset: 36px 0 188px 0;
-      min-height: 0;
-      flex: none;
-    }
-    .look-overlay .sprite { max-height: none; height: 108%; width: 124%; }
-    .look-overlay .head,
-    .look-overlay .types { position: relative; z-index: 4; }
-    .look-overlay .copy {
-      position: absolute;
-      left: 0; right: 0; bottom: 0;
-      z-index: 4;
-      padding-top: 28px;
-      background: linear-gradient(transparent, rgba(0,0,0,.92) 28%);
-    }
-
-    .look-bars .board {
-      grid-template-columns: 1fr;
-      gap: 2px;
-    }
-    .look-bars .stat {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      background: #f0c92a;
-      transform: none;
-      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
-      padding: 3px 18px 2px 8px;
+      color: #111;
+      padding: 4px 16px 3px 9px;
     }
-    .look-bars .stat:nth-child(even) { transform: none; }
-    .look-bars .stat b { font-size: 18px; }
-    .look-bars .caption { font-size: 11px; margin-bottom: 6px; }
-    .look-bars .art { min-height: 168px; flex: 1.2; }
-    .look-bars .sprite { max-height: 210px; }
+
+    .front .stat i {
+      font-family: Oswald, sans-serif;
+      font-style: normal;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .front .stat b {
+      font-family: Oswald, sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    /* 1 Chevron — Winning Moves classic */
+    .bar-chevron .stat {
+      background: var(--bar);
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
+    }
+
+    /* 2 Spear — point both ends */
+    .bar-spear .stat {
+      background: var(--bar);
+      clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 12px 100%, 0 50%);
+      padding-left: 16px;
+    }
+
+    /* 3 Split — dark label plate, yellow value */
+    .bar-split .stat {
+      background: transparent;
+      padding: 0;
+      gap: 3px;
+    }
+    .bar-split .stat i,
+    .bar-split .stat b {
+      display: flex;
+      align-items: center;
+      height: 26px;
+    }
+    .bar-split .stat i {
+      flex: 1;
+      background: #14110e;
+      color: var(--bar);
+      padding: 0 10px;
+      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%);
+    }
+    .bar-split .stat b {
+      min-width: 58px;
+      justify-content: flex-end;
+      background: var(--bar);
+      color: #111;
+      padding: 0 16px 0 10px;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+    }
+
+    /* 4 Inset — dark glass, yellow type, cinematic */
+    .bar-inset .stat {
+      background: rgba(10, 8, 6, 0.78);
+      color: #fff;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
+      box-shadow: inset 0 0 0 1px rgba(240, 201, 42, 0.35);
+    }
+    .bar-inset .stat i { color: var(--bar); }
+    .bar-inset .stat b { color: #fff; }
+
+    /* 5 Type tab — type-colour shoulder on yellow */
+    .bar-tab .stat {
+      position: relative;
+      background: var(--bar);
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
+      padding-left: 28px;
+    }
+    .bar-tab .stat::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 18px;
+      background: var(--type);
+      clip-path: polygon(0 0, 100% 0, 72% 50%, 100% 100%, 0 100%);
+    }
+
+    /* 6 Two-up — two columns, more room for art */
+    .bar-twoup .board {
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+    .bar-twoup .stat {
+      background: var(--bar);
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+      padding: 4px 14px 3px 8px;
+    }
+    .bar-twoup .stat i { font-size: 9px; }
+    .bar-twoup .stat b { font-size: 16px; }
+    .bar-twoup .stat:last-child { grid-column: 1 / -1; }
 
     .back-key {
       background: url("assets/backs/pack-keyart.jpg") center/cover no-repeat;
@@ -427,35 +419,28 @@
       10-card set ·
       <a href="simulate.html">Balance sim</a>
     </nav>
-    <h1>Iterations</h1>
+    <h1>Stat bars</h1>
     <p class="lede">
-      Same ten cards, same locked back (2). Below: caption, background, and
-      chrome options on Charizard. Mix them with the buttons, then click a card
-      in the set to flip. Reply with a combo, for example
-      <strong>A / 2 / III</strong>.
+      Locked: folklore captions (A), cinematic type photos (2), back 2.
+      Sprites are scaled to their opaque pixels so wings and tails stay on the
+      card. Below: six bar treatments on Charizard. Mix them on the ten-card
+      set and reply with a number, for example <strong>4</strong>.
     </p>
+    <p class="lock">A / 2 / IV · bar studies</p>
 
-    <h2>Text</h2>
-    <p class="lede">No genus. Caption sits as a quiet italic over the photo.</p>
-    <div class="table" id="text-examples"></div>
-
-    <h2>Background</h2>
-    <p class="lede">All still type-matched. The photo is what we have; these are treatments of it.</p>
-    <div class="table" id="photo-examples"></div>
-
-    <h2>Look</h2>
-    <p class="lede">Chrome around the same clean photo and folklore caption.</p>
-    <div class="table" id="look-examples"></div>
+    <h2>Bar treatments</h2>
+    <p class="lede">Same card, same stats, different chrome.</p>
+    <div class="table" id="bar-examples"></div>
 
     <h2>The ten cards</h2>
-    <p class="lede">Mix any text, background, and look on the set. Click a card to flip to back 2.</p>
+    <p class="lede">Click a card to flip to back 2.</p>
     <div class="picker" id="picker"></div>
-    <p class="mix-now" id="mix-now">Current mix: <strong>A / 1 / I</strong></p>
+    <p class="mix-now" id="mix-now">Current bar: <strong>1 Chevron</strong></p>
     <p class="status" id="status">Loading deck…</p>
     <div class="table" id="table"></div>
     <p class="hint">
       Folklore captions from Gold / Silver / Crystal / Yellow / FireRed via PokeAPI.
-      Whispers are original lines for this fan project. Back 2 unchanged.
+      Back 2 unchanged.
     </p>
   </div>
   <script>
@@ -482,42 +467,18 @@
       "machamp", "gengar", "snorlax", "dragonite", "mewtwo",
     ];
 
-    const WHISPER = {
-      venusaur: "The flower opens with the sun, and the field goes still.",
-      charizard: "High over the ridges, the air tastes of cinders.",
-      blastoise: "It waits in the shallows until the river holds its breath.",
-      pikachu: "Where several tails lift in the grass, a storm is thinking.",
-      alakazam: "Eyes shut, it listens to a room that is not there.",
-      machamp: "Four shadows on the cliff. One impact in the valley.",
-      gengar: "A sudden cold on the path is not the weather.",
-      snorlax: "What you hear in the clearing is a stomach, not a voice.",
-      dragonite: "Sailors still look for the island only they can find.",
-      mewtwo: "The cave is still. Nothing in it was ever born.",
-    };
-
-    const TEXTS = [
-      { id: "folk", code: "A", label: "A Folklore", caption: "Older Pokédex (Gold, Crystal, FireRed). What you have now." },
-      { id: "whisper", code: "B", label: "B Whisper", caption: "Original ambient lines — habitat and weather, not a manual." },
-      { id: "short", code: "C", label: "C Short", caption: "First clause or first sentence of the folklore line." },
-      { id: "none", code: "D", label: "D Silent", caption: "No caption. Art and stats only." },
-    ];
-
-    const PHOTOS = [
-      { id: "clean", n: "1", label: "1 Clean photo", caption: "Type photo, light grain. Current." },
-      { id: "cinema", n: "2", label: "2 Cinematic", caption: "Darker vignette. The sprite sits in night." },
-      { id: "wash", n: "3", label: "3 Type wash", caption: "No photo — a type-coloured glow, like HOME." },
-      { id: "stage", n: "4", label: "4 Soft stage", caption: "Photo blurred into a backdrop. Sprite even larger." },
-    ];
-
-    const LOOKS = [
-      { id: "comic", roman: "I", label: "I Comic", caption: "Yellow smash border, tilted white boxes. Current." },
-      { id: "quiet", roman: "II", label: "II Quiet", caption: "Thin frame, Oswald name, flat stat rows. Less toy." },
-      { id: "overlay", roman: "III", label: "III Overlay", caption: "Sprite fills the card. Stats on a dark strip." },
-      { id: "bars", roman: "IV", label: "IV Yellow bars", caption: "Clean photo with Winning Moves chevrons." },
+    const BARS = [
+      { id: "chevron", n: "1", label: "1 Chevron", caption: "Classic Winning Moves point-right yellow bars. The IV you picked." },
+      { id: "spear", n: "2", label: "2 Spear", caption: "Yellow bars pointed at both ends. A bit more badge than banner." },
+      { id: "split", n: "3", label: "3 Split", caption: "Dark label plate, yellow value. Hierarchy on the number." },
+      { id: "inset", n: "4", label: "4 Inset", caption: "Dark glass rows with a yellow point. Quieter on the cinematic photo." },
+      { id: "tab", n: "5", label: "5 Type tab", caption: "Type-coloured shoulder on the yellow bar." },
+      { id: "twoup", n: "6", label: "6 Two-up", caption: "Two columns of chevrons. Most room for the sprite." },
     ];
 
     const PK = "assets/backs/pokemon-logo.png";
     const TT = "assets/backs/tt-wordmark.jpg";
+    const spriteBox = new Map();
 
     function esc(value) {
       return String(value)
@@ -540,47 +501,23 @@
       return (card.types[0] || "normal").toLowerCase();
     }
 
-    function shortCaption(card) {
-      const raw = String(card.caption || card.blurb || "").trim();
-      if (!raw) return "";
-      const sentences = raw.split(/(?<=\.)\s+/).filter(Boolean);
-      if (sentences.length > 1) return sentences[0];
-      const clause = raw.split(/,\s+/)[0].replace(/[.!?]+$/, "");
-      if (clause && clause.length + 10 < raw.length) return clause + ".";
-      return raw;
-    }
-
-    function captionFor(card, textId) {
-      if (textId === "none") return "";
-      if (textId === "whisper") return WHISPER[card.slug] || card.caption || "";
-      if (textId === "short") return shortCaption(card);
-      return card.caption || card.blurb || "";
-    }
-
-    function renderFront(card, opts) {
-      const textId = opts.text;
-      const photoId = opts.photo;
-      const lookId = opts.look;
+    function renderFront(card, barId) {
       const type = primary(card);
       const rows = STATS.map(
         (s) =>
           `<div class="stat"><i>${s.label}</i><b>${fmt(s.id, card.stats[s.id])}</b></div>`
       ).join("");
-      const caption = captionFor(card, textId);
-      const cls = [
-        "card", "front",
-        textId === "none" ? "text-none" : "",
-        "photo-" + photoId,
-        "look-" + lookId,
-      ].filter(Boolean).join(" ");
-      return `<article class="${cls}" style="--type:${TYPE_HEX[type]};--bg:url('assets/bg/${type}.jpg')">
-        <div class="scene"></div><div class="halftone"></div><div class="wash"></div><div class="veil"></div>
+      const caption = card.caption || card.blurb || "";
+      return `<article class="card front bar-${barId}" style="--type:${TYPE_HEX[type]};--bg:url('assets/bg/${type}.jpg')">
+        <div class="scene"></div><div class="halftone"></div><div class="veil"></div>
+        <div class="art">
+          <img class="sprite" crossorigin="anonymous" src="${esc(card.artwork)}" alt="${esc(card.name)}" />
+        </div>
         <div class="head">
           <div class="name">${esc(card.name).toUpperCase()}</div>
           <div class="no">${pad(card.card_number)}</div>
         </div>
         <div class="types">${esc(card.types.join("  /  "))}</div>
-        <div class="art"><img class="sprite" src="${esc(card.artwork)}" alt="${esc(card.name)}" /></div>
         <div class="copy">
           <p class="caption">${esc(caption)}</p>
           <div class="board">${rows}</div>
@@ -597,44 +534,112 @@
       </article>`;
     }
 
-    let cards = [];
-    let charizard = null;
-    const mix = { text: "folk", photo: "clean", look: "comic" };
-
-    function study(card, opts) {
-      return renderFront(card, opts);
+    function opaqueBox(img) {
+      const src = img.currentSrc || img.src;
+      if (spriteBox.has(src)) return Promise.resolve(spriteBox.get(src));
+      return new Promise((resolve) => {
+        const probe = new Image();
+        probe.crossOrigin = "anonymous";
+        probe.onload = () => {
+          try {
+            const w = probe.naturalWidth;
+            const h = probe.naturalHeight;
+            const canvas = document.createElement("canvas");
+            canvas.width = w;
+            canvas.height = h;
+            const ctx = canvas.getContext("2d", { willReadFrequently: true });
+            ctx.drawImage(probe, 0, 0);
+            const data = ctx.getImageData(0, 0, w, h).data;
+            let minX = w;
+            let minY = h;
+            let maxX = 0;
+            let maxY = 0;
+            let found = false;
+            for (let y = 0; y < h; y++) {
+              for (let x = 0; x < w; x++) {
+                if (data[(y * w + x) * 4 + 3] > 16) {
+                  found = true;
+                  if (x < minX) minX = x;
+                  if (x > maxX) maxX = x;
+                  if (y < minY) minY = y;
+                  if (y > maxY) maxY = y;
+                }
+              }
+            }
+            const box = found
+              ? { minX, minY, maxX, maxY, width: w, height: h }
+              : { minX: 0, minY: 0, maxX: w - 1, maxY: h - 1, width: w, height: h };
+            spriteBox.set(src, box);
+            resolve(box);
+          } catch (err) {
+            resolve(null);
+          }
+        };
+        probe.onerror = () => resolve(null);
+        probe.src = src;
+      });
     }
 
-    function mixLabel() {
-      const t = TEXTS.find((x) => x.id === mix.text);
-      const p = PHOTOS.find((x) => x.id === mix.photo);
-      const l = LOOKS.find((x) => x.id === mix.look);
-      return `${t.code} / ${p.n} / ${l.roman}`;
+    function placeSprite(img, box) {
+      const art = img.closest(".art");
+      if (!art || !box) return;
+      const aw = art.clientWidth;
+      const ah = art.clientHeight;
+      if (aw < 8 || ah < 8) return;
+      const inset = 2;
+      const bw = box.maxX - box.minX + 1;
+      const bh = box.maxY - box.minY + 1;
+      const scale = Math.min((aw - inset * 2) / bw, (ah - inset * 2) / bh);
+      img.style.width = box.width * scale + "px";
+      img.style.height = box.height * scale + "px";
+      img.style.maxWidth = "none";
+      img.style.maxHeight = "none";
+      img.style.left = (aw - bw * scale) / 2 - box.minX * scale + "px";
+      img.style.top = (ah - bh * scale) / 2 - box.minY * scale + "px";
+      img.style.objectFit = "fill";
+    }
+
+    function fitSprite(img) {
+      const run = () => {
+        opaqueBox(img).then((box) => {
+          if (box) placeSprite(img, box);
+        });
+      };
+      if (img.complete && img.naturalWidth) run();
+      else img.addEventListener("load", run, { once: true });
+    }
+
+    function fitAllSprites(root) {
+      (root || document).querySelectorAll(".sprite").forEach(fitSprite);
+    }
+
+    let cards = [];
+    let bar = "chevron";
+
+    function barMeta() {
+      return BARS.find((x) => x.id === bar);
     }
 
     function renderSet() {
       document.getElementById("table").innerHTML = cards.map((card) => {
         return `<div class="flip-stage">
           <div class="flipper" title="Click to flip">
-            <div class="face face-front">${renderFront(card, mix)}</div>
+            <div class="face face-front">${renderFront(card, bar)}</div>
             <div class="face face-back">${renderBack()}</div>
           </div>
         </div>`;
       }).join("");
-      const code = mixLabel();
+      const meta = barMeta();
       document.getElementById("mix-now").innerHTML =
-        "Current mix: <strong>" + code + "</strong>";
+        "Current bar: <strong>" + meta.n + " " + meta.label.replace(/^\d+\s/, "") + "</strong>";
       document.getElementById("status").textContent =
-        cards.length + " cards · " + code + " · back 2";
+        cards.length + " cards · A / 2 / IV · bar " + meta.n + " · back 2";
+      fitAllSprites(document.getElementById("table"));
     }
 
     function markPicker() {
       document.querySelectorAll("#picker button").forEach((btn) => {
-        const on =
-          btn.dataset.text === mix.text ||
-          btn.dataset.photo === mix.photo ||
-          btn.dataset.look === mix.look;
-        btn.classList.toggle("is-on", Boolean(on));
+        btn.classList.toggle("is-on", btn.dataset.bar === bar);
       });
     }
 
@@ -646,38 +651,23 @@
       .then((deck) => {
         const bySlug = Object.fromEntries((deck.cards || []).map((c) => [c.slug, c]));
         cards = SET.map((slug) => bySlug[slug]).filter(Boolean);
-        charizard = bySlug.charizard;
+        const charizard = bySlug.charizard;
 
-        document.getElementById("text-examples").innerHTML = TEXTS.map((t) => {
-          return `<div class="example">${study(charizard, { text: t.id, photo: "clean", look: "comic" })}
-            <p class="why"><span class="num-badge">${t.code}</span>${t.caption}</p></div>`;
+        document.getElementById("bar-examples").innerHTML = BARS.map((b) => {
+          return `<div class="example">${renderFront(charizard, b.id)}
+            <p class="why"><span class="num-badge">${b.n}</span>${b.caption}</p></div>`;
         }).join("");
-
-        document.getElementById("photo-examples").innerHTML = PHOTOS.map((p) => {
-          return `<div class="example">${study(charizard, { text: "folk", photo: p.id, look: "comic" })}
-            <p class="why"><span class="num-badge">${p.n}</span>${p.caption}</p></div>`;
-        }).join("");
-
-        document.getElementById("look-examples").innerHTML = LOOKS.map((l) => {
-          return `<div class="example">${study(charizard, { text: "folk", photo: "clean", look: l.id })}
-            <p class="why"><span class="num-badge">${l.roman}</span>${l.caption}</p></div>`;
-        }).join("");
+        fitAllSprites(document.getElementById("bar-examples"));
 
         document.getElementById("picker").innerHTML = [
-          "<span>Text</span>",
-          ...TEXTS.map((t) => `<button type="button" data-text="${t.id}">${t.label}</button>`),
-          "<span>Background</span>",
-          ...PHOTOS.map((p) => `<button type="button" data-photo="${p.id}">${p.label}</button>`),
-          "<span>Look</span>",
-          ...LOOKS.map((l) => `<button type="button" data-look="${l.id}">${l.label}</button>`),
+          "<span>Bars</span>",
+          ...BARS.map((b) => `<button type="button" data-bar="${b.id}">${b.label}</button>`),
         ].join("");
 
         document.getElementById("picker").addEventListener("click", (e) => {
           const btn = e.target.closest("button");
-          if (!btn) return;
-          if (btn.dataset.text) mix.text = btn.dataset.text;
-          if (btn.dataset.photo) mix.photo = btn.dataset.photo;
-          if (btn.dataset.look) mix.look = btn.dataset.look;
+          if (!btn || !btn.dataset.bar) return;
+          bar = btn.dataset.bar;
           markPicker();
           renderSet();
         });
@@ -689,6 +679,8 @@
           const flipper = e.target.closest(".flipper");
           if (flipper) flipper.classList.toggle("is-flipped");
         });
+
+        document.fonts.ready.then(() => fitAllSprites());
       })
       .catch((err) => {
         document.getElementById("status").textContent = err.message;
