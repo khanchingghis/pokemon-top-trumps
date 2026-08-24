@@ -288,14 +288,18 @@
     }
 
     .photo-wash .scene,
-    .photo-wash .halftone { display: none; }
+    .photo-wash .halftone {
+      display: none !important;
+      background: none !important;
+    }
     .photo-wash .wash {
       display: block;
       background:
-        radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--type) 28%, white), var(--type) 58%, #140c08 100%);
+        radial-gradient(circle at 50% 34%, rgba(255,255,255,.38), transparent 26%),
+        radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--type) 42%, white), var(--type) 55%, #0c0704 100%);
     }
     .photo-wash .veil {
-      background: linear-gradient(to top, rgba(0,0,0,.58) 0 16%, transparent 40%);
+      background: linear-gradient(to top, rgba(0,0,0,.62) 0 14%, transparent 38%);
     }
 
     .photo-stage .scene {
@@ -494,7 +498,7 @@
     const TEXTS = [
       { id: "folk", code: "A", label: "A Folklore", caption: "Older Pokédex (Gold, Crystal, FireRed). What you have now." },
       { id: "whisper", code: "B", label: "B Whisper", caption: "Original ambient lines — habitat and weather, not a manual." },
-      { id: "short", code: "C", label: "C Short", caption: "First breath of the folklore line only." },
+      { id: "short", code: "C", label: "C Short", caption: "First clause or first sentence of the folklore line." },
       { id: "none", code: "D", label: "D Silent", caption: "No caption. Art and stats only." },
     ];
 
@@ -537,9 +541,13 @@
     }
 
     function shortCaption(card) {
-      const raw = card.caption || card.blurb || "";
-      const cut = raw.split(/(?<=\.)\s/)[0];
-      return cut || raw;
+      const raw = String(card.caption || card.blurb || "").trim();
+      if (!raw) return "";
+      const sentences = raw.split(/(?<=\.)\s+/).filter(Boolean);
+      if (sentences.length > 1) return sentences[0];
+      const clause = raw.split(/,\s+/)[0].replace(/[.!?]+$/, "");
+      if (clause && clause.length + 10 < raw.length) return clause + ".";
+      return raw;
     }
 
     function captionFor(card, textId) {
