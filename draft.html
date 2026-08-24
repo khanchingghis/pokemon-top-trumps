@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>10-card set — clean photo</title>
+  <title>10-card set — iterations</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@500;700&display=swap" rel="stylesheet" />
@@ -36,21 +36,75 @@
       text-transform: uppercase;
     }
 
-    .lede {
-      margin: 0 0 22px;
-      max-width: 72ch;
+    h2 {
+      margin: 36px 0 8px;
+      font-family: Oswald, sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e2c01a;
+    }
+
+    .lede, .why {
+      margin: 0 0 18px;
+      max-width: 74ch;
       color: #c9c2b3;
       line-height: 1.5;
       font-size: 15px;
     }
 
+    .why { font-size: 14px; max-width: 34ch; margin: 0; }
+
     .status { color: #c9c2b3; font-size: 14px; margin: 0 0 16px; }
+
+    .picker {
+      position: sticky;
+      top: 0;
+      z-index: 12;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 10px 0 14px;
+      background: linear-gradient(var(--table) 70%, transparent);
+    }
+
+    .picker button, .picker span {
+      font: inherit;
+      background: #1c1a16;
+      color: #f0e6c8;
+      border: 1px solid #5a5040;
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+
+    .picker span {
+      background: transparent;
+      border: 0;
+      padding-left: 4px;
+      color: #9a9182;
+    }
+
+    .picker button { cursor: pointer; }
+    .picker button.is-on { border-color: #e2c01a; color: #fff; }
 
     .table {
       display: flex;
       flex-wrap: wrap;
-      gap: 28px 24px;
+      gap: 24px 22px;
       align-items: flex-start;
+    }
+
+    .example { display: flex; flex-direction: column; gap: 8px; }
+
+    .num-badge {
+      display: inline-block;
+      margin-right: 6px;
+      padding: 1px 8px;
+      border-radius: 999px;
+      background: #e2c01a;
+      color: #1c1914;
+      font-size: 13px;
+      font-weight: 700;
     }
 
     .flip-stage {
@@ -99,25 +153,30 @@
       flex-direction: column;
     }
 
-    .front .scene {
+    .front .scene,
+    .front .halftone,
+    .front .wash,
+    .front .veil {
       position: absolute;
       inset: 0;
+      pointer-events: none;
+    }
+
+    .front .scene {
       background: var(--bg) center/cover no-repeat;
       filter: contrast(1.05) saturate(1.05);
     }
 
     .front .halftone {
-      position: absolute;
-      inset: 0;
       background-image: radial-gradient(rgba(0,0,0,.38) 1.1px, transparent 1.2px);
       background-size: 5px 5px;
       mix-blend-mode: multiply;
       opacity: 0.12;
     }
 
+    .front .wash { display: none; }
+
     .front .veil {
-      position: absolute;
-      inset: 0;
       background:
         linear-gradient(to bottom, rgba(0,0,0,.38), transparent 16%),
         linear-gradient(to top, rgba(0,0,0,.78) 0 22%, transparent 40%);
@@ -139,10 +198,7 @@
       text-shadow: 3px 3px 0 #000, 6px 6px 0 var(--type);
     }
 
-    .front .no {
-      font-size: 16px;
-      text-shadow: 2px 2px 0 #000;
-    }
+    .front .no { font-size: 16px; text-shadow: 2px 2px 0 #000; }
 
     .front .types {
       position: relative;
@@ -181,10 +237,13 @@
       font-style: italic;
       font-size: 12px;
       line-height: 1.4;
-      letter-spacing: 0.01em;
       color: rgba(255, 246, 220, 0.92);
       text-shadow: 0 1px 8px #000, 0 0 12px #000;
     }
+
+    .front.text-none .caption { display: none; }
+
+    .front .copy { position: relative; z-index: 3; }
 
     .front .board {
       position: relative;
@@ -218,6 +277,101 @@
 
     .front .stat b { font-size: 22px; line-height: 0.95; }
 
+    /* Backgrounds */
+    .photo-cinema .scene {
+      filter: contrast(1.2) saturate(0.8) brightness(0.68);
+    }
+    .photo-cinema .veil {
+      background:
+        radial-gradient(ellipse at 50% 38%, transparent 28%, rgba(0,0,0,.82) 100%),
+        linear-gradient(to top, #000 0 18%, transparent 42%);
+    }
+
+    .photo-wash .scene,
+    .photo-wash .halftone { display: none; }
+    .photo-wash .wash {
+      display: block;
+      background:
+        radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--type) 28%, white), var(--type) 58%, #140c08 100%);
+    }
+    .photo-wash .veil {
+      background: linear-gradient(to top, rgba(0,0,0,.58) 0 16%, transparent 40%);
+    }
+
+    .photo-stage .scene {
+      filter: blur(12px) brightness(0.5) saturate(1.25);
+      transform: scale(1.18);
+    }
+    .photo-stage .halftone { opacity: 0; }
+    .photo-stage .sprite {
+      width: 126%;
+      max-height: 340px;
+    }
+
+    /* Looks */
+    .look-quiet {
+      outline: none;
+      border: 3px solid #1a1714;
+      border-radius: 10px;
+      box-shadow: 0 14px 32px rgba(0,0,0,.4);
+      font-family: Oswald, sans-serif;
+    }
+    .look-quiet .name {
+      transform: none;
+      font-size: 26px;
+      letter-spacing: 0.08em;
+      text-shadow: 0 2px 10px #000;
+    }
+    .look-quiet .types { font-family: Oswald, sans-serif; color: #fff; }
+    .look-quiet .stat {
+      transform: none;
+      border-width: 0;
+      border-bottom: 1px solid #d9cbb0;
+      background: rgba(255,255,255,.92);
+      border-radius: 0;
+    }
+    .look-quiet .stat:nth-child(even) { transform: none; }
+    .look-quiet .stat b { font-family: Oswald, sans-serif; font-size: 20px; }
+
+    .look-overlay {
+      outline-width: 3px;
+    }
+    .look-overlay .art {
+      position: absolute;
+      inset: 36px 0 188px 0;
+      min-height: 0;
+      flex: none;
+    }
+    .look-overlay .sprite { max-height: none; height: 108%; width: 124%; }
+    .look-overlay .head,
+    .look-overlay .types { position: relative; z-index: 4; }
+    .look-overlay .copy {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      z-index: 4;
+      padding-top: 28px;
+      background: linear-gradient(transparent, rgba(0,0,0,.92) 28%);
+    }
+
+    .look-bars .board {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
+    .look-bars .stat {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      background: #f0c92a;
+      transform: none;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
+      padding: 3px 18px 2px 8px;
+    }
+    .look-bars .stat:nth-child(even) { transform: none; }
+    .look-bars .stat b { font-size: 18px; }
+    .look-bars .caption { font-size: 11px; margin-bottom: 6px; }
+    .look-bars .art { min-height: 168px; flex: 1.2; }
+    .look-bars .sprite { max-height: 210px; }
+
     .back-key {
       background: url("assets/backs/pack-keyart.jpg") center/cover no-repeat;
       box-shadow: 0 0 0 4px #111;
@@ -225,8 +379,6 @@
     }
 
     .back-inner {
-      position: relative;
-      z-index: 2;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -234,31 +386,33 @@
       justify-content: flex-start;
       gap: 14px;
       padding: 16px 12px 18px;
-      text-align: center;
     }
 
     .pk-logo {
       width: 96%;
       max-width: 280px;
       margin-top: 70px;
-      height: auto;
       filter: drop-shadow(0 6px 12px rgba(0,0,0,.65));
-      display: block;
     }
 
     .tt-img {
       width: 78%;
       max-width: 230px;
       border-radius: 8px;
-      display: block;
       box-shadow: 0 8px 20px rgba(0,0,0,.4);
     }
 
-    .hint {
-      margin: 18px 0 0;
-      font-size: 13px;
-      color: #9a9182;
+    .mix-now {
+      margin: 0 0 12px;
+      font-size: 15px;
+      color: #e8e2d4;
     }
+    .mix-now strong {
+      color: #ffde00;
+      letter-spacing: 0.04em;
+    }
+
+    .hint { margin: 18px 0 0; font-size: 13px; color: #9a9182; }
   </style>
 </head>
 <body>
@@ -269,17 +423,35 @@
       10-card set ·
       <a href="simulate.html">Balance sim</a>
     </nav>
-    <h1>10-card set</h1>
+    <h1>Iterations</h1>
     <p class="lede">
-      Clean photo front, no genus line. Captions are older, more atmospheric
-      Pokédex lines (Gold, Silver, Crystal, Yellow, FireRed) instead of the
-      modern encyclopedia entries. Back is locked to 2. Click a card to flip.
+      Same ten cards, same locked back (2). Below: caption, background, and
+      chrome options on Charizard. Mix them with the buttons, then click a card
+      in the set to flip. Reply with a combo, for example
+      <strong>A / 2 / III</strong>.
     </p>
+
+    <h2>Text</h2>
+    <p class="lede">No genus. Caption sits as a quiet italic over the photo.</p>
+    <div class="table" id="text-examples"></div>
+
+    <h2>Background</h2>
+    <p class="lede">All still type-matched. The photo is what we have; these are treatments of it.</p>
+    <div class="table" id="photo-examples"></div>
+
+    <h2>Look</h2>
+    <p class="lede">Chrome around the same clean photo and folklore caption.</p>
+    <div class="table" id="look-examples"></div>
+
+    <h2>The ten cards</h2>
+    <p class="lede">Mix any text, background, and look on the set. Click a card to flip to back 2.</p>
+    <div class="picker" id="picker"></div>
+    <p class="mix-now" id="mix-now">Current mix: <strong>A / 1 / I</strong></p>
     <p class="status" id="status">Loading deck…</p>
     <div class="table" id="table"></div>
     <p class="hint">
-      Captions via PokeAPI from the named game Pokédex. Official Pokémon wordmark
-      on the reverse. Fan project, not for sale.
+      Folklore captions from Gold / Silver / Crystal / Yellow / FireRed via PokeAPI.
+      Whispers are original lines for this fan project. Back 2 unchanged.
     </p>
   </div>
   <script>
@@ -306,6 +478,40 @@
       "machamp", "gengar", "snorlax", "dragonite", "mewtwo",
     ];
 
+    const WHISPER = {
+      venusaur: "The flower opens with the sun, and the field goes still.",
+      charizard: "High over the ridges, the air tastes of cinders.",
+      blastoise: "It waits in the shallows until the river holds its breath.",
+      pikachu: "Where several tails lift in the grass, a storm is thinking.",
+      alakazam: "Eyes shut, it listens to a room that is not there.",
+      machamp: "Four shadows on the cliff. One impact in the valley.",
+      gengar: "A sudden cold on the path is not the weather.",
+      snorlax: "What you hear in the clearing is a stomach, not a voice.",
+      dragonite: "Sailors still look for the island only they can find.",
+      mewtwo: "The cave is still. Nothing in it was ever born.",
+    };
+
+    const TEXTS = [
+      { id: "folk", code: "A", label: "A Folklore", caption: "Older Pokédex (Gold, Crystal, FireRed). What you have now." },
+      { id: "whisper", code: "B", label: "B Whisper", caption: "Original ambient lines — habitat and weather, not a manual." },
+      { id: "short", code: "C", label: "C Short", caption: "First breath of the folklore line only." },
+      { id: "none", code: "D", label: "D Silent", caption: "No caption. Art and stats only." },
+    ];
+
+    const PHOTOS = [
+      { id: "clean", n: "1", label: "1 Clean photo", caption: "Type photo, light grain. Current." },
+      { id: "cinema", n: "2", label: "2 Cinematic", caption: "Darker vignette. The sprite sits in night." },
+      { id: "wash", n: "3", label: "3 Type wash", caption: "No photo — a type-coloured glow, like HOME." },
+      { id: "stage", n: "4", label: "4 Soft stage", caption: "Photo blurred into a backdrop. Sprite even larger." },
+    ];
+
+    const LOOKS = [
+      { id: "comic", roman: "I", label: "I Comic", caption: "Yellow smash border, tilted white boxes. Current." },
+      { id: "quiet", roman: "II", label: "II Quiet", caption: "Thin frame, Oswald name, flat stat rows. Less toy." },
+      { id: "overlay", roman: "III", label: "III Overlay", caption: "Sprite fills the card. Stats on a dark strip." },
+      { id: "bars", roman: "IV", label: "IV Yellow bars", caption: "Clean photo with Winning Moves chevrons." },
+    ];
+
     const PK = "assets/backs/pokemon-logo.png";
     const TT = "assets/backs/tt-wordmark.jpg";
 
@@ -330,23 +536,47 @@
       return (card.types[0] || "normal").toLowerCase();
     }
 
-    function renderFront(card) {
+    function shortCaption(card) {
+      const raw = card.caption || card.blurb || "";
+      const cut = raw.split(/(?<=\.)\s/)[0];
+      return cut || raw;
+    }
+
+    function captionFor(card, textId) {
+      if (textId === "none") return "";
+      if (textId === "whisper") return WHISPER[card.slug] || card.caption || "";
+      if (textId === "short") return shortCaption(card);
+      return card.caption || card.blurb || "";
+    }
+
+    function renderFront(card, opts) {
+      const textId = opts.text;
+      const photoId = opts.photo;
+      const lookId = opts.look;
       const type = primary(card);
       const rows = STATS.map(
         (s) =>
           `<div class="stat"><i>${s.label}</i><b>${fmt(s.id, card.stats[s.id])}</b></div>`
       ).join("");
-      const caption = card.caption || card.blurb || "";
-      return `<article class="card front" style="--type:${TYPE_HEX[type]};--bg:url('assets/bg/${type}.jpg')">
-        <div class="scene"></div><div class="halftone"></div><div class="veil"></div>
+      const caption = captionFor(card, textId);
+      const cls = [
+        "card", "front",
+        textId === "none" ? "text-none" : "",
+        "photo-" + photoId,
+        "look-" + lookId,
+      ].filter(Boolean).join(" ");
+      return `<article class="${cls}" style="--type:${TYPE_HEX[type]};--bg:url('assets/bg/${type}.jpg')">
+        <div class="scene"></div><div class="halftone"></div><div class="wash"></div><div class="veil"></div>
         <div class="head">
           <div class="name">${esc(card.name).toUpperCase()}</div>
           <div class="no">${pad(card.card_number)}</div>
         </div>
         <div class="types">${esc(card.types.join("  /  "))}</div>
         <div class="art"><img class="sprite" src="${esc(card.artwork)}" alt="${esc(card.name)}" /></div>
-        <p class="caption">${esc(caption)}</p>
-        <div class="board">${rows}</div>
+        <div class="copy">
+          <p class="caption">${esc(caption)}</p>
+          <div class="board">${rows}</div>
+        </div>
       </article>`;
     }
 
@@ -359,6 +589,47 @@
       </article>`;
     }
 
+    let cards = [];
+    let charizard = null;
+    const mix = { text: "folk", photo: "clean", look: "comic" };
+
+    function study(card, opts) {
+      return renderFront(card, opts);
+    }
+
+    function mixLabel() {
+      const t = TEXTS.find((x) => x.id === mix.text);
+      const p = PHOTOS.find((x) => x.id === mix.photo);
+      const l = LOOKS.find((x) => x.id === mix.look);
+      return `${t.code} / ${p.n} / ${l.roman}`;
+    }
+
+    function renderSet() {
+      document.getElementById("table").innerHTML = cards.map((card) => {
+        return `<div class="flip-stage">
+          <div class="flipper" title="Click to flip">
+            <div class="face face-front">${renderFront(card, mix)}</div>
+            <div class="face face-back">${renderBack()}</div>
+          </div>
+        </div>`;
+      }).join("");
+      const code = mixLabel();
+      document.getElementById("mix-now").innerHTML =
+        "Current mix: <strong>" + code + "</strong>";
+      document.getElementById("status").textContent =
+        cards.length + " cards · " + code + " · back 2";
+    }
+
+    function markPicker() {
+      document.querySelectorAll("#picker button").forEach((btn) => {
+        const on =
+          btn.dataset.text === mix.text ||
+          btn.dataset.photo === mix.photo ||
+          btn.dataset.look === mix.look;
+        btn.classList.toggle("is-on", Boolean(on));
+      });
+    }
+
     fetch("data/deck.json")
       .then((r) => {
         if (!r.ok) throw new Error("Could not load data/deck.json");
@@ -366,17 +637,46 @@
       })
       .then((deck) => {
         const bySlug = Object.fromEntries((deck.cards || []).map((c) => [c.slug, c]));
-        const cards = SET.map((slug) => bySlug[slug]).filter(Boolean);
-        document.getElementById("status").textContent =
-          cards.length + " cards · click to flip · clean photo · back 2";
-        document.getElementById("table").innerHTML = cards.map((card) => {
-          return `<div class="flip-stage">
-            <div class="flipper" title="Click to flip">
-              <div class="face face-front">${renderFront(card)}</div>
-              <div class="face face-back">${renderBack()}</div>
-            </div>
-          </div>`;
+        cards = SET.map((slug) => bySlug[slug]).filter(Boolean);
+        charizard = bySlug.charizard;
+
+        document.getElementById("text-examples").innerHTML = TEXTS.map((t) => {
+          return `<div class="example">${study(charizard, { text: t.id, photo: "clean", look: "comic" })}
+            <p class="why"><span class="num-badge">${t.code}</span>${t.caption}</p></div>`;
         }).join("");
+
+        document.getElementById("photo-examples").innerHTML = PHOTOS.map((p) => {
+          return `<div class="example">${study(charizard, { text: "folk", photo: p.id, look: "comic" })}
+            <p class="why"><span class="num-badge">${p.n}</span>${p.caption}</p></div>`;
+        }).join("");
+
+        document.getElementById("look-examples").innerHTML = LOOKS.map((l) => {
+          return `<div class="example">${study(charizard, { text: "folk", photo: "clean", look: l.id })}
+            <p class="why"><span class="num-badge">${l.roman}</span>${l.caption}</p></div>`;
+        }).join("");
+
+        document.getElementById("picker").innerHTML = [
+          "<span>Text</span>",
+          ...TEXTS.map((t) => `<button type="button" data-text="${t.id}">${t.label}</button>`),
+          "<span>Background</span>",
+          ...PHOTOS.map((p) => `<button type="button" data-photo="${p.id}">${p.label}</button>`),
+          "<span>Look</span>",
+          ...LOOKS.map((l) => `<button type="button" data-look="${l.id}">${l.label}</button>`),
+        ].join("");
+
+        document.getElementById("picker").addEventListener("click", (e) => {
+          const btn = e.target.closest("button");
+          if (!btn) return;
+          if (btn.dataset.text) mix.text = btn.dataset.text;
+          if (btn.dataset.photo) mix.photo = btn.dataset.photo;
+          if (btn.dataset.look) mix.look = btn.dataset.look;
+          markPicker();
+          renderSet();
+        });
+
+        markPicker();
+        renderSet();
+
         document.getElementById("table").addEventListener("click", (e) => {
           const flipper = e.target.closest(".flipper");
           if (flipper) flipper.classList.toggle("is-flipped");
