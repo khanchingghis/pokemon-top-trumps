@@ -1,0 +1,28 @@
+Type scene photos for card backgrounds. Cropped and compressed for the gallery.
+
+Unsplash License (https://unsplash.com/license) — free to use:
+  grass.jpg    forest path
+  steel.jpg    circuit board
+  psychic.jpg  nebula / deep sky
+  normal.jpg   oil-on-water abstract
+
+Wikimedia Commons (see each file page for the specific CC or PD license):
+  water.jpg    Waves in pacifica 1
+  electric.jpg Lightning_Pritzerbe_01_(MK).jpg — Mathias Krumbholz
+  ice.jpg      Iceberg in the Arctic with its underside exposed
+  fairy.jpg    Aurora borealis over Eielson Air Force Base, Alaska
+  flying.jpg   Sky and clouds
+  ghost.jpg    Foggy forest — Nithya sai.c
+  poison.jpg   Grand Prismatic Spring, Yellowstone
+  ground.jpg   Monument Valley — Jon Sullivan
+  bug.jpg      Forest of Dean
+  fighting.jpg Galunggung.jpg — R. Hadian, U.S. Geological Survey (public domain)
+
+NASA / public domain:
+  fire.jpg     solar disk and prominence (NASA image archive)
+  dragon.jpg   Crab Nebula (NASA PIA03606)
+  dark.jpg     galactic plane composite (NASA PIA15482)
+  rock.jpg     planetary surface (NASA PIA17944)
+
+Not Nintendo, The Pokémon Company, or Datacraft Sozaijiten TCG stock.
+Pokemon character art on the cards is official artwork via PokeAPI sprites.

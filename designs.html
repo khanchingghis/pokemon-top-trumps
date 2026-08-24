@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Design options — Pokemon Top Trumps</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bangers&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;1,500&family=Black+Ops+One&family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #12110f;
+      --paper: #efe6d4;
+      --muted: #9a9182;
+      --table: #151814;
+      --line: #3a4038;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(ellipse at 20% 0%, #2a2418, transparent 50%),
+        var(--table);
+      color: #e8e2d4;
+      padding: 28px 20px 72px;
+    }
+
+    .page { max-width: 1180px; margin: 0 auto; }
+
+    nav { margin-bottom: 16px; font-size: 14px; }
+    nav a { color: #e8e2d4; }
+
+    h1 {
+      margin: 0 0 8px;
+      font-family: Oswald, sans-serif;
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .lede {
+      margin: 0 0 22px;
+      max-width: 70ch;
+      color: #c9c2b3;
+      line-height: 1.5;
+      font-size: 15px;
+    }
+
+    .picker {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 10px 0 14px;
+      background: linear-gradient(var(--table) 70%, transparent);
+      margin-bottom: 8px;
+    }
+
+    .picker a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 42px;
+      height: 42px;
+      padding: 0 12px;
+      border: 1px solid #5a5040;
+      border-radius: 999px;
+      color: #f0e6c8;
+      text-decoration: none;
+      font-family: Oswald, sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      background: #1c1a16;
+    }
+
+    .picker a:hover { border-color: #e2c01a; color: #fff; }
+
+    .option {
+      scroll-margin-top: 64px;
+      margin: 0 0 48px;
+      padding: 22px 22px 28px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #1b1d1a;
+    }
+
+    .option h2 {
+      margin: 0 0 6px;
+      font-family: Oswald, sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .option .why {
+      margin: 0 0 18px;
+      max-width: 78ch;
+      color: #b7b0a2;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .num-badge {
+      display: inline-block;
+      margin-right: 8px;
+      padding: 2px 9px;
+      border-radius: 999px;
+      background: #e2c01a;
+      color: #1c1914;
+      font-size: 14px;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      align-items: flex-start;
+    }
+
+    .status { color: #c9c2b3; font-size: 14px; }
+
+    .library {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+      gap: 8px;
+      margin: 12px 0 28px;
+    }
+
+    .swatch {
+      position: relative;
+      height: 72px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #4a4438;
+      background: #000 center/cover no-repeat;
+    }
+
+    .swatch span {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      padding: 4px 6px;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: linear-gradient(transparent, rgba(0,0,0,.75));
+    }
+
+    h3.section {
+      margin: 8px 0 10px;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #c9c2b3;
+    }
+
+    /* shared card shell */
+    .card {
+      --type: #888;
+      --bg: none;
+      position: relative;
+      width: 300px;
+      flex: 0 0 300px;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .card img.sprite {
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ========== 1 Cinematic ========== */
+    .opt1 {
+      height: 500px;
+      border-radius: 12px;
+      font-family: Oswald, sans-serif;
+      box-shadow: 0 0 0 3px #0b0b0b, 0 0 0 7px var(--type), 0 18px 40px rgba(0,0,0,.5);
+    }
+
+    .opt1 .scene {
+      position: absolute;
+      inset: 0;
+      background: var(--bg) center/cover no-repeat;
+      transform: scale(1.08);
+    }
+
+    .opt1 .veil {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, #050505 0%, rgba(5,5,5,.2) 42%, transparent 58%),
+        linear-gradient(to bottom, rgba(0,0,0,.55), transparent 28%);
+    }
+
+    .opt1 .sprite {
+      position: absolute;
+      z-index: 2;
+      width: 122%;
+      left: -11%;
+      bottom: 92px;
+      filter: drop-shadow(0 14px 18px rgba(0,0,0,.65));
+    }
+
+    .opt1 .top {
+      position: relative;
+      z-index: 3;
+      padding: 16px 16px 0;
+    }
+
+    .opt1 .kicker {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #ffe38a;
+      text-shadow: 0 1px 8px #000;
+    }
+
+    .opt1 .name {
+      margin: 2px 0 0;
+      font-family: "Bebas Neue", Oswald, sans-serif;
+      font-size: 52px;
+      line-height: 0.86;
+      letter-spacing: 0.02em;
+      text-shadow: 0 3px 0 rgba(0,0,0,.55), 0 10px 24px #000;
+    }
+
+    .opt1 .genus {
+      font-weight: 400;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    .opt1 .strip {
+      position: absolute;
+      z-index: 3;
+      left: 0; right: 0; bottom: 0;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0;
+      padding: 10px 4px 12px;
+    }
+
+    .opt1 .cell {
+      text-align: center;
+      border-left: 1px solid rgba(255,255,255,.15);
+    }
+
+    .opt1 .cell:first-child { border-left: 0; }
+
+    .opt1 .cell b {
+      display: block;
+      font-size: 15px;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+    }
+
+    .opt1 .cell i {
+      font-style: normal;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      opacity: 0.7;
+    }
+
+    /* ========== 2 Classic Top Trumps ========== */
+    .opt2 {
+      height: auto;
+      background: #f3ead6;
+      color: #1c1914;
+      border: 10px solid var(--type);
+      border-radius: 14px;
+      padding: 0 0 10px;
+      font-family: Oswald, sans-serif;
+    }
+
+    .opt2 .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      background: var(--type);
+      color: #fff;
+      padding: 9px 12px 8px;
+    }
+
+    .opt2 .name {
+      font-family: Anton, Impact, sans-serif;
+      font-size: 26px;
+      letter-spacing: 0.03em;
+      line-height: 1;
+    }
+
+    .opt2 .no { font-size: 14px; opacity: 0.9; }
+
+    .opt2 .window {
+      margin: 10px 10px 8px;
+      height: 196px;
+      border: 3px solid #c9a227;
+      outline: 2px solid #2a241c;
+      outline-offset: -6px;
+      background: var(--bg) center/cover no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .opt2 .window::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.25), transparent 40%);
+    }
+
+    .opt2 .sprite {
+      position: relative;
+      z-index: 1;
+      width: 92%;
+      height: 92%;
+      object-fit: contain;
+      margin: 4%;
+      filter: drop-shadow(0 6px 8px rgba(0,0,0,.4));
+    }
+
+    .opt2 .meta {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 12px 6px;
+      font-size: 12px;
+      font-style: italic;
+      color: #5c5346;
+    }
+
+    .opt2 .stats { margin: 0 8px; }
+
+    .opt2 .stat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f0c92a;
+      color: #1c1914;
+      margin-bottom: 3px;
+      padding: 6px 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 13px;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+    }
+
+    .opt2 .stat span:last-child {
+      font-family: Anton, sans-serif;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    /* ========== 3 Comic ========== */
+    .opt3 {
+      height: 500px;
+      border-radius: 6px;
+      border: 7px solid #111;
+      outline: 4px solid #ffde00;
+      font-family: Bangers, "Comic Sans MS", sans-serif;
+      box-shadow: 8px 8px 0 #111;
+    }
+
+    .opt3 .scene {
+      position: absolute;
+      inset: 0;
+      background: var(--bg) center/cover no-repeat;
+      filter: contrast(1.15) saturate(1.2);
+    }
+
+    .opt3 .halftone {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(0,0,0,.42) 1.1px, transparent 1.2px);
+      background-size: 5px 5px;
+      mix-blend-mode: multiply;
+    }
+
+    .opt3 .burst {
+      position: absolute;
+      z-index: 1;
+      width: 220px;
+      height: 220px;
+      left: 40px;
+      top: 118px;
+      background: repeating-conic-gradient(#ffde00 0 8deg, #fff 8deg 10deg, #ff7a18 10deg 16deg);
+      clip-path: polygon(50% 0, 62% 28%, 98% 28%, 70% 48%, 82% 88%, 50% 64%, 18% 88%, 30% 48%, 2% 28%, 38% 28%);
+      opacity: 0.85;
+    }
+
+    .opt3 .sprite {
+      position: absolute;
+      z-index: 2;
+      width: 108%;
+      left: -4%;
+      top: 72px;
+      filter: drop-shadow(6px 6px 0 #000);
+    }
+
+    .opt3 .name {
+      position: relative;
+      z-index: 3;
+      margin: 10px 12px 0;
+      font-size: 44px;
+      line-height: 0.9;
+      transform: rotate(-3deg);
+      text-shadow: 3px 3px 0 #000, 6px 6px 0 var(--type);
+      letter-spacing: 0.02em;
+    }
+
+    .opt3 .types {
+      position: relative;
+      z-index: 3;
+      margin: 0 14px;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ffde00;
+      text-shadow: 2px 2px 0 #000;
+    }
+
+    .opt3 .board {
+      position: absolute;
+      z-index: 3;
+      left: 8px; right: 8px; bottom: 8px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
+    }
+
+    .opt3 .stat {
+      background: #fff;
+      color: #111;
+      border: 3px solid #111;
+      padding: 4px 8px 2px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      transform: rotate(-0.4deg);
+    }
+
+    .opt3 .stat:nth-child(even) { transform: rotate(0.6deg); }
+
+    .opt3 .stat i {
+      font-style: normal;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    .opt3 .stat b {
+      font-size: 26px;
+      line-height: 0.9;
+    }
+
+    /* ========== 4 Terminal ========== */
+    .opt4 {
+      height: 500px;
+      border-radius: 4px;
+      border: 1px solid #3dff8a;
+      box-shadow: 0 0 24px rgba(61, 255, 138, 0.18), inset 0 0 40px rgba(0, 40, 12, 0.5);
+      font-family: "Share Tech Mono", ui-monospace, monospace;
+      color: #7CFF6B;
+      background: #041108;
+    }
+
+    .opt4 .scene {
+      position: absolute;
+      inset: 0;
+      background: var(--bg) center/cover no-repeat;
+      opacity: 0.28;
+      filter: grayscale(0.4) contrast(1.1);
+    }
+
+    .opt4 .scan {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0 2px,
+        rgba(0, 0, 0, 0.22) 2px 3px
+      );
+      pointer-events: none;
+      z-index: 6;
+    }
+
+    .opt4 .body {
+      position: relative;
+      z-index: 2;
+      padding: 12px 14px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .opt4 .hdr {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      opacity: 0.75;
+      border-bottom: 1px dashed #3dff8a;
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+    }
+
+    .opt4 .name {
+      font-size: 28px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #d7ffc8;
+      text-shadow: 0 0 12px #3dff8a;
+    }
+
+    .opt4 .sprite-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 160px;
+    }
+
+    .opt4 .sprite {
+      width: 78%;
+      filter: drop-shadow(0 0 12px rgba(124, 255, 107, 0.45));
+    }
+
+    .opt4 .stat {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .opt4 .stat .dots {
+      flex: 1;
+      border-bottom: 1px dotted rgba(124, 255, 107, 0.45);
+      margin: 0 6px 4px;
+    }
+
+    .opt4 .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 14px;
+      background: #7CFF6B;
+      margin-left: 4px;
+      animation: blink 1.1s steps(1) infinite;
+    }
+
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ========== 5 Dossier ========== */
+    .opt5 {
+      height: 500px;
+      background: #e7d3a6;
+      color: #2a2214;
+      border-radius: 2px 12px 4px 4px;
+      box-shadow: 0 10px 0 #c4a56a, 0 18px 28px rgba(0,0,0,.35);
+      font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+      padding: 12px 12px 10px;
+    }
+
+    .opt5::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 18px;
+      width: 42px;
+      height: 14px;
+      background: #7a1c14;
+      border-radius: 0 0 4px 4px;
+    }
+
+    .opt5 .file {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #7a1c14;
+      font-weight: 700;
+    }
+
+    .opt5 .polaroid {
+      margin: 14px 6px 10px;
+      background: #f7f1e4;
+      padding: 7px 7px 22px;
+      transform: rotate(-1.4deg);
+      box-shadow: 0 8px 16px rgba(80, 50, 10, 0.28);
+    }
+
+    .opt5 .photo {
+      height: 168px;
+      background: var(--bg) center/cover no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .opt5 .sprite {
+      position: absolute;
+      width: 88%;
+      left: 6%;
+      bottom: -8%;
+      filter: drop-shadow(0 6px 8px rgba(0,0,0,.35));
+    }
+
+    .opt5 .name {
+      margin: 2px 4px 0;
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 0.9;
+    }
+
+    .opt5 .genus {
+      margin: 0 4px 8px;
+      font-size: 13px;
+      font-style: italic;
+      font-weight: 500;
+      color: #5c4a32;
+    }
+
+    .opt5 .stamp {
+      position: absolute;
+      right: 14px;
+      top: 228px;
+      border: 3px solid #9a221c;
+      color: #9a221c;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transform: rotate(12deg);
+      opacity: 0.8;
+    }
+
+    .opt5 .stat {
+      display: grid;
+      grid-template-columns: 88px 1fr 48px;
+      align-items: end;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-bottom: 1px solid #c4a56a;
+      padding: 3px 4px;
+    }
+
+    .opt5 .rule {
+      border-bottom: 1px dotted #8a7048;
+      margin: 0 8px 4px;
+    }
+
+    .opt5 .stat b {
+      text-align: right;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    /* ========== 6 Stadium ========== */
+    .opt6 {
+      height: 500px;
+      border-radius: 16px;
+      font-family: Oswald, sans-serif;
+      box-shadow: 0 16px 40px rgba(0,0,0,.5);
+      background: #0a0a0c;
+    }
+
+    .opt6 .scene {
+      position: absolute;
+      inset: 0;
+      background: var(--bg) center/cover no-repeat;
+    }
+
+    .opt6 .scene::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.15), transparent 40%, rgba(0,0,0,.7)),
+        linear-gradient(to top, #000 0 18%, transparent 48%);
+    }
+
+    .opt6 .jersey {
+      position: absolute;
+      right: 6px;
+      top: 28px;
+      z-index: 1;
+      font-family: "Black Ops One", sans-serif;
+      font-size: 128px;
+      line-height: 0.8;
+      opacity: 0.22;
+      letter-spacing: -0.06em;
+    }
+
+    .opt6 .sprite {
+      position: absolute;
+      z-index: 2;
+      width: 92%;
+      left: -8%;
+      bottom: 70px;
+      filter: drop-shadow(0 10px 16px #000);
+    }
+
+    .opt6 .plate {
+      position: absolute;
+      z-index: 3;
+      left: 0; right: 0; bottom: 0;
+      background: var(--type);
+      padding: 10px 12px 12px;
+      display: grid;
+      grid-template-columns: 1fr 118px;
+      gap: 8px;
+      clip-path: polygon(0 12px, 18px 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .opt6 .name {
+      font-family: "Black Ops One", sans-serif;
+      font-size: 22px;
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+
+    .opt6 .sub {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-top: 4px;
+    }
+
+    .opt6 .rail {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px 6px;
+    }
+
+    .opt6 .cell {
+      background: rgba(0,0,0,.35);
+      padding: 2px 6px 3px;
+      text-align: center;
+    }
+
+    .opt6 .cell b {
+      display: block;
+      font-size: 15px;
+      line-height: 1.1;
+    }
+
+    .opt6 .cell i {
+      font-style: normal;
+      font-size: 8px;
+      letter-spacing: 0.1em;
+      opacity: 0.8;
+    }
+
+    .note {
+      margin: 18px 0 0;
+      font-size: 13px;
+      color: #9a9182;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav>
+      <a href="index.html">Card gallery</a> ·
+      Design options ·
+      <a href="simulate.html">Balance sim</a>
+    </nav>
+    <h1>Six design options</h1>
+    <p class="lede">
+      Same three cards — Charizard, Blastoise, Gengar — with real scene photos
+      behind the official art, and a different typeface plus layout each time.
+      Reply with a number (1–6). Photos are type-matched (sun, surf, fog, lightning,
+      aurora, nebula, and so on) so a full-deck pass would swap the background
+      with the Pokémon’s primary type.
+    </p>
+
+    <div class="picker">
+      <a href="#opt-1">1 Cinematic</a>
+      <a href="#opt-2">2 Classic</a>
+      <a href="#opt-3">3 Comic</a>
+      <a href="#opt-4">4 Terminal</a>
+      <a href="#opt-5">5 Dossier</a>
+      <a href="#opt-6">6 Stadium</a>
+    </div>
+
+    <h3 class="section">Type photo library</h3>
+    <div class="library" id="library"></div>
+    <p class="status" id="status">Loading deck…</p>
+
+    <section class="option" id="opt-1">
+      <h2><span class="num-badge">1</span> Cinematic poster</h2>
+      <p class="why">
+        Sports-movie energy. Full-bleed photo, oversized sprite, giant
+        <strong>Bebas Neue</strong> name, <strong>Oswald</strong> film-strip stats.
+        Dark gradient keeps numbers readable. Most “exciting” at arm’s length.
+      </p>
+      <div class="row" data-opt="1"></div>
+    </section>
+
+    <section class="option" id="opt-2">
+      <h2><span class="num-badge">2</span> Classic Top Trumps</h2>
+      <p class="why">
+        Winning Moves yellow chevrons, cream stock, gold art window — but the
+        window is a real photo instead of a white box. Name in <strong>Anton</strong>.
+        The safest “this is still Top Trumps” option.
+      </p>
+      <div class="row" data-opt="2"></div>
+    </section>
+
+    <section class="option" id="opt-3">
+      <h2><span class="num-badge">3</span> Comic smash</h2>
+      <p class="why">
+        <strong>Bangers</strong> type, halftone dots, starburst, fat black borders,
+        two-column smash numbers. Loud on the table; stats are the easiest to
+        read of the photo treatments.
+      </p>
+      <div class="row" data-opt="3"></div>
+    </section>
+
+    <section class="option" id="opt-4">
+      <h2><span class="num-badge">4</span> Pokédex terminal</h2>
+      <p class="why">
+        <strong>Share Tech Mono</strong>, scanlines, dotted leaders, green-on-black
+        HUD. Photo sits as a ghosted backdrop. Reads as a device, not a toy card.
+      </p>
+      <div class="row" data-opt="4"></div>
+    </section>
+
+    <section class="option" id="opt-5">
+      <h2><span class="num-badge">5</span> Field dossier</h2>
+      <p class="why">
+        Manila folder, Polaroid of the scene, <strong>Barlow Condensed</strong>
+        ruled stats, red TYPE stamp. Scout-report energy — good if the game
+        should feel like a field guide rather than a poster.
+      </p>
+      <div class="row" data-opt="5"></div>
+    </section>
+
+    <section class="option" id="opt-6">
+      <h2><span class="num-badge">6</span> Stadium jersey</h2>
+      <p class="why">
+        <strong>Black Ops One</strong> nameplate, giant faded card number,
+        type-coloured banner, compact stat grid. Trading-card / FIFA-sticker
+        energy. Photo still full-bleed.
+      </p>
+      <div class="row" data-opt="6"></div>
+    </section>
+
+    <p class="note">
+      Character art: official Pokémon artwork via PokeAPI.
+      Scenes: Unsplash, Wikimedia Commons, NASA / USGS (see
+      <code>assets/bg/CREDITS.txt</code>). Fan project, not for sale.
+    </p>
+  </div>
+
+  <script>
+    const STATS = [
+      { id: "hp", label: "HP", short: "HP" },
+      { id: "attack", label: "Attack", short: "ATK" },
+      { id: "defense", label: "Defense", short: "DEF" },
+      { id: "special_attack", label: "Sp. Atk", short: "SPA" },
+      { id: "speed", label: "Speed", short: "SPE" },
+      { id: "height_m", label: "Height", short: "HT" },
+      { id: "weight_kg", label: "Weight", short: "WT" },
+    ];
+
+    const TYPE_HEX = {
+      normal: "#8a7f4e", fire: "#c45a1a", water: "#3b6fb8", electric: "#e2c01a",
+      grass: "#5a9a32", ice: "#6bb8b4", fighting: "#9a221c", poison: "#7a2e78",
+      ground: "#c9a24a", flying: "#7a68c4", psychic: "#d94a74", bug: "#7a8f14",
+      rock: "#8f7e28", ghost: "#56406e", dragon: "#5a28c8", dark: "#4a3a32",
+      steel: "#8a8aa0", fairy: "#c46a96",
+    };
+
+    const FEATURED = ["charizard", "blastoise", "gengar"];
+    const TYPES = Object.keys(TYPE_HEX);
+
+    function esc(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function fmt(id, n) {
+      if (id === "height_m" || id === "weight_kg") return Number(n).toFixed(1);
+      return String(n);
+    }
+
+    function pad(n) {
+      return String(n).padStart(2, "0");
+    }
+
+    function primary(card) {
+      return (card.types[0] || "normal").toLowerCase();
+    }
+
+    function bg(card) {
+      return "assets/bg/" + primary(card) + ".jpg";
+    }
+
+    function renderOpt1(card) {
+      const type = primary(card);
+      const cells = STATS.map(
+        (s) =>
+          `<div class="cell"><b>${fmt(s.id, card.stats[s.id])}</b><i>${s.short}</i></div>`
+      ).join("");
+      return `<article class="card opt1" style="--type:${TYPE_HEX[type]};--bg:url('${bg(card)}')">
+        <div class="scene"></div><div class="veil"></div>
+        <img class="sprite" src="${esc(card.artwork)}" alt="${esc(card.name)}" />
+        <div class="top">
+          <div class="kicker">${esc(card.types.join(" · "))}</div>
+          <div class="name">${esc(card.name)}</div>
+          <div class="genus">${esc(card.genus || "")}</div>
+        </div>
+        <div class="strip">${cells}</div>
+      </article>`;
+    }
+
+    function renderOpt2(card) {
+      const type = primary(card);
+      const rows = STATS.map(
+        (s) =>
+          `<div class="stat"><span>${s.label}</span><span>${fmt(s.id, card.stats[s.id])}</span></div>`
+      ).join("");
+      return `<article class="card opt2" style="--type:${TYPE_HEX[type]};--bg:url('${bg(card)}')">
+        <div class="head"><div class="name">${esc(card.name)}</div><div class="no">${pad(card.card_number)}</div></div>
+        <div class="window"><img class="sprite" src="${esc(card.artwork)}" alt="${esc(card.name)}" /></div>
+        <div class="meta"><span>${esc(card.genus || "")}</span><span>${esc(card.types.join(" / "))}</span></div>
+        <div class="stats">${rows}</div>
+      </article>`;
+    }
+
+    function renderOpt3(card) {
+      const type = primary(card);
+      const rows = STATS.map(
+        (s) =>
+          `<div class="stat"><i>${s.short}</i><b>${fmt(s.id, card.stats[s.id])}</b></div>`
+      ).join("");
+      return `<article class="card opt3" style="--type:${TYPE_HEX[type]};--bg:url('${bg(card)}')">
+        <div class="scene"></div><div class="halftone"></div><div class="burst"></div>
+        <div class="name">${esc(card.name).toUpperCase()}</div>
+        <div class="types">${esc(card.types.join("  /  "))}</div>
+        <img class="sprite" src="${esc(card.artwork)}" alt="${esc(card.name)}" />
+        <div class="board">${rows}</div>
+      </article>`;
+    }
+
+    function renderOpt4(card) {
+      const type = primary(card);
+      const rows = STATS.map(
+        (s) =>
+          `<div class="stat"><span>${s.label.toUpperCase()}</span><span class="dots"></span><span>${fmt(s.id, card.stats[s.id])}</span></div>`
+      ).join("");
+      return `<article class="card opt4" style="--type:${TYPE_HEX[type]};--bg:url('${bg(card)}')">
+        <div class="scene"></div>
+        <div class="body">
+          <div class="hdr">NATIONAL DEX // ${String(card.pokedex).padStart(3, "0")} // CARD ${pad(card.card_number)}</div>
+          <div class="name">${esc(card.name)}</div>
+          <div class="hdr">${esc((card.genus || "").toUpperCase())} · ${esc(card.types.join(" / ").toUpperCase())}<span class="cursor"></span></div>
+          <div class="sprite-wrap"><img class="sprite" src="${esc(card.artwork)}" alt="${esc(card.name)}" /></div>
+          <div>${rows}</div>
+        </div>
+        <div class="scan"></div>
+      </article>`;
+    }
+
+    function renderOpt5(card) {
+      const type = primary(card);
+      const rows = STATS.map(
+        (s) =>
+          `<div class="stat"><span>${s.label}</span><span class="rule"></span><b>${fmt(s.id, card.stats[s.id])}</b></div>`
+      ).join("");
+      return `<article class="card opt5" style="--type:${TYPE_HEX[type]};--bg:url('${bg(card)}')">
+        <div class="file"><span>Field file</span><span>No. ${pad(card.card_number)}</span></div>
+        <div class="polaroid"><div class="photo"><img class="sprite" src="${esc(card.artwork)}" alt="${esc(card.name)}" /></div></div>
+        <div class="stamp">${esc(card.types[0])}</div>
+        <div class="name">${esc(card.name)}</div>
+        <div class="genus">${esc(card.genus || "")}</div>
+        ${rows}
+      </article>`;
+    }
+
+    function renderOpt6(card) {
+      const type = primary(card);
+      const cells = STATS.map(
+        (s) =>
+          `<div class="cell"><b>${fmt(s.id, card.stats[s.id])}</b><i>${s.short}</i></div>`
+      ).join("");
+      return `<article class="card opt6" style="--type:${TYPE_HEX[type]};--bg:url('${bg(card)}')">
+        <div class="scene"></div>
+        <div class="jersey">${pad(card.card_number)}</div>
+        <img class="sprite" src="${esc(card.artwork)}" alt="${esc(card.name)}" />
+        <div class="plate">
+          <div>
+            <div class="name">${esc(card.name).toUpperCase()}</div>
+            <div class="sub">${esc(card.types.join(" · "))}</div>
+          </div>
+          <div class="rail">${cells}</div>
+        </div>
+      </article>`;
+    }
+
+    const RENDERERS = {
+      1: renderOpt1,
+      2: renderOpt2,
+      3: renderOpt3,
+      4: renderOpt4,
+      5: renderOpt5,
+      6: renderOpt6,
+    };
+
+    fetch("data/deck.json")
+      .then((r) => {
+        if (!r.ok) throw new Error("Could not load data/deck.json");
+        return r.json();
+      })
+      .then((deck) => {
+        const cards = deck.cards || [];
+        const featured = FEATURED.map((slug) => cards.find((c) => c.slug === slug)).filter(Boolean);
+        document.getElementById("status").textContent =
+          featured.length + " study cards · photos for all " + TYPES.length + " types";
+
+        document.getElementById("library").innerHTML = TYPES.map((t) => {
+          return `<div class="swatch" style="background-image:url('assets/bg/${t}.jpg')"><span>${t}</span></div>`;
+        }).join("");
+
+        for (const [opt, render] of Object.entries(RENDERERS)) {
+          const host = document.querySelector(`[data-opt="${opt}"]`);
+          host.innerHTML = featured.map(render).join("");
+        }
+      })
+      .catch((err) => {
+        document.getElementById("status").textContent = err.message;
+      });
+  </script>
+</body>
+</html>

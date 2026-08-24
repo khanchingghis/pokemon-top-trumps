@@ -6,11 +6,15 @@ A digital Top Trumps card game featuring Pokemon. Compare stats like HP, Attack,
 
 https://khanchingghis.github.io/pokemon-top-trumps/
 
+Numbered card design options (photo backgrounds + typefaces):
+
+https://khanchingghis.github.io/pokemon-top-trumps/designs.html
+
 Balance sim (8,000 games each for 2 / 3 / 4 players):
 
 https://khanchingghis.github.io/pokemon-top-trumps/simulate.html
 
-The site is static: `index.html` reads `data/deck.json`. Playable stats: HP, Attack, Defense, Sp. Attack, Speed, Height, Weight. Art sits on a type-coloured field (HOME wash, Base Set texture, or Stage). Push to `main` republishes.
+The site is static: `index.html` reads `data/deck.json`. Playable stats: HP, Attack, Defense, Sp. Attack, Speed, Height, Weight. Art sits on a type-coloured field (HOME wash, Base Set texture, or Stage). `designs.html` is a numbered study of scene-photo backgrounds and layouts. Push to `main` republishes.
 
 One-time setup: Settings → Pages → Source → **GitHub Actions**. If the deploy is skipped, open Settings → Environments → **github-pages** and allow deployments from all branches.
 
