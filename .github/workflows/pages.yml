@@ -25,7 +25,7 @@ jobs:
       - name: Assemble site
         run: |
           mkdir -p _site
-          cp index.html simulate.html designs.html draft.html .nojekyll _site/
+          cp index.html simulate.html designs.html draft.html print.html .nojekyll _site/
           cp -r data design sim assets _site/
       - name: Setup Pages
         uses: actions/configure-pages@v5

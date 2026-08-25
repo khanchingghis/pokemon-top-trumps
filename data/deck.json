@@ -581,6 +581,7 @@
       "pokedex": 248,
       "name": "Tyranitar",
       "slug": "tyranitar",
+      "mirror": true,
       "types": [
         "Rock",
         "Dark"
@@ -710,6 +711,7 @@
       "pokedex": 445,
       "name": "Garchomp",
       "slug": "garchomp",
+      "mirror": true,
       "types": [
         "Dragon",
         "Ground"
@@ -736,6 +738,7 @@
       "pokedex": 448,
       "name": "Lucario",
       "slug": "lucario",
+      "mirror": true,
       "types": [
         "Fighting",
         "Steel"

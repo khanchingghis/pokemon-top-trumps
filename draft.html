@@ -207,6 +207,10 @@
       filter: drop-shadow(0 10px 14px rgba(0,0,0,.55));
     }
 
+    .front .sprite.is-mirror {
+      transform: scaleX(-1);
+    }
+
     .front .copy {
       position: relative;
       z-index: 3;
@@ -300,6 +304,7 @@
       <a href="index.html">Card gallery</a> ·
       <a href="designs.html">Design options</a> ·
       30-card set ·
+      <a href="print.html">Print files</a> ·
       <a href="simulate.html">Balance sim</a>
     </nav>
     <h1>30-card set</h1>
@@ -362,7 +367,12 @@
     }
 
     function fmt(id, n) {
-      if (id === "height_m" || id === "weight_kg") return Number(n).toFixed(1);
+      const x = Number(n);
+      if (id === "height_m" || id === "weight_kg") {
+        if (!Number.isFinite(x)) return "";
+        if (Math.abs(x - Math.round(x)) < 1e-9) return String(Math.round(x));
+        return String(Math.round(x * 10) / 10);
+      }
       return String(n);
     }
 
@@ -385,7 +395,7 @@
       return `<article class="card front" style="--type:${hex};--bg:url('assets/bg/${type}.jpg')">
         <div class="scene"></div><div class="halftone"></div><div class="veil"></div>
         <div class="art">
-          <img class="sprite" crossorigin="anonymous" src="${esc(card.artwork)}" alt="${esc(card.name)}" />
+          <img class="sprite${card.mirror ? " is-mirror" : ""}" crossorigin="anonymous" src="${esc(card.artwork)}" alt="${esc(card.name)}" />
         </div>
         <div class="head">
           <div class="name">${esc(card.name).toUpperCase()}</div>

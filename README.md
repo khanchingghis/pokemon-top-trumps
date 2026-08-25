@@ -10,6 +10,10 @@ https://khanchingghis.github.io/pokemon-top-trumps/
 
 https://khanchingghis.github.io/pokemon-top-trumps/draft.html
 
+Print files (PDF spec for a print shop):
+
+https://khanchingghis.github.io/pokemon-top-trumps/print.html
+
 Numbered card design options (photo backgrounds + typefaces):
 
 https://khanchingghis.github.io/pokemon-top-trumps/designs.html

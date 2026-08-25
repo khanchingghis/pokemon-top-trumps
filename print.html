@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pokémon Top Trumps — 30-card set</title>
+  <title>Print files — Pokémon Top Trumps</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@500;700&display=swap" rel="stylesheet" />
   <style>
-    :root { --table: #151814; --bar: #f0c92a; }
+    :root { --table: #151814; }
 
     * { box-sizing: border-box; }
 
@@ -36,83 +36,74 @@
       text-transform: uppercase;
     }
 
-    .lede {
-      margin: 0 0 18px;
-      max-width: 74ch;
+    h2 {
+      margin: 28px 0 8px;
+      font-family: Oswald, sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e2c01a;
+    }
+
+    .lede, .spec p, .spec li {
       color: #c9c2b3;
       line-height: 1.5;
       font-size: 15px;
     }
 
-    .lock {
-      margin: 0 0 18px;
-      color: #9a9182;
-      font-size: 14px;
-    }
+    .lede { margin: 0 0 18px; max-width: 74ch; }
 
-    .toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px 18px;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-
-    .toolbar label {
-      font-size: 12px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #9a9182;
-    }
-
-    .toolbar select {
-      font: inherit;
-      font-size: 14px;
-      padding: 6px 10px;
+    .spec {
+      max-width: 74ch;
       background: #1c1a16;
-      color: #f0e6c8;
       border: 1px solid #5a5040;
+      border-radius: 8px;
+      padding: 16px 18px 8px;
+      margin-bottom: 22px;
+    }
+
+    .spec dl {
+      display: grid;
+      grid-template-columns: 11rem 1fr;
+      gap: 6px 12px;
+      margin: 0 0 12px;
+      font-size: 14px;
+    }
+
+    .spec dt { color: #9a9182; }
+    .spec dd { margin: 0; color: #e8e2d4; }
+
+    .toolbar { margin: 0 0 18px; display: flex; gap: 10px; flex-wrap: wrap; }
+
+    button {
+      font: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: #e2c01a;
+      color: #1c1914;
+      border: 0;
       border-radius: 6px;
-    }
-
-    .status { color: #c9c2b3; font-size: 14px; margin: 0 0 16px; }
-
-    .table {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px 22px;
-      align-items: flex-start;
-    }
-
-    .flip-stage {
-      width: 300px;
-      height: 560px;
-      perspective: 1200px;
-    }
-
-    .flipper {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.7s ease;
+      padding: 10px 16px;
       cursor: pointer;
     }
 
-    .flipper.is-flipped { transform: rotateY(180deg); }
+    button:disabled { opacity: 0.5; cursor: wait; }
 
-    .face {
-      position: absolute;
-      inset: 0;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
+    .status { color: #c9c2b3; font-size: 14px; margin: 0 0 16px; }
+
+    .sheet {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px 16px;
+      align-items: flex-start;
     }
 
-    .face-back { transform: rotateY(180deg); }
+    .print-page { position: relative; }
 
     .card {
       --type: #888;
-      --ink: #fff;
       --bg: none;
       position: relative;
       width: 300px;
@@ -207,9 +198,7 @@
       filter: drop-shadow(0 10px 14px rgba(0,0,0,.55));
     }
 
-    .front .sprite.is-mirror {
-      transform: scaleX(-1);
-    }
+    .front .sprite.is-mirror { transform: scaleX(-1); }
 
     .front .copy {
       position: relative;
@@ -295,45 +284,129 @@
       box-shadow: 0 8px 20px rgba(0,0,0,.4);
     }
 
-    .hint { margin: 18px 0 0; font-size: 13px; color: #9a9182; }
+    .page-label {
+      margin: 0 0 6px;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #9a9182;
+    }
+
+    @media print {
+      @page {
+        size: 69mm 123.6mm;
+        margin: 0;
+      }
+
+      html, body {
+        background: #000;
+        padding: 0;
+        color: #000;
+      }
+
+      .screen-only { display: none !important; }
+
+      .sheet { display: block; gap: 0; }
+
+      .print-page {
+        width: 69mm;
+        height: 123.6mm;
+        page-break-after: always;
+        break-after: page;
+        overflow: hidden;
+      }
+
+      .print-page:last-child { page-break-after: auto; }
+
+      .bleed {
+        position: absolute;
+        inset: 0;
+        background: var(--bg) center / cover no-repeat;
+        filter: contrast(1.2) saturate(0.8) brightness(0.68);
+      }
+
+      .trim {
+        position: absolute;
+        inset: 3mm;
+        width: 63mm;
+        height: 117.6mm;
+        overflow: hidden;
+      }
+
+      .scale {
+        width: 300px;
+        height: 560px;
+        transform: scale(calc(63mm / 300px));
+        transform-origin: top left;
+      }
+
+      .front {
+        box-shadow: none;
+        border-radius: 0;
+      }
+
+      .back-key {
+        box-shadow: none;
+        border-radius: 0;
+        width: 300px;
+        height: 560px;
+      }
+    }
+
+    @media screen {
+      .bleed { display: none; }
+      .trim, .scale { position: static; width: auto; height: auto; transform: none; }
+    }
   </style>
 </head>
 <body>
   <div class="page">
-    <nav>
-      Card gallery ·
-      <a href="designs.html">Design options</a> ·
-      <a href="draft.html">30-card set</a> ·
-      <a href="print.html">Print files</a> ·
-      <a href="simulate.html">Balance sim</a>
-    </nav>
-    <h1>Pokémon Top Trumps</h1>
-    <p class="lede">
-      A 30-card pack. Folklore captions, cinematic type photos, inset type
-      bars. Two players deal 15 each; three players deal 10 each. Click a card
-      to flip.
-    </p>
-    <p class="lock">A / 2 / 5 Inset type · 30 cards</p>
-    <div class="toolbar">
-      <label for="sort">Sort</label>
-      <select id="sort">
-        <option value="n">Card number</option>
-        <option value="hp">HP</option>
-        <option value="attack">Attack</option>
-        <option value="defense">Defence</option>
-        <option value="special_attack">Sp. Attack</option>
-        <option value="speed">Speed</option>
-        <option value="height_m">Height</option>
-        <option value="weight_kg">Weight</option>
-        <option value="name">Name</option>
-      </select>
+    <div class="screen-only">
+      <nav>
+        <a href="index.html">Card gallery</a> ·
+        <a href="designs.html">Design options</a> ·
+        <a href="draft.html">30-card set</a> ·
+        Print files ·
+        <a href="simulate.html">Balance sim</a>
+      </nav>
+      <h1>Print files</h1>
+      <p class="lede">
+        Send the shop a PDF. Use this page: Print → Save as PDF (or Microsoft
+        Print to PDF). Turn off headers and footers, and do not scale — page
+        size is already the card plus bleed.
+      </p>
+      <div class="spec">
+        <h2>Give the shop this spec</h2>
+        <dl>
+          <dt>File</dt>
+          <dd>PDF, 31 pages (30 fronts, then 1 back). RGB is fine for digital print.</dd>
+          <dt>Page size</dt>
+          <dd>69 × 123.6 mm (includes 3 mm bleed on every side)</dd>
+          <dt>Trim to</dt>
+          <dd>63 × 117.6 mm — same proportions as the on-screen card</dd>
+          <dt>Bleed</dt>
+          <dd>3 mm. Photo runs to the page edge. Cut on the inner yellow/black frame.</dd>
+          <dt>Resolution</dt>
+          <dd>Export/print at 300 dpi or higher. Do not “fit to paper”.</dd>
+          <dt>Backs</dt>
+          <dd>Page 31 is the common back. Print it on the reverse of every front.</dd>
+          <dt>Stock</dt>
+          <dd>300–350 gsm card, optionally with a matte or linen laminate.</dd>
+          <dt>Finish</dt>
+          <dd>Rounded corners ~3 mm radius if they can match the screen cards.</dd>
+        </dl>
+        <p>
+          This is a custom size, not a poker card (63 × 88 mm). If they can only
+          print poker size, the art will be cropped or letterboxed — ask them
+          to cut 63 × 118 mm instead.
+        </p>
+      </div>
+      <div class="toolbar">
+        <button type="button" id="print-btn" disabled>Print to PDF</button>
+      </div>
+      <p class="status" id="status">Loading cards…</p>
     </div>
-    <p class="status" id="status">Loading deck…</p>
-    <div class="table" id="table"></div>
-    <p class="hint">
-      Folklore captions from Yellow / Gold / Crystal / FireRed / LeafGreen / Emerald / Sapphire / Diamond via PokeAPI.
-      Sprites fit to opaque pixels. Back 2 unchanged.
-    </p>
+    <div class="sheet" id="sheet"></div>
   </div>
   <script>
     const STATS = [
@@ -418,6 +491,15 @@
       </article>`;
     }
 
+    function wrapPage(inner, type, label) {
+      const bg = type ? `url("assets/bg/${type}.jpg")` : "url(\"assets/backs/pack-keyart.jpg\")";
+      return `<div class="print-page" style="--bg:${bg}">
+        <div class="page-label screen-only">${esc(label)}</div>
+        <div class="bleed"></div>
+        <div class="trim"><div class="scale">${inner}</div></div>
+      </div>`;
+    }
+
     function opaqueBox(img) {
       const src = img.currentSrc || img.src;
       if (spriteBox.has(src)) return Promise.resolve(spriteBox.get(src));
@@ -434,11 +516,7 @@
             const ctx = canvas.getContext("2d", { willReadFrequently: true });
             ctx.drawImage(probe, 0, 0);
             const data = ctx.getImageData(0, 0, w, h).data;
-            let minX = w;
-            let minY = h;
-            let maxX = 0;
-            let maxY = 0;
-            let found = false;
+            let minX = w, minY = h, maxX = 0, maxY = 0, found = false;
             for (let y = 0; y < h; y++) {
               for (let x = 0; x < w; x++) {
                 if (data[(y * w + x) * 4 + 3] > 16) {
@@ -493,46 +571,30 @@
       else img.addEventListener("load", run, { once: true });
     }
 
-    function fitAllSprites(root) {
-      (root || document).querySelectorAll(".sprite").forEach(fitSprite);
-    }
-
-    let cards = [];
-
-    function renderSet() {
-      const key = document.getElementById("sort").value;
-      const sorted = [...cards].sort((a, b) => {
-        if (key === "n") return a.card_number - b.card_number;
-        if (key === "name") return a.name.localeCompare(b.name);
-        return (b.stats[key] ?? 0) - (a.stats[key] ?? 0);
-      });
-      document.getElementById("table").innerHTML = sorted.map((card) => {
-        return `<div class="flip-stage">
-          <div class="flipper" title="Click to flip">
-            <div class="face face-front">${renderFront(card)}</div>
-            <div class="face face-back">${renderBack()}</div>
-          </div>
-        </div>`;
-      }).join("");
-      document.getElementById("status").textContent =
-        cards.length + " cards · inset type · back 2";
-      fitAllSprites(document.getElementById("table"));
-    }
-
     fetch("data/deck.json")
       .then((r) => {
         if (!r.ok) throw new Error("Could not load data/deck.json");
         return r.json();
       })
       .then((deck) => {
-        cards = deck.cards || [];
-        renderSet();
-        document.getElementById("table").addEventListener("click", (e) => {
-          const flipper = e.target.closest(".flipper");
-          if (flipper) flipper.classList.toggle("is-flipped");
+        const cards = deck.cards || [];
+        const sheet = document.getElementById("sheet");
+        sheet.innerHTML =
+          cards.map((card) =>
+            wrapPage(renderFront(card), primary(card), pad(card.card_number) + " " + card.name)
+          ).join("") +
+          wrapPage(renderBack(), null, "Back (print on every reverse)");
+
+        sheet.querySelectorAll(".sprite").forEach(fitSprite);
+        document.fonts.ready.then(() => {
+          sheet.querySelectorAll(".sprite").forEach(fitSprite);
         });
-        document.getElementById("sort").addEventListener("change", renderSet);
-        document.fonts.ready.then(() => fitAllSprites());
+
+        const btn = document.getElementById("print-btn");
+        const status = document.getElementById("status");
+        status.textContent = "31 pages ready · 30 fronts + 1 back";
+        btn.disabled = false;
+        btn.addEventListener("click", () => window.print());
       })
       .catch((err) => {
         document.getElementById("status").textContent = err.message;
