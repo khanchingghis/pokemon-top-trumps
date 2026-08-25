@@ -3,15 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pokemon Top Trumps — card gallery</title>
+  <title>Pokémon Top Trumps — 30-card set</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@500;700&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --cream: #f4ecd8;
-      --ink: #1c1914;
-      --muted: #5c5346;
-      --rule: #d9cbb0;
-      --table: #2a3a2e;
-    }
+    :root { --table: #151814; --bar: #f0c92a; }
 
     * { box-sizing: border-box; }
 
@@ -19,442 +16,306 @@
       margin: 0;
       min-height: 100vh;
       font-family: "Trebuchet MS", "Segoe UI", sans-serif;
-      background: var(--table);
+      background:
+        radial-gradient(ellipse at 20% 0%, #2a2418, transparent 50%),
+        var(--table);
       color: #e8e2d4;
-      padding: 32px 24px 56px;
+      padding: 28px 20px 72px;
     }
 
     .page { max-width: 1280px; margin: 0 auto; }
 
-    nav { margin-bottom: 18px; font-size: 14px; }
+    nav { margin-bottom: 16px; font-size: 14px; }
     nav a { color: #e8e2d4; }
 
     h1 {
       margin: 0 0 8px;
-      font-size: 22px;
-      font-weight: 700;
+      font-family: Oswald, sans-serif;
+      font-size: 30px;
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
 
-    h2 {
-      margin: 36px 0 8px;
-      font-size: 15px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    h3 {
-      margin: 0 0 6px;
-      font-size: 14px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .lede, .note {
-      margin: 0 0 20px;
-      max-width: 72ch;
+    .lede {
+      margin: 0 0 18px;
+      max-width: 74ch;
       color: #c9c2b3;
       line-height: 1.5;
       font-size: 15px;
     }
 
-    .note { font-size: 13px; margin-bottom: 22px; }
+    .lock {
+      margin: 0 0 18px;
+      color: #9a9182;
+      font-size: 14px;
+    }
 
     .toolbar {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px 20px;
+      gap: 12px 18px;
       align-items: center;
-      margin-bottom: 22px;
+      margin-bottom: 16px;
     }
 
     .toolbar label {
-      font-size: 13px;
+      font-size: 12px;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: #c9c2b3;
+      color: #9a9182;
     }
 
     .toolbar select {
       font: inherit;
       font-size: 14px;
       padding: 6px 10px;
-      background: #1f2b23;
-      color: #e8e2d4;
-      border: 1px solid #4a5c4e;
+      background: #1c1a16;
+      color: #f0e6c8;
+      border: 1px solid #5a5040;
       border-radius: 6px;
     }
 
-    .status { margin: 0 0 16px; color: #c9c2b3; font-size: 14px; }
-
-    .studies {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 28px;
-      align-items: start;
-    }
-
-    @media (max-width: 1040px) {
-      .studies { grid-template-columns: 1fr; }
-    }
-
-    .study-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      align-items: center;
-    }
+    .status { color: #c9c2b3; font-size: 14px; margin: 0 0 16px; }
 
     .table {
       display: flex;
       flex-wrap: wrap;
-      gap: 24px;
-      align-items: stretch;
+      gap: 24px 22px;
+      align-items: flex-start;
     }
 
-    .trump {
-      --type: #888;
-      --on-type: #fff;
-      --art-mid: #666;
-      --art-deep: #333;
-      --art-hot: #999;
+    .flip-stage {
       width: 300px;
-      background: var(--cream);
-      color: var(--ink);
-      border: 10px solid var(--type);
-      border-radius: 14px;
-      padding: 10px 10px 12px;
+      height: 560px;
+      perspective: 1200px;
+    }
+
+    .flipper {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.7s ease;
+      cursor: pointer;
+    }
+
+    .flipper.is-flipped { transform: rotateY(180deg); }
+
+    .face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .face-back { transform: rotateY(180deg); }
+
+    .card {
+      --type: #888;
+      --ink: #fff;
+      --bg: none;
+      position: relative;
+      width: 300px;
+      height: 560px;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .front {
+      border-radius: 6px;
+      border: 7px solid #111;
+      outline: 4px solid #ffde00;
+      font-family: Bangers, "Comic Sans MS", sans-serif;
+      box-shadow: 8px 8px 0 #111;
       display: flex;
       flex-direction: column;
-      gap: 8px;
     }
 
-    .trump.normal { --type: #8a7f4e; --on-type: #fff; --art-mid: #c4b87a; --art-deep: #5c5430; --art-hot: #efe6b8; }
-    .trump.fire { --type: #c45a1a; --on-type: #fff; --art-mid: #ff7a2a; --art-deep: #7a1c08; --art-hot: #ffd36a; }
-    .trump.water { --type: #3b6fb8; --on-type: #fff; --art-mid: #5aa0e8; --art-deep: #163a72; --art-hot: #c8ecff; }
-    .trump.electric { --type: #e2c01a; --on-type: #1c1914; --art-mid: #ffe44a; --art-deep: #8a6a00; --art-hot: #fff4b0; }
-    .trump.grass { --type: #5a9a32; --on-type: #fff; --art-mid: #7ec84a; --art-deep: #1e4a14; --art-hot: #d4f0a0; }
-    .trump.ice { --type: #6bb8b4; --on-type: #1c1914; --art-mid: #b8f0ee; --art-deep: #2a6a72; --art-hot: #ffffff; }
-    .trump.fighting { --type: #9a221c; --on-type: #fff; --art-mid: #d44a32; --art-deep: #4a0e0c; --art-hot: #f0a090; }
-    .trump.poison { --type: #7a2e78; --on-type: #fff; --art-mid: #c45ec0; --art-deep: #3a1040; --art-hot: #e8b0e4; }
-    .trump.ground { --type: #c9a24a; --on-type: #1c1914; --art-mid: #e0c06a; --art-deep: #6a4a18; --art-hot: #f5e6b8; }
-    .trump.flying { --type: #7a68c4; --on-type: #fff; --art-mid: #b0a0f0; --art-deep: #2a2868; --art-hot: #e8e0ff; }
-    .trump.psychic { --type: #d94a74; --on-type: #fff; --art-mid: #ff7aa0; --art-deep: #6a1838; --art-hot: #ffd0dc; }
-    .trump.bug { --type: #7a8f14; --on-type: #fff; --art-mid: #c2d44a; --art-deep: #3a4808; --art-hot: #eef8a0; }
-    .trump.rock { --type: #8f7e28; --on-type: #fff; --art-mid: #c8b45a; --art-deep: #4a3e10; --art-hot: #e8dca0; }
-    .trump.ghost { --type: #56406e; --on-type: #fff; --art-mid: #8a68b0; --art-deep: #1a1028; --art-hot: #d0b8f0; }
-    .trump.dragon { --type: #5a28c8; --on-type: #fff; --art-mid: #7a5cff; --art-deep: #1c0a58; --art-hot: #c8b8ff; }
-    .trump.dark { --type: #4a3a32; --on-type: #fff; --art-mid: #6a5a50; --art-deep: #16100c; --art-hot: #b0a090; }
-    .trump.steel { --type: #8a8aa0; --on-type: #1c1914; --art-mid: #c8c8d8; --art-deep: #3a3a50; --art-hot: #f0f0f8; }
-    .trump.fairy { --type: #c46a96; --on-type: #fff; --art-mid: #f0a0c4; --art-deep: #6a2848; --art-hot: #ffe0f0; }
-
-    .head {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 8px;
-      background: var(--type);
-      color: var(--on-type);
-      margin: -10px -10px 0;
-      padding: 10px 12px 8px;
-      border-radius: 4px 4px 0 0;
-    }
-
-    .name {
-      font-size: 18px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      line-height: 1.1;
-    }
-
-    .no {
-      font-size: 13px;
-      font-weight: 700;
-      opacity: 0.9;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      padding: 0 2px;
-    }
-
-    .genus { font-size: 12px; color: var(--muted); font-style: italic; }
-
-    .types { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
-
-    .type-pill {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      background: var(--ink);
-      color: var(--cream);
-      padding: 2px 6px;
-      border-radius: 999px;
-    }
-
-    .art {
-      position: relative;
-      border: 2px solid #2a241c;
-      border-radius: 6px;
-      height: 210px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    .art::before, .art::after {
-      content: "";
+    .front .scene,
+    .front .halftone,
+    .front .veil {
       position: absolute;
       inset: 0;
       pointer-events: none;
     }
 
-    .art img {
-      position: relative;
-      z-index: 1;
-      width: 90%;
-      height: 90%;
-      object-fit: contain;
-      filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.28));
+    .front .scene {
+      background: var(--bg) center/cover no-repeat;
+      filter: contrast(1.2) saturate(0.8) brightness(0.68);
     }
 
-    /* HOME wash — type glow behind official art, like Pokemon HOME */
-    .trump[data-theme="wash"] .art {
-      background:
-        radial-gradient(circle at 50% 58%, var(--art-hot) 0%, var(--art-mid) 38%, var(--art-deep) 100%);
-    }
-    .trump[data-theme="wash"] .art::before {
-      background: radial-gradient(circle at 50% 48%, rgba(255,255,255,0.28), transparent 42%);
-    }
-    .trump[data-theme="wash"] .art::after {
-      background: linear-gradient(135deg, transparent 58%, color-mix(in srgb, var(--type2, var(--type)) 45%, transparent));
+    .front .halftone {
+      background-image: radial-gradient(rgba(0,0,0,.38) 1.1px, transparent 1.2px);
+      background-size: 5px 5px;
+      mix-blend-mode: multiply;
+      opacity: 0.1;
     }
 
-    /* Base Set — gold art window + type stock-texture, like early TCG */
-    .trump[data-theme="baseset"] .art {
-      border: 3px solid #c9a227;
-      outline: 2px solid #2a241c;
-      outline-offset: -5px;
-      background: var(--art-deep);
-    }
-    .trump[data-theme="baseset"] .art::before { opacity: 0.95; }
-    .trump.fire[data-theme="baseset"] .art::before {
+    .front .veil {
       background:
-        radial-gradient(ellipse at 50% 120%, var(--art-hot) 0%, transparent 50%),
-        repeating-linear-gradient(-18deg, transparent 0 16px, rgba(255, 90, 0, 0.35) 16px 19px),
-        radial-gradient(circle at 18% 78%, #ff4d00 0 18%, transparent 48%),
-        radial-gradient(circle at 84% 92%, #5a0c00, var(--art-deep));
-    }
-    .trump.water[data-theme="baseset"] .art::before {
-      background:
-        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.35) 0 8%, transparent 9%),
-        radial-gradient(circle at 70% 60%, rgba(255,255,255,0.2) 0 6%, transparent 7%),
-        repeating-radial-gradient(circle at 50% 120%, transparent 0 14px, rgba(180, 230, 255, 0.18) 14px 16px),
-        linear-gradient(#3a8ad4, #0d3a70);
-    }
-    .trump.electric[data-theme="baseset"] .art::before {
-      background:
-        repeating-linear-gradient(115deg, var(--art-deep) 0 10px, var(--art-mid) 10px 12px, var(--art-hot) 12px 13px, var(--art-deep) 13px 22px),
-        radial-gradient(circle at 50% 50%, var(--art-hot), var(--art-deep));
-    }
-    .trump.grass[data-theme="baseset"] .art::before {
-      background:
-        radial-gradient(circle at 20% 20%, rgba(210,255,140,0.45) 0 12%, transparent 13%),
-        radial-gradient(circle at 80% 30%, rgba(210,255,140,0.3) 0 10%, transparent 11%),
-        repeating-linear-gradient(160deg, #2d6a1c 0 8px, #4e9a30 8px 16px, #1a4010 16px 18px);
-    }
-    .trump.psychic[data-theme="baseset"] .art::before {
-      background:
-        repeating-radial-gradient(circle at 50% 45%, transparent 0 12px, rgba(255,180,210,0.22) 12px 14px),
-        radial-gradient(circle at 50% 45%, var(--art-hot), var(--art-deep));
-    }
-    .trump.ghost[data-theme="baseset"] .art::before {
-      background:
-        radial-gradient(circle at 30% 20%, rgba(200,160,255,0.35), transparent 40%),
-        repeating-linear-gradient(90deg, transparent 0 18px, rgba(0,0,0,0.25) 18px 19px),
-        linear-gradient(#3a2058, #0c0618);
-    }
-    .trump.steel[data-theme="baseset"] .art::before {
-      background:
-        repeating-linear-gradient(90deg, #9aa0b4 0 2px, #d8dce8 2px 4px, #6e7488 4px 6px),
-        linear-gradient(#cfd3e0, #4a4e62);
-    }
-    .trump.dragon[data-theme="baseset"] .art::before {
-      background:
-        repeating-conic-gradient(from 20deg at 50% 50%, rgba(140,100,255,0.0) 0 12deg, rgba(140,100,255,0.28) 12deg 14deg),
-        radial-gradient(circle at 50% 50%, var(--art-mid), var(--art-deep));
-    }
-    .trump.ice[data-theme="baseset"] .art::before {
-      background:
-        repeating-linear-gradient(32deg, rgba(255,255,255,0.0) 0 10px, rgba(255,255,255,0.45) 10px 11px),
-        linear-gradient(#dff6f8, #2f6e78);
-    }
-    .trump.ground[data-theme="baseset"] .art::before {
-      background:
-        radial-gradient(circle at 40% 80%, #c48a3a 0 20%, transparent 21%),
-        repeating-linear-gradient(#c9a24a 0 6px, #8a6a28 6px 7px);
-    }
-    .trump.rock[data-theme="baseset"] .art::before {
-      background:
-        repeating-linear-gradient(45deg, #6a5a20 0 8px, #b09a40 8px 16px, #4a4018 16px 18px);
-    }
-    .trump.bug[data-theme="baseset"] .art::before {
-      background:
-        radial-gradient(circle at 50% 100%, #dce86a, transparent 55%),
-        repeating-radial-gradient(circle at 50% 110%, #3a4808 0 10px, #88a020 10px 12px);
-    }
-    .trump.poison[data-theme="baseset"] .art::before {
-      background:
-        radial-gradient(circle at 30% 70%, rgba(180,255,80,0.25), transparent 40%),
-        repeating-radial-gradient(circle at 70% 30%, transparent 0 11px, rgba(80,0,80,0.4) 11px 13px),
-        linear-gradient(#7a2e78, #1a0818);
-    }
-    .trump.fighting[data-theme="baseset"] .art::before {
-      background:
-        repeating-linear-gradient(90deg, #6a1814 0 12px, #c44a32 12px 13px),
-        linear-gradient(#d44a32, #3a0c0a);
-    }
-    .trump.dark[data-theme="baseset"] .art::before {
-      background:
-        radial-gradient(circle at 70% 20%, rgba(180,160,120,0.2), transparent 40%),
-        linear-gradient(#2c241c, #080604);
-    }
-    .trump.fairy[data-theme="baseset"] .art::before {
-      background:
-        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.5) 0 5%, transparent 6%),
-        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.35) 0 4%, transparent 5%),
-        linear-gradient(#f4b0d0, #8a3860);
-    }
-    .trump.flying[data-theme="baseset"] .art::before {
-      background:
-        repeating-linear-gradient(180deg, rgba(255,255,255,0.18) 0 2px, transparent 2px 18px),
-        linear-gradient(#a8c8f8, #3a3888);
-    }
-    .trump.normal[data-theme="baseset"] .art::before {
-      background:
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 12px),
-        linear-gradient(#ddd4a4, #5c5430);
-    }
-    .trump[data-theme="baseset"] .art::after {
-      background: linear-gradient(to top, rgba(0,0,0,0.2), transparent 40%);
+        radial-gradient(ellipse at 50% 34%, transparent 24%, rgba(0,0,0,.8) 100%),
+        linear-gradient(to top, rgba(0,0,0,.9) 0 22%, transparent 48%);
     }
 
-    /* Stage — type-colored floor + vignette, like modern full-art lighting */
-    .trump[data-theme="stage"] .art {
-      background:
-        linear-gradient(to top, var(--art-deep) 0 28%, transparent 52%),
-        radial-gradient(ellipse 80% 36% at 50% 92%, var(--art-mid), transparent 70%),
-        radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--art-hot) 55%, transparent), transparent 46%),
-        var(--art-deep);
-    }
-    .trump[data-theme="stage"] .art::before {
-      background: radial-gradient(ellipse at 50% 110%, rgba(0,0,0,0.35), transparent 50%);
-    }
-    .trump[data-theme="stage"] .art::after {
-      box-shadow: inset 0 0 48px rgba(0, 0, 0, 0.45);
-    }
-    .trump[data-theme="stage"] .art img {
-      width: 96%;
-      height: 96%;
-      transform: translateY(4px);
-    }
-
-    .blurb {
-      margin: 0;
-      padding: 0 4px;
-      font-size: 12px;
-      line-height: 1.35;
-      color: var(--muted);
-      min-height: 3.4em;
-      flex: 1;
-    }
-
-    .stats {
-      display: flex;
-      flex-direction: column;
-      border-top: 2px solid var(--type);
-    }
-
-    .stat {
+    .front .head {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 4;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      padding: 5px 10px;
-      border-bottom: 1px solid var(--rule);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
+      align-items: flex-start;
+      padding: 8px 10px 0;
+    }
+
+    .front .name {
+      font-size: 32px;
+      line-height: 0.9;
+      transform: rotate(-2deg);
+      text-shadow: 3px 3px 0 #000, 6px 6px 0 var(--type);
+    }
+
+    .front .no { font-size: 16px; text-shadow: 2px 2px 0 #000; }
+
+    .front .types {
+      position: absolute;
+      top: 42px;
+      left: 12px;
+      z-index: 4;
+      font-size: 12px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
+      color: color-mix(in srgb, var(--type) 45%, #ffde00);
+      text-shadow: 2px 2px 0 #000;
     }
 
-    .stat:last-child { border-bottom: 0; }
-
-    .stat span:last-child {
-      font-variant-numeric: tabular-nums;
-      font-size: 15px;
+    .front .art {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
     }
+
+    .front .sprite {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      filter: drop-shadow(0 10px 14px rgba(0,0,0,.55));
+    }
+
+    .front .copy {
+      position: relative;
+      z-index: 3;
+      flex: 0 0 auto;
+      padding-top: 4px;
+      background: linear-gradient(transparent, rgba(0,0,0,.35) 18%);
+    }
+
+    .front .caption {
+      margin: 0 12px 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-size: 11px;
+      line-height: 1.35;
+      color: rgba(255, 246, 220, 0.92);
+      text-shadow: 0 1px 8px #000, 0 0 12px #000;
+    }
+
+    .front .board {
+      margin: 0 8px 8px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3px;
+    }
+
+    .front .stat {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 16px 3px 9px;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
+      background: rgba(10, 8, 6, 0.78);
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--type) 70%, #fff);
+    }
+
+    .front .stat i {
+      font-family: Oswald, sans-serif;
+      font-style: normal;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: color-mix(in srgb, var(--type) 45%, #fff);
+    }
+
+    .front .stat b {
+      font-family: Oswald, sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1;
+      color: #fff;
+    }
+
+    .back-key {
+      background: url("assets/backs/pack-keyart.jpg") center/cover no-repeat;
+      box-shadow: 0 0 0 4px #111;
+      border-radius: 8px;
+    }
+
+    .back-inner {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 14px;
+      padding: 16px 12px 18px;
+    }
+
+    .pk-logo {
+      width: 96%;
+      max-width: 280px;
+      margin-top: 70px;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,.65));
+    }
+
+    .tt-img {
+      width: 78%;
+      max-width: 230px;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.4);
+    }
+
+    .hint { margin: 18px 0 0; font-size: 13px; color: #9a9182; }
   </style>
 </head>
 <body>
   <div class="page">
-    <nav><a href="index.html">Card gallery</a> · <a href="designs.html">Design options</a> · <a href="draft.html">10-card draft</a> · <a href="simulate.html">Balance sim</a></nav>
-    <h1>Pokemon Top Trumps</h1>
+    <nav>
+      Card gallery ·
+      <a href="designs.html">Design options</a> ·
+      <a href="draft.html">30-card set</a> ·
+      <a href="simulate.html">Balance sim</a>
+    </nav>
+    <h1>Pokémon Top Trumps</h1>
     <p class="lede">
-      Forty-card draft. Seven stats: HP, Attack, Defense, Sp. Attack, Speed,
-      Height, and Weight. Official art from PokeAPI sits on a type-coloured
-      field instead of a white box.
-      Latest look: <a href="draft.html">10-card set — type-colour bars</a>.
+      A 30-card pack. Folklore captions, cinematic type photos, inset type
+      bars. Two players deal 15 each; three players deal 10 each. Click a card
+      to flip.
     </p>
-
-    <h2>Design studies</h2>
-    <p class="note">
-      <a href="designs.html">Six numbered photo + typeface options</a> —
-      cinematic, classic Top Trumps, comic, Pokédex terminal, field dossier,
-      stadium jersey. Pick a number there. The three CSS treatments below are
-      the earlier gallery styles: <strong>HOME wash</strong>,
-      <strong>Base Set texture</strong>, and <strong>Stage</strong>.
-    </p>
-    <div class="studies">
-      <div>
-        <h3>HOME wash</h3>
-        <p class="note">Soft radial type glow. Cleanest read of the sprite.</p>
-        <div class="study-cards" id="study-wash"></div>
-      </div>
-      <div>
-        <h3>Base Set texture</h3>
-        <p class="note">Gold art frame and a type texture in the window.</p>
-        <div class="study-cards" id="study-baseset"></div>
-      </div>
-      <div>
-        <h3>Stage</h3>
-        <p class="note">Darker scene, ground plane, sprite slightly larger.</p>
-        <div class="study-cards" id="study-stage"></div>
-      </div>
-    </div>
-
-    <h2>Full deck</h2>
+    <p class="lock">A / 2 / 5 Inset type · 30 cards</p>
     <div class="toolbar">
-      <label for="theme">Art style</label>
-      <select id="theme">
-        <option value="wash">HOME wash</option>
-        <option value="baseset" selected>Base Set texture</option>
-        <option value="stage">Stage</option>
-      </select>
       <label for="sort">Sort</label>
       <select id="sort">
         <option value="n">Card number</option>
         <option value="hp">HP</option>
         <option value="attack">Attack</option>
-        <option value="defense">Defense</option>
+        <option value="defense">Defence</option>
         <option value="special_attack">Sp. Attack</option>
         <option value="speed">Speed</option>
         <option value="height_m">Height</option>
@@ -463,13 +324,17 @@
       </select>
     </div>
     <p class="status" id="status">Loading deck…</p>
-    <div class="table" id="gallery"></div>
+    <div class="table" id="table"></div>
+    <p class="hint">
+      Folklore captions from Yellow / Gold / Crystal / FireRed / LeafGreen / Emerald / Sapphire / Diamond via PokeAPI.
+      Sprites fit to opaque pixels. Back 2 unchanged.
+    </p>
   </div>
   <script>
     const STATS = [
       { id: "hp", label: "HP" },
       { id: "attack", label: "Attack" },
-      { id: "defense", label: "Defense" },
+      { id: "defense", label: "Defence" },
       { id: "special_attack", label: "Sp. Attack" },
       { id: "speed", label: "Speed" },
       { id: "height_m", label: "Height (m)" },
@@ -484,17 +349,9 @@
       steel: "#8a8aa0", fairy: "#c46a96",
     };
 
-    const STUDY_SLUGS = ["charizard", "blastoise", "pikachu"];
-
-    const gallery = document.getElementById("gallery");
-    const status = document.getElementById("status");
-    const sortEl = document.getElementById("sort");
-    const themeEl = document.getElementById("theme");
-    let cards = [];
-
-    function pad(n) {
-      return String(n).padStart(2, "0");
-    }
+    const PK = "assets/backs/pokemon-logo.png";
+    const TT = "assets/backs/tt-wordmark.jpg";
+    const spriteBox = new Map();
 
     function esc(value) {
       return String(value)
@@ -509,65 +366,147 @@
       return String(n);
     }
 
-    function createCard(card, theme) {
-      const primary = (card.types[0] || "normal").toLowerCase();
-      const secondary = (card.types[1] || "").toLowerCase();
-      const article = document.createElement("article");
-      article.className = "trump " + primary;
-      article.dataset.theme = theme;
-      article.style.setProperty("--type2", TYPE_HEX[secondary] || TYPE_HEX[primary]);
-
-      const pills = card.types
-        .map((t) => `<span class="type-pill">${esc(t)}</span>`)
-        .join("");
-
-      const rows = STATS.map(
-        (s) =>
-          `<div class="stat"><span>${s.label}</span><span>${fmt(s.id, card.stats[s.id])}</span></div>`
-      ).join("");
-
-      article.innerHTML = `
-        <header class="head">
-          <div class="name">${esc(card.name)}</div>
-          <div class="no">${pad(card.card_number)}</div>
-        </header>
-        <div class="meta">
-          <div class="genus">${esc(card.genus || "")}</div>
-          <div class="types">${pills}</div>
-        </div>
-        <div class="art">
-          <img src="${esc(card.artwork)}" alt="${esc(card.name)}" />
-        </div>
-        <p class="blurb">${esc(card.blurb || "")}</p>
-        <div class="stats">${rows}</div>
-      `;
-      return article;
+    function pad(n) {
+      return String(n).padStart(2, "0");
     }
 
-    function renderGallery() {
-      const key = sortEl.value;
-      const theme = themeEl.value;
+    function primary(card) {
+      return (card.types[0] || "normal").toLowerCase();
+    }
+
+    function renderFront(card) {
+      const type = primary(card);
+      const hex = TYPE_HEX[type] || "#888";
+      const rows = STATS.map(
+        (s) =>
+          `<div class="stat"><i>${s.label}</i><b>${fmt(s.id, card.stats[s.id])}</b></div>`
+      ).join("");
+      const caption = card.caption || card.blurb || "";
+      return `<article class="card front" style="--type:${hex};--bg:url('assets/bg/${type}.jpg')">
+        <div class="scene"></div><div class="halftone"></div><div class="veil"></div>
+        <div class="art">
+          <img class="sprite" crossorigin="anonymous" src="${esc(card.artwork)}" alt="${esc(card.name)}" />
+        </div>
+        <div class="head">
+          <div class="name">${esc(card.name).toUpperCase()}</div>
+          <div class="no">${pad(card.card_number)}</div>
+        </div>
+        <div class="types">${esc(card.types.join("  /  "))}</div>
+        <div class="copy">
+          <p class="caption">${esc(caption)}</p>
+          <div class="board">${rows}</div>
+        </div>
+      </article>`;
+    }
+
+    function renderBack() {
+      return `<article class="card back-key">
+        <div class="back-inner">
+          <img class="tt-img" src="${TT}" alt="Top Trumps">
+          <img class="pk-logo" src="${PK}" alt="Pokémon">
+        </div>
+      </article>`;
+    }
+
+    function opaqueBox(img) {
+      const src = img.currentSrc || img.src;
+      if (spriteBox.has(src)) return Promise.resolve(spriteBox.get(src));
+      return new Promise((resolve) => {
+        const probe = new Image();
+        probe.crossOrigin = "anonymous";
+        probe.onload = () => {
+          try {
+            const w = probe.naturalWidth;
+            const h = probe.naturalHeight;
+            const canvas = document.createElement("canvas");
+            canvas.width = w;
+            canvas.height = h;
+            const ctx = canvas.getContext("2d", { willReadFrequently: true });
+            ctx.drawImage(probe, 0, 0);
+            const data = ctx.getImageData(0, 0, w, h).data;
+            let minX = w;
+            let minY = h;
+            let maxX = 0;
+            let maxY = 0;
+            let found = false;
+            for (let y = 0; y < h; y++) {
+              for (let x = 0; x < w; x++) {
+                if (data[(y * w + x) * 4 + 3] > 16) {
+                  found = true;
+                  if (x < minX) minX = x;
+                  if (x > maxX) maxX = x;
+                  if (y < minY) minY = y;
+                  if (y > maxY) maxY = y;
+                }
+              }
+            }
+            const box = found
+              ? { minX, minY, maxX, maxY, width: w, height: h }
+              : { minX: 0, minY: 0, maxX: w - 1, maxY: h - 1, width: w, height: h };
+            spriteBox.set(src, box);
+            resolve(box);
+          } catch (err) {
+            resolve(null);
+          }
+        };
+        probe.onerror = () => resolve(null);
+        probe.src = src;
+      });
+    }
+
+    function placeSprite(img, box) {
+      const art = img.closest(".art");
+      if (!art || !box) return;
+      const aw = art.clientWidth;
+      const ah = art.clientHeight;
+      if (aw < 8 || ah < 8) return;
+      const inset = 2;
+      const bw = box.maxX - box.minX + 1;
+      const bh = box.maxY - box.minY + 1;
+      const scale = Math.min((aw - inset * 2) / bw, (ah - inset * 2) / bh);
+      img.style.width = box.width * scale + "px";
+      img.style.height = box.height * scale + "px";
+      img.style.maxWidth = "none";
+      img.style.maxHeight = "none";
+      img.style.left = (aw - bw * scale) / 2 - box.minX * scale + "px";
+      img.style.top = (ah - bh * scale) / 2 - box.minY * scale + "px";
+      img.style.objectFit = "fill";
+    }
+
+    function fitSprite(img) {
+      const run = () => {
+        opaqueBox(img).then((box) => {
+          if (box) placeSprite(img, box);
+        });
+      };
+      if (img.complete && img.naturalWidth) run();
+      else img.addEventListener("load", run, { once: true });
+    }
+
+    function fitAllSprites(root) {
+      (root || document).querySelectorAll(".sprite").forEach(fitSprite);
+    }
+
+    let cards = [];
+
+    function renderSet() {
+      const key = document.getElementById("sort").value;
       const sorted = [...cards].sort((a, b) => {
         if (key === "n") return a.card_number - b.card_number;
         if (key === "name") return a.name.localeCompare(b.name);
         return (b.stats[key] ?? 0) - (a.stats[key] ?? 0);
       });
-      gallery.replaceChildren(...sorted.map((card) => createCard(card, theme)));
-    }
-
-    function renderStudies() {
-      const featured = STUDY_SLUGS.map((slug) =>
-        cards.find((c) => c.slug === slug)
-      ).filter(Boolean);
-      document.getElementById("study-wash").replaceChildren(
-        ...featured.map((c) => createCard(c, "wash"))
-      );
-      document.getElementById("study-baseset").replaceChildren(
-        ...featured.map((c) => createCard(c, "baseset"))
-      );
-      document.getElementById("study-stage").replaceChildren(
-        ...featured.map((c) => createCard(c, "stage"))
-      );
+      document.getElementById("table").innerHTML = sorted.map((card) => {
+        return `<div class="flip-stage">
+          <div class="flipper" title="Click to flip">
+            <div class="face face-front">${renderFront(card)}</div>
+            <div class="face face-back">${renderBack()}</div>
+          </div>
+        </div>`;
+      }).join("");
+      document.getElementById("status").textContent =
+        cards.length + " cards · inset type · back 2";
+      fitAllSprites(document.getElementById("table"));
     }
 
     fetch("data/deck.json")
@@ -577,16 +516,17 @@
       })
       .then((deck) => {
         cards = deck.cards || [];
-        status.textContent = cards.length + " cards · 7 stats";
-        renderStudies();
-        renderGallery();
+        renderSet();
+        document.getElementById("table").addEventListener("click", (e) => {
+          const flipper = e.target.closest(".flipper");
+          if (flipper) flipper.classList.toggle("is-flipped");
+        });
+        document.getElementById("sort").addEventListener("change", renderSet);
+        document.fonts.ready.then(() => fitAllSprites());
       })
       .catch((err) => {
-        status.textContent = err.message;
+        document.getElementById("status").textContent = err.message;
       });
-
-    sortEl.addEventListener("change", renderGallery);
-    themeEl.addEventListener("change", renderGallery);
   </script>
 </body>
 </html>

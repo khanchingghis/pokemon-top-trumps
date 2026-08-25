@@ -39,7 +39,7 @@ SEED = 42
 
 
 def percentile_map(cards: list[dict]) -> dict[str, dict[str, float]]:
-    """card slug -> stat -> percentile in [0, 1] vs the full 40-card deck."""
+    """card slug -> stat -> percentile in [0, 1] vs the full deck."""
     n = len(cards)
     out = {c["slug"]: {} for c in cards}
     for stat in STAT_IDS:
@@ -301,7 +301,7 @@ def main() -> None:
             "games_per_count": GAMES,
             "max_rounds": MAX_ROUNDS,
             "seed": SEED,
-            "strategy": "Pick the stat with the highest full-deck percentile on the chooser's card (z-score tie-break). Winner of a round shuffles the won cards onto the bottom of their deck. Ties go to a pot for the next unique winner. 3-player deals 13 cards each (1 unused); 2p=20, 4p=10.",
+            "strategy": "Pick the stat with the highest full-deck percentile on the chooser's card (z-score tie-break). Winner of a round shuffles the won cards onto the bottom of their deck. Ties go to a pot for the next unique winner. 30-card pack: 2p=15, 3p=10, 4p=7 (2 unused).",
             "stats": [STAT_LABELS[s] for s in STAT_IDS],
         },
         "by_players": {},

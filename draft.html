@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>10-card set — type colour bars</title>
+  <title>30-card set — Pokémon Top Trumps</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@500;700&display=swap" rel="stylesheet" />
@@ -36,16 +36,7 @@
       text-transform: uppercase;
     }
 
-    h2 {
-      margin: 36px 0 8px;
-      font-family: Oswald, sans-serif;
-      font-size: 18px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #e2c01a;
-    }
-
-    .lede, .why {
+    .lede {
       margin: 0 0 18px;
       max-width: 74ch;
       color: #c9c2b3;
@@ -53,64 +44,44 @@
       font-size: 15px;
     }
 
-    .why { font-size: 14px; max-width: 34ch; margin: 0; }
-
     .lock {
-      margin: 0 0 22px;
+      margin: 0 0 18px;
       color: #9a9182;
       font-size: 14px;
     }
 
-    .status { color: #c9c2b3; font-size: 14px; margin: 0 0 16px; }
-
-    .picker {
-      position: sticky;
-      top: 0;
-      z-index: 12;
+    .toolbar {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      padding: 10px 0 14px;
-      background: linear-gradient(var(--table) 70%, transparent);
+      gap: 12px 18px;
+      align-items: center;
+      margin-bottom: 16px;
     }
 
-    .picker button, .picker span {
-      font: inherit;
-      background: #1c1a16;
-      color: #f0e6c8;
-      border: 1px solid #5a5040;
-      border-radius: 999px;
-      padding: 6px 12px;
-    }
-
-    .picker span {
-      background: transparent;
-      border: 0;
-      padding-left: 4px;
+    .toolbar label {
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       color: #9a9182;
     }
 
-    .picker button { cursor: pointer; }
-    .picker button.is-on { border-color: #e2c01a; color: #fff; }
+    .toolbar select {
+      font: inherit;
+      font-size: 14px;
+      padding: 6px 10px;
+      background: #1c1a16;
+      color: #f0e6c8;
+      border: 1px solid #5a5040;
+      border-radius: 6px;
+    }
+
+    .status { color: #c9c2b3; font-size: 14px; margin: 0 0 16px; }
 
     .table {
       display: flex;
       flex-wrap: wrap;
       gap: 24px 22px;
       align-items: flex-start;
-    }
-
-    .example { display: flex; flex-direction: column; gap: 8px; }
-
-    .num-badge {
-      display: inline-block;
-      margin-right: 6px;
-      padding: 1px 8px;
-      border-radius: 999px;
-      background: #e2c01a;
-      color: #1c1914;
-      font-size: 13px;
-      font-weight: 700;
     }
 
     .flip-stage {
@@ -141,7 +112,6 @@
 
     .card {
       --type: #888;
-      --type2: var(--type);
       --ink: #fff;
       --bg: none;
       position: relative;
@@ -267,8 +237,10 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      color: #111;
       padding: 4px 16px 3px 9px;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
+      background: rgba(10, 8, 6, 0.78);
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--type) 70%, #fff);
     }
 
     .front .stat i {
@@ -278,6 +250,7 @@
       font-weight: 500;
       letter-spacing: 0.06em;
       text-transform: uppercase;
+      color: color-mix(in srgb, var(--type) 45%, #fff);
     }
 
     .front .stat b {
@@ -285,126 +258,8 @@
       font-size: 18px;
       font-weight: 700;
       line-height: 1;
+      color: #fff;
     }
-
-    .split .stat {
-      background: transparent;
-      padding: 0;
-      gap: 3px;
-    }
-    .split .stat i,
-    .split .stat b {
-      display: flex;
-      align-items: center;
-      height: 26px;
-    }
-    .split .stat i {
-      flex: 1;
-      padding: 0 10px;
-      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%);
-    }
-    .split .stat b {
-      min-width: 58px;
-      justify-content: flex-end;
-      padding: 0 16px 0 10px;
-      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
-    }
-
-    /* 1 Split — dark plate, yellow value */
-    .bar-split .stat i { background: #14110e; color: var(--bar); }
-    .bar-split .stat b { background: var(--bar); color: #111; }
-
-    /* 2 Split chip — dark plate, type-coloured value */
-    .bar-chip .stat i {
-      background: #14110e;
-      color: color-mix(in srgb, var(--type) 50%, #fff);
-    }
-    .bar-chip .stat b { background: var(--type); color: var(--ink); }
-
-    /* 3 Split plate — type-coloured plate, yellow value */
-    .bar-plate .stat i { background: var(--type); color: var(--ink); }
-    .bar-plate .stat b { background: var(--bar); color: #111; }
-
-    .inset .stat {
-      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
-    }
-
-    /* 4 Inset — dark glass, yellow ink */
-    .bar-inset .stat {
-      background: rgba(10, 8, 6, 0.78);
-      box-shadow: inset 0 0 0 1px rgba(240, 201, 42, 0.35);
-    }
-    .bar-inset .stat i { color: var(--bar); }
-    .bar-inset .stat b { color: #fff; }
-
-    /* 5 Inset type — dark glass, type ink */
-    .bar-inset-type .stat {
-      background: rgba(10, 8, 6, 0.78);
-      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--type) 70%, #fff);
-    }
-    .bar-inset-type .stat i { color: color-mix(in srgb, var(--type) 45%, #fff); }
-    .bar-inset-type .stat b { color: #fff; }
-
-    /* 6 Type glass — translucent type fill */
-    .bar-glass .stat {
-      background: color-mix(in srgb, var(--type) 58%, transparent);
-      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
-      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--type) 55%, #fff);
-    }
-    .bar-glass .stat i,
-    .bar-glass .stat b { color: #fff; }
-
-    .tab .stat {
-      position: relative;
-      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
-      padding-left: 28px;
-    }
-    .tab .stat::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 18px;
-      clip-path: polygon(0 0, 100% 0, 72% 50%, 100% 100%, 0 100%);
-    }
-
-    /* 7 Type tab — type shoulder, yellow bar */
-    .bar-tab .stat { background: var(--bar); }
-    .bar-tab .stat::before { background: var(--type); }
-    .bar-tab .stat i,
-    .bar-tab .stat b { color: #111; }
-
-    /* 8 Type fill — whole bar is type colour */
-    .bar-fill .stat {
-      background: var(--type);
-      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
-    }
-    .bar-fill .stat i,
-    .bar-fill .stat b { color: var(--ink); }
-
-    /* 9 Twin tab — both types as shoulders, yellow bar */
-    .bar-twin .stat {
-      position: relative;
-      background: var(--bar);
-      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
-      padding-left: 28px;
-    }
-    .bar-twin .stat::before,
-    .bar-twin .stat::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 16px;
-      clip-path: polygon(0 0, 100% 0, 72% 50%, 100% 100%, 0 100%);
-    }
-    .bar-twin .stat::before { left: 0; background: var(--type); }
-    .bar-twin .stat::after { left: 14px; background: var(--type2); }
-    .bar-twin.is-dual .stat { padding-left: 36px; }
-    .bar-twin.is-mono .stat::after { display: none; }
-    .bar-twin .stat i,
-    .bar-twin .stat b { color: #111; }
 
     .back-key {
       background: url("assets/backs/pack-keyart.jpg") center/cover no-repeat;
@@ -436,16 +291,6 @@
       box-shadow: 0 8px 20px rgba(0,0,0,.4);
     }
 
-    .mix-now {
-      margin: 0 0 12px;
-      font-size: 15px;
-      color: #e8e2d4;
-    }
-    .mix-now strong {
-      color: #ffde00;
-      letter-spacing: 0.04em;
-    }
-
     .hint { margin: 18px 0 0; font-size: 13px; color: #9a9182; }
   </style>
 </head>
@@ -454,32 +299,35 @@
     <nav>
       <a href="index.html">Card gallery</a> ·
       <a href="designs.html">Design options</a> ·
-      10-card set ·
+      30-card set ·
       <a href="simulate.html">Balance sim</a>
     </nav>
-    <h1>Type colour</h1>
+    <h1>30-card set</h1>
     <p class="lede">
-      Locked: folklore (A), cinematic photos (2), back 2. You liked Split,
-      Inset, and Type tab — below are those three plus type-colour riffs.
-      Charizard is Fire / Flying, so dual-type treatments actually show.
-      Mix them on the ten-card set; reply with a number, for example
-      <strong>5</strong>.
+      Locked look: folklore captions, cinematic type photos, inset type bars,
+      back 2. Two players deal 15 each; three players deal 10 each. Click a
+      card to flip.
     </p>
-    <p class="lock">A / 2 / IV · 3 · 4 · 5 · type colour</p>
-
-    <h2>From Split, Inset, and Type tab</h2>
-    <p class="lede">Same stats and sprite fit. Type colour is the variable.</p>
-    <div class="table" id="bar-examples"></div>
-
-    <h2>The ten cards</h2>
-    <p class="lede">This is where type colour earns its keep. Click a card to flip to back 2.</p>
-    <div class="picker" id="picker"></div>
-    <p class="mix-now" id="mix-now">Current bar: <strong>1 Split</strong></p>
+    <p class="lock">A / 2 / 5 Inset type · 30 cards</p>
+    <div class="toolbar">
+      <label for="sort">Sort</label>
+      <select id="sort">
+        <option value="n">Card number</option>
+        <option value="hp">HP</option>
+        <option value="attack">Attack</option>
+        <option value="defense">Defence</option>
+        <option value="special_attack">Sp. Attack</option>
+        <option value="speed">Speed</option>
+        <option value="height_m">Height</option>
+        <option value="weight_kg">Weight</option>
+        <option value="name">Name</option>
+      </select>
+    </div>
     <p class="status" id="status">Loading deck…</p>
     <div class="table" id="table"></div>
     <p class="hint">
-      Folklore captions from Gold / Silver / Crystal / Yellow / FireRed via PokeAPI.
-      Back 2 unchanged. Sprites still fit to opaque pixels.
+      Folklore captions from Yellow / Gold / Crystal / FireRed / LeafGreen / Emerald / Sapphire / Diamond via PokeAPI.
+      Sprites fit to opaque pixels. Back 2 unchanged.
     </p>
   </div>
   <script>
@@ -500,23 +348,6 @@
       rock: "#8f7e28", ghost: "#56406e", dragon: "#5a28c8", dark: "#4a3a32",
       steel: "#8a8aa0", fairy: "#c46a96",
     };
-
-    const SET = [
-      "venusaur", "charizard", "blastoise", "pikachu", "alakazam",
-      "machamp", "gengar", "snorlax", "dragonite", "mewtwo",
-    ];
-
-    const BARS = [
-      { id: "split", n: "1", label: "1 Split", family: "split", caption: "The Split you liked. Dark plate, yellow value." },
-      { id: "chip", n: "2", label: "2 Split chip", family: "split", caption: "Dark plate, type-coloured number. Fire orange, water blue, ghost purple." },
-      { id: "plate", n: "3", label: "3 Split plate", family: "split", caption: "Type-coloured label, yellow value. The plate carries the type." },
-      { id: "inset", n: "4", label: "4 Inset", family: "inset", caption: "The Inset you liked. Dark glass, yellow ink." },
-      { id: "inset-type", n: "5", label: "5 Inset type", family: "inset", caption: "Same glass, type-coloured labels and outline." },
-      { id: "glass", n: "6", label: "6 Type glass", family: "inset", caption: "Translucent type fill over the cinematic photo." },
-      { id: "tab", n: "7", label: "7 Type tab", family: "tab", caption: "The Type tab you liked. Type shoulder on yellow." },
-      { id: "fill", n: "8", label: "8 Type fill", family: "fill", caption: "The whole bar is type colour. No yellow left in the stats." },
-      { id: "twin", n: "9", label: "9 Twin tab", family: "tab", caption: "Both types as shoulders — Fire and Flying on Charizard." },
-    ];
 
     const PK = "assets/backs/pokemon-logo.png";
     const TT = "assets/backs/tt-wordmark.jpg";
@@ -543,38 +374,15 @@
       return (card.types[0] || "normal").toLowerCase();
     }
 
-    function secondary(card) {
-      return (card.types[1] || card.types[0] || "normal").toLowerCase();
-    }
-
-    function inkOn(hex) {
-      const n = parseInt(String(hex).replace("#", ""), 16);
-      if (!Number.isFinite(n)) return "#fff";
-      const r = (n >> 16) & 255;
-      const g = (n >> 8) & 255;
-      const b = n & 255;
-      const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-      return lum > 0.62 ? "#111" : "#fff";
-    }
-
-    function familyClass(barId) {
-      const meta = BARS.find((x) => x.id === barId);
-      return meta ? meta.family : "";
-    }
-
-    function renderFront(card, barId) {
+    function renderFront(card) {
       const type = primary(card);
-      const type2 = secondary(card);
       const hex = TYPE_HEX[type] || "#888";
-      const hex2 = TYPE_HEX[type2] || hex;
-      const dual = card.types.length > 1 ? "is-dual" : "is-mono";
       const rows = STATS.map(
         (s) =>
           `<div class="stat"><i>${s.label}</i><b>${fmt(s.id, card.stats[s.id])}</b></div>`
       ).join("");
       const caption = card.caption || card.blurb || "";
-      const cls = ["card", "front", familyClass(barId), "bar-" + barId, dual].filter(Boolean).join(" ");
-      return `<article class="${cls}" style="--type:${hex};--type2:${hex2};--ink:${inkOn(hex)};--bg:url('assets/bg/${type}.jpg')">
+      return `<article class="card front" style="--type:${hex};--bg:url('assets/bg/${type}.jpg')">
         <div class="scene"></div><div class="halftone"></div><div class="veil"></div>
         <div class="art">
           <img class="sprite" crossorigin="anonymous" src="${esc(card.artwork)}" alt="${esc(card.name)}" />
@@ -680,33 +488,25 @@
     }
 
     let cards = [];
-    let bar = "split";
-
-    function barMeta() {
-      return BARS.find((x) => x.id === bar);
-    }
 
     function renderSet() {
-      document.getElementById("table").innerHTML = cards.map((card) => {
+      const key = document.getElementById("sort").value;
+      const sorted = [...cards].sort((a, b) => {
+        if (key === "n") return a.card_number - b.card_number;
+        if (key === "name") return a.name.localeCompare(b.name);
+        return (b.stats[key] ?? 0) - (a.stats[key] ?? 0);
+      });
+      document.getElementById("table").innerHTML = sorted.map((card) => {
         return `<div class="flip-stage">
           <div class="flipper" title="Click to flip">
-            <div class="face face-front">${renderFront(card, bar)}</div>
+            <div class="face face-front">${renderFront(card)}</div>
             <div class="face face-back">${renderBack()}</div>
           </div>
         </div>`;
       }).join("");
-      const meta = barMeta();
-      document.getElementById("mix-now").innerHTML =
-        "Current bar: <strong>" + meta.label + "</strong>";
       document.getElementById("status").textContent =
-        cards.length + " cards · A / 2 · bar " + meta.n + " · back 2";
+        cards.length + " cards · inset type · back 2";
       fitAllSprites(document.getElementById("table"));
-    }
-
-    function markPicker() {
-      document.querySelectorAll("#picker button").forEach((btn) => {
-        btn.classList.toggle("is-on", btn.dataset.bar === bar);
-      });
     }
 
     fetch("data/deck.json")
@@ -715,37 +515,13 @@
         return r.json();
       })
       .then((deck) => {
-        const bySlug = Object.fromEntries((deck.cards || []).map((c) => [c.slug, c]));
-        cards = SET.map((slug) => bySlug[slug]).filter(Boolean);
-        const charizard = bySlug.charizard;
-
-        document.getElementById("bar-examples").innerHTML = BARS.map((b) => {
-          return `<div class="example">${renderFront(charizard, b.id)}
-            <p class="why"><span class="num-badge">${b.n}</span>${b.caption}</p></div>`;
-        }).join("");
-        fitAllSprites(document.getElementById("bar-examples"));
-
-        document.getElementById("picker").innerHTML = [
-          "<span>Bars</span>",
-          ...BARS.map((b) => `<button type="button" data-bar="${b.id}">${b.label}</button>`),
-        ].join("");
-
-        document.getElementById("picker").addEventListener("click", (e) => {
-          const btn = e.target.closest("button");
-          if (!btn || !btn.dataset.bar) return;
-          bar = btn.dataset.bar;
-          markPicker();
-          renderSet();
-        });
-
-        markPicker();
+        cards = deck.cards || [];
         renderSet();
-
         document.getElementById("table").addEventListener("click", (e) => {
           const flipper = e.target.closest(".flipper");
           if (flipper) flipper.classList.toggle("is-flipped");
         });
-
+        document.getElementById("sort").addEventListener("change", renderSet);
         document.fonts.ready.then(() => fitAllSprites());
       })
       .catch((err) => {
