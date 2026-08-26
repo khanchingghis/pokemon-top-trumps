@@ -28,7 +28,7 @@ One-time setup: Settings → Pages → Source → **GitHub Actions**. If the dep
 
 ## Deck
 
-A 30-card pack lives in `data/deck.json`. Two players deal 15 each; three players deal 10 each. Playable stats: HP, Attack, Defence, Sp. Attack, Speed, Height, Weight. Artwork and Pokédex lines come from [PokeAPI](https://pokeapi.co).
+A 30-card pack of household names (mostly the original 151, plus Tyranitar and Lucario) lives in `data/deck.json`. Two players deal 15 each; three players deal 10 each. Playable stats: HP, Attack, Defence, Sp. Attack, Speed, Height, Weight. Artwork and Pokédex lines come from [PokeAPI](https://pokeapi.co).
 
 ## Planned features
 

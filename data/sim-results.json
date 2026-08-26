@@ -23,25 +23,25 @@
       "cards_dealt_each": 15,
       "rounds": {
         "n": 8000,
-        "mean": 40.45,
-        "median": 31.0,
+        "mean": 42.62,
+        "median": 33.0,
         "p10": 15.0,
-        "p25": 17.0,
-        "p75": 51.0,
-        "p90": 81.0,
+        "p25": 19.0,
+        "p75": 55.0,
+        "p90": 83.0,
         "min": 15,
-        "max": 283
+        "max": 351
       },
       "ties": {
         "n": 8000,
-        "mean": 1.26,
+        "mean": 0.93,
         "median": 1.0,
         "p10": 0.0,
         "p25": 0.0,
-        "p75": 2.0,
-        "p90": 3.0,
+        "p75": 1.0,
+        "p90": 2.0,
         "min": 0,
-        "max": 12
+        "max": 9
       },
       "first_elimination_round": null,
       "round_histogram": {
@@ -59,15 +59,15 @@
           "1000\u20132500"
         ],
         "counts": [
-          2452,
-          2576,
-          1407,
-          761,
-          389,
-          333,
-          70,
-          12,
-          0,
+          2051,
+          2774,
+          1483,
+          789,
+          432,
+          376,
+          78,
+          13,
+          4,
           0,
           0
         ]
@@ -75,65 +75,65 @@
       "seat_wins": [
         {
           "seat": 0,
-          "wins": 4757,
-          "win_pct": 59.46
+          "wins": 4739,
+          "win_pct": 59.24
         },
         {
           "seat": 1,
-          "wins": 3243,
-          "win_pct": 40.54
+          "wins": 3261,
+          "win_pct": 40.76
         }
       ],
-      "first_player_win_pct": 59.46,
+      "first_player_win_pct": 59.24,
       "fair_share_pct": 50.0,
       "stats_chosen": [
         {
           "id": "hp",
           "label": "HP",
-          "chosen": 21013,
-          "chosen_pct": 6.49,
-          "win_when_chosen_pct": 100.0
+          "chosen": 21994,
+          "chosen_pct": 6.45,
+          "win_when_chosen_pct": 98.25
         },
         {
           "id": "attack",
           "label": "Attack",
-          "chosen": 64870,
-          "chosen_pct": 20.04,
-          "win_when_chosen_pct": 95.9
+          "chosen": 69359,
+          "chosen_pct": 20.34,
+          "win_when_chosen_pct": 97.07
         },
         {
           "id": "defense",
           "label": "Defense",
-          "chosen": 31925,
-          "chosen_pct": 9.86,
-          "win_when_chosen_pct": 93.21
+          "chosen": 33522,
+          "chosen_pct": 9.83,
+          "win_when_chosen_pct": 97.78
         },
         {
           "id": "special_attack",
           "label": "Sp. Attack",
-          "chosen": 98968,
-          "chosen_pct": 30.58,
-          "win_when_chosen_pct": 96.94
+          "chosen": 80143,
+          "chosen_pct": 23.5,
+          "win_when_chosen_pct": 99.01
         },
         {
           "id": "speed",
           "label": "Speed",
-          "chosen": 31988,
-          "chosen_pct": 9.88,
-          "win_when_chosen_pct": 97.7
+          "chosen": 56827,
+          "chosen_pct": 16.67,
+          "win_when_chosen_pct": 95.92
         },
         {
           "id": "height_m",
           "label": "Height",
-          "chosen": 42442,
-          "chosen_pct": 13.11,
-          "win_when_chosen_pct": 96.54
+          "chosen": 45092,
+          "chosen_pct": 13.22,
+          "win_when_chosen_pct": 97.46
         },
         {
           "id": "weight_kg",
           "label": "Weight",
-          "chosen": 32430,
-          "chosen_pct": 10.02,
+          "chosen": 34051,
+          "chosen_pct": 9.99,
           "win_when_chosen_pct": 100.0
         }
       ],
@@ -141,62 +141,62 @@
         {
           "slug": "mewtwo",
           "name": "Mewtwo",
-          "round_wins": 14912
-        },
-        {
-          "slug": "metagross",
-          "name": "Metagross",
-          "round_wins": 14347
+          "round_wins": 15579
         },
         {
           "slug": "alakazam",
           "name": "Alakazam",
-          "round_wins": 13785
-        },
-        {
-          "slug": "slaking",
-          "name": "Slaking",
-          "round_wins": 13453
-        },
-        {
-          "slug": "steelix",
-          "name": "Steelix",
-          "round_wins": 12993
-        },
-        {
-          "slug": "magnezone",
-          "name": "Magnezone",
-          "round_wins": 12911
-        },
-        {
-          "slug": "gengar",
-          "name": "Gengar",
-          "round_wins": 11980
+          "round_wins": 13943
         },
         {
           "slug": "tyranitar",
           "name": "Tyranitar",
-          "round_wins": 11913
+          "round_wins": 13708
         },
         {
-          "slug": "dragonite",
-          "name": "Dragonite",
-          "round_wins": 11626
-        },
-        {
-          "slug": "gyarados",
-          "name": "Gyarados",
-          "round_wins": 11274
-        },
-        {
-          "slug": "ninjask",
-          "name": "Ninjask",
-          "round_wins": 11122
+          "slug": "onix",
+          "name": "Onix",
+          "round_wins": 13695
         },
         {
           "slug": "snorlax",
           "name": "Snorlax",
-          "round_wins": 11098
+          "round_wins": 13672
+        },
+        {
+          "slug": "gengar",
+          "name": "Gengar",
+          "round_wins": 13593
+        },
+        {
+          "slug": "dragonite",
+          "name": "Dragonite",
+          "round_wins": 13197
+        },
+        {
+          "slug": "gyarados",
+          "name": "Gyarados",
+          "round_wins": 13039
+        },
+        {
+          "slug": "golem",
+          "name": "Golem",
+          "round_wins": 12773
+        },
+        {
+          "slug": "electrode",
+          "name": "Electrode",
+          "round_wins": 12749
+        },
+        {
+          "slug": "cloyster",
+          "name": "Cloyster",
+          "round_wins": 12261
+        },
+        {
+          "slug": "jolteon",
+          "name": "Jolteon",
+          "round_wins": 11693
         }
       ]
     },
@@ -208,36 +208,36 @@
       "cards_dealt_each": 10,
       "rounds": {
         "n": 8000,
-        "mean": 39.92,
+        "mean": 40.34,
         "median": 31.0,
         "p10": 10.0,
-        "p25": 16.0,
+        "p25": 19.0,
         "p75": 53.0,
-        "p90": 81.0,
+        "p90": 82.0,
         "min": 10,
-        "max": 266
+        "max": 367
       },
       "ties": {
         "n": 8000,
-        "mean": 1.51,
+        "mean": 1.14,
         "median": 1.0,
         "p10": 0.0,
         "p25": 0.0,
         "p75": 2.0,
         "p90": 3.0,
         "min": 0,
-        "max": 13
+        "max": 10
       },
       "first_elimination_round": {
-        "n": 6734,
-        "mean": 13.09,
-        "median": 10.0,
+        "n": 6789,
+        "mean": 13.19,
+        "median": 10,
         "p10": 10.0,
         "p25": 10.0,
-        "p75": 13.0,
-        "p90": 19.0,
+        "p75": 16.0,
+        "p90": 22.0,
         "min": 10,
-        "max": 61
+        "max": 64
       },
       "round_histogram": {
         "labels": [
@@ -254,15 +254,15 @@
           "1000\u20132500"
         ],
         "counts": [
-          2500,
-          2454,
-          1409,
-          794,
-          413,
-          350,
-          63,
-          17,
-          0,
+          2390,
+          2541,
+          1437,
+          773,
+          401,
+          376,
+          62,
+          19,
+          1,
           0,
           0
         ]
@@ -270,133 +270,133 @@
       "seat_wins": [
         {
           "seat": 0,
-          "wins": 3714,
-          "win_pct": 46.42
+          "wins": 3705,
+          "win_pct": 46.31
         },
         {
           "seat": 1,
-          "wins": 2126,
-          "win_pct": 26.57
+          "wins": 2151,
+          "win_pct": 26.89
         },
         {
           "seat": 2,
-          "wins": 2160,
-          "win_pct": 27.0
+          "wins": 2144,
+          "win_pct": 26.8
         }
       ],
-      "first_player_win_pct": 46.42,
+      "first_player_win_pct": 46.31,
       "fair_share_pct": 33.33,
       "stats_chosen": [
         {
           "id": "hp",
           "label": "HP",
-          "chosen": 20674,
-          "chosen_pct": 6.47,
-          "win_when_chosen_pct": 100.0
+          "chosen": 20864,
+          "chosen_pct": 6.46,
+          "win_when_chosen_pct": 97.69
         },
         {
           "id": "attack",
           "label": "Attack",
-          "chosen": 63743,
-          "chosen_pct": 19.96,
-          "win_when_chosen_pct": 95.0
+          "chosen": 65424,
+          "chosen_pct": 20.27,
+          "win_when_chosen_pct": 96.11
         },
         {
           "id": "defense",
           "label": "Defense",
-          "chosen": 31341,
-          "chosen_pct": 9.81,
-          "win_when_chosen_pct": 91.78
+          "chosen": 31507,
+          "chosen_pct": 9.76,
+          "win_when_chosen_pct": 97.07
         },
         {
           "id": "special_attack",
           "label": "Sp. Attack",
-          "chosen": 97778,
-          "chosen_pct": 30.62,
-          "win_when_chosen_pct": 96.12
+          "chosen": 76274,
+          "chosen_pct": 23.63,
+          "win_when_chosen_pct": 98.69
         },
         {
           "id": "speed",
           "label": "Speed",
-          "chosen": 31438,
-          "chosen_pct": 9.84,
-          "win_when_chosen_pct": 97.34
+          "chosen": 53710,
+          "chosen_pct": 16.64,
+          "win_when_chosen_pct": 94.67
         },
         {
           "id": "height_m",
           "label": "Height",
-          "chosen": 41978,
-          "chosen_pct": 13.14,
-          "win_when_chosen_pct": 95.93
+          "chosen": 42561,
+          "chosen_pct": 13.19,
+          "win_when_chosen_pct": 96.88
         },
         {
           "id": "weight_kg",
           "label": "Weight",
-          "chosen": 32399,
-          "chosen_pct": 10.15,
-          "win_when_chosen_pct": 100.0
+          "chosen": 32405,
+          "chosen_pct": 10.04,
+          "win_when_chosen_pct": 99.97
         }
       ],
       "top_round_winning_cards": [
         {
           "slug": "mewtwo",
           "name": "Mewtwo",
-          "round_wins": 16012
-        },
-        {
-          "slug": "metagross",
-          "name": "Metagross",
-          "round_wins": 15257
+          "round_wins": 15744
         },
         {
           "slug": "alakazam",
           "name": "Alakazam",
-          "round_wins": 14339
+          "round_wins": 13759
         },
         {
-          "slug": "slaking",
-          "name": "Slaking",
-          "round_wins": 13908
-        },
-        {
-          "slug": "steelix",
-          "name": "Steelix",
-          "round_wins": 13396
-        },
-        {
-          "slug": "magnezone",
-          "name": "Magnezone",
-          "round_wins": 13301
+          "slug": "onix",
+          "name": "Onix",
+          "round_wins": 13538
         },
         {
           "slug": "tyranitar",
           "name": "Tyranitar",
-          "round_wins": 12006
-        },
-        {
-          "slug": "gengar",
-          "name": "Gengar",
-          "round_wins": 11955
-        },
-        {
-          "slug": "gyarados",
-          "name": "Gyarados",
-          "round_wins": 11452
-        },
-        {
-          "slug": "dragonite",
-          "name": "Dragonite",
-          "round_wins": 11385
+          "round_wins": 13475
         },
         {
           "slug": "snorlax",
           "name": "Snorlax",
-          "round_wins": 11365
+          "round_wins": 13437
         },
         {
-          "slug": "shuckle",
-          "name": "Shuckle",
-          "round_wins": 11069
+          "slug": "gengar",
+          "name": "Gengar",
+          "round_wins": 13137
+        },
+        {
+          "slug": "dragonite",
+          "name": "Dragonite",
+          "round_wins": 12875
+        },
+        {
+          "slug": "gyarados",
+          "name": "Gyarados",
+          "round_wins": 12569
+        },
+        {
+          "slug": "golem",
+          "name": "Golem",
+          "round_wins": 12475
+        },
+        {
+          "slug": "electrode",
+          "name": "Electrode",
+          "round_wins": 12373
+        },
+        {
+          "slug": "cloyster",
+          "name": "Cloyster",
+          "round_wins": 11775
+        },
+        {
+          "slug": "lapras",
+          "name": "Lapras",
+          "round_wins": 10948
         }
       ]
     },
@@ -408,30 +408,30 @@
       "cards_dealt_each": 7,
       "rounds": {
         "n": 8000,
-        "mean": 34.54,
-        "median": 27.0,
+        "mean": 33.89,
+        "median": 26.0,
         "p10": 7.0,
         "p25": 15.0,
-        "p75": 47.0,
-        "p90": 71.0,
+        "p75": 45.0,
+        "p90": 70.0,
         "min": 7,
-        "max": 277
+        "max": 240
       },
       "ties": {
         "n": 8000,
-        "mean": 1.38,
+        "mean": 1.05,
         "median": 1.0,
         "p10": 0.0,
         "p25": 0.0,
         "p75": 2.0,
         "p90": 3.0,
         "min": 0,
-        "max": 13
+        "max": 9
       },
       "first_elimination_round": {
-        "n": 6810,
-        "mean": 7.3,
-        "median": 7.0,
+        "n": 6759,
+        "mean": 7.28,
+        "median": 7,
         "p10": 7.0,
         "p25": 7.0,
         "p75": 7.0,
@@ -454,14 +454,14 @@
           "1000\u20132500"
         ],
         "counts": [
-          3013,
-          2440,
-          1340,
-          642,
-          294,
-          229,
-          31,
-          11,
+          3123,
+          2438,
+          1269,
+          619,
+          267,
+          240,
+          40,
+          4,
           0,
           0,
           0
@@ -470,138 +470,138 @@
       "seat_wins": [
         {
           "seat": 0,
-          "wins": 3162,
-          "win_pct": 39.52
+          "wins": 3242,
+          "win_pct": 40.52
         },
         {
           "seat": 1,
-          "wins": 1636,
-          "win_pct": 20.45
+          "wins": 1551,
+          "win_pct": 19.39
         },
         {
           "seat": 2,
-          "wins": 1622,
-          "win_pct": 20.27
+          "wins": 1645,
+          "win_pct": 20.56
         },
         {
           "seat": 3,
-          "wins": 1580,
-          "win_pct": 19.75
+          "wins": 1562,
+          "win_pct": 19.52
         }
       ],
-      "first_player_win_pct": 39.52,
+      "first_player_win_pct": 40.52,
       "fair_share_pct": 25.0,
       "stats_chosen": [
         {
           "id": "hp",
           "label": "HP",
-          "chosen": 17841,
-          "chosen_pct": 6.46,
-          "win_when_chosen_pct": 100.0
+          "chosen": 17258,
+          "chosen_pct": 6.36,
+          "win_when_chosen_pct": 97.49
         },
         {
           "id": "attack",
           "label": "Attack",
-          "chosen": 55368,
-          "chosen_pct": 20.04,
-          "win_when_chosen_pct": 94.74
+          "chosen": 55043,
+          "chosen_pct": 20.3,
+          "win_when_chosen_pct": 95.48
         },
         {
           "id": "defense",
           "label": "Defense",
-          "chosen": 27207,
-          "chosen_pct": 9.85,
-          "win_when_chosen_pct": 91.58
+          "chosen": 26460,
+          "chosen_pct": 9.76,
+          "win_when_chosen_pct": 96.77
         },
         {
           "id": "special_attack",
           "label": "Sp. Attack",
-          "chosen": 84385,
-          "chosen_pct": 30.54,
-          "win_when_chosen_pct": 95.87
+          "chosen": 64565,
+          "chosen_pct": 23.81,
+          "win_when_chosen_pct": 98.62
         },
         {
           "id": "speed",
           "label": "Speed",
-          "chosen": 26930,
-          "chosen_pct": 9.75,
-          "win_when_chosen_pct": 97.06
+          "chosen": 45020,
+          "chosen_pct": 16.6,
+          "win_when_chosen_pct": 94.31
         },
         {
           "id": "height_m",
           "label": "Height",
-          "chosen": 36361,
-          "chosen_pct": 13.16,
-          "win_when_chosen_pct": 95.79
+          "chosen": 35566,
+          "chosen_pct": 13.12,
+          "win_when_chosen_pct": 96.78
         },
         {
           "id": "weight_kg",
           "label": "Weight",
-          "chosen": 28200,
-          "chosen_pct": 10.21,
-          "win_when_chosen_pct": 100.0
+          "chosen": 27232,
+          "chosen_pct": 10.04,
+          "win_when_chosen_pct": 99.94
         }
       ],
       "top_round_winning_cards": [
         {
           "slug": "mewtwo",
           "name": "Mewtwo",
-          "round_wins": 14580
-        },
-        {
-          "slug": "metagross",
-          "name": "Metagross",
-          "round_wins": 13745
+          "round_wins": 13927
         },
         {
           "slug": "alakazam",
           "name": "Alakazam",
-          "round_wins": 12745
+          "round_wins": 11878
         },
         {
-          "slug": "slaking",
-          "name": "Slaking",
-          "round_wins": 12482
-        },
-        {
-          "slug": "steelix",
-          "name": "Steelix",
-          "round_wins": 12020
-        },
-        {
-          "slug": "magnezone",
-          "name": "Magnezone",
-          "round_wins": 11483
+          "slug": "onix",
+          "name": "Onix",
+          "round_wins": 11738
         },
         {
           "slug": "tyranitar",
           "name": "Tyranitar",
-          "round_wins": 10652
-        },
-        {
-          "slug": "gengar",
-          "name": "Gengar",
-          "round_wins": 10528
-        },
-        {
-          "slug": "dragonite",
-          "name": "Dragonite",
-          "round_wins": 9940
+          "round_wins": 11586
         },
         {
           "slug": "snorlax",
           "name": "Snorlax",
-          "round_wins": 9905
+          "round_wins": 11585
+        },
+        {
+          "slug": "gengar",
+          "name": "Gengar",
+          "round_wins": 11246
+        },
+        {
+          "slug": "dragonite",
+          "name": "Dragonite",
+          "round_wins": 10955
+        },
+        {
+          "slug": "electrode",
+          "name": "Electrode",
+          "round_wins": 10678
         },
         {
           "slug": "gyarados",
           "name": "Gyarados",
-          "round_wins": 9686
+          "round_wins": 10610
         },
         {
-          "slug": "shuckle",
-          "name": "Shuckle",
-          "round_wins": 9682
+          "slug": "golem",
+          "name": "Golem",
+          "round_wins": 10561
+        },
+        {
+          "slug": "cloyster",
+          "name": "Cloyster",
+          "round_wins": 9805
+        },
+        {
+          "slug": "lapras",
+          "name": "Lapras",
+          "round_wins": 9024
         }
       ]
     }
