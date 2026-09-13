@@ -1,0 +1,1069 @@
+{
+  "name": "Pokémon Top Trumps",
+  "source": "PokeAPI (https://pokeapi.co) — official base stats, genus, and English Pokédex entries",
+  "rules": {
+    "players": 2,
+    "deal": "Shuffle 40 cards. Two players get 20 each; four players get 10 each. Highest chosen stat wins the opponent’s card.",
+    "categories": [
+      {
+        "id": "hp",
+        "label": "HP"
+      },
+      {
+        "id": "attack",
+        "label": "Attack"
+      },
+      {
+        "id": "defense",
+        "label": "Defence"
+      },
+      {
+        "id": "special_attack",
+        "label": "Sp. Attack"
+      },
+      {
+        "id": "speed",
+        "label": "Speed"
+      },
+      {
+        "id": "height_m",
+        "label": "Height (m)"
+      },
+      {
+        "id": "weight_kg",
+        "label": "Weight (kg)"
+      }
+    ],
+    "tie": "Both cards go to a pile; next winner takes the pile."
+  },
+  "notes": "40-card pack of household names, mostly from the original 151, plus Tyranitar and Lucario. Printed at official Winning Moves Top Trumps size (62 × 100 mm) to fit a real plastic case. Specialists: Chansey HP, Cloyster Defence, Mewtwo Sp. Attack, Electrode Speed, Onix Height, Snorlax Weight. Attack is a close cluster (Dragonite and Tyranitar 134). Base stats only.",
+  "cards": [
+    {
+      "card_number": 1,
+      "pokedex": 3,
+      "name": "Venusaur",
+      "slug": "venusaur",
+      "types": [
+        "Grass",
+        "Poison"
+      ],
+      "stats": {
+        "hp": 80,
+        "attack": 82,
+        "defense": 83,
+        "special_attack": 100,
+        "special_defense": 100,
+        "speed": 80,
+        "height_m": 2.0,
+        "weight_kg": 100.0
+      },
+      "base_stat_total": 525,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png",
+      "genus": "Seed Pokémon",
+      "blurb": "Its plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.",
+      "caption": "A bewitching aroma wafts from its flower. The fragrance becalms those engaged in a battle.",
+      "caption_source": "Pokédex — FireRed"
+    },
+    {
+      "card_number": 2,
+      "pokedex": 6,
+      "name": "Charizard",
+      "slug": "charizard",
+      "types": [
+        "Fire",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 78,
+        "attack": 84,
+        "defense": 78,
+        "special_attack": 109,
+        "special_defense": 85,
+        "speed": 100,
+        "height_m": 1.7,
+        "weight_kg": 90.5
+      },
+      "base_stat_total": 534,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png",
+      "genus": "Flame Pokémon",
+      "blurb": "It spits fire that is hot enough to melt boulders. It may cause forest fires by blowing flames.",
+      "caption": "If it becomes furious, the flame at the tip of its tail flares whitish-blue.",
+      "caption_source": "Pokédex — Gold"
+    },
+    {
+      "card_number": 3,
+      "pokedex": 9,
+      "name": "Blastoise",
+      "slug": "blastoise",
+      "types": [
+        "Water"
+      ],
+      "stats": {
+        "hp": 79,
+        "attack": 83,
+        "defense": 100,
+        "special_attack": 85,
+        "special_defense": 105,
+        "speed": 78,
+        "height_m": 1.6,
+        "weight_kg": 85.5
+      },
+      "base_stat_total": 530,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png",
+      "genus": "Shellfish Pokémon",
+      "blurb": "It crushes its foe under its heavy body to cause fainting. In a pinch, it will withdraw inside its shell.",
+      "caption": "It firmly plants its feet on the ground before shooting water from the jets on its back.",
+      "caption_source": "Pokédex — Crystal"
+    },
+    {
+      "card_number": 4,
+      "pokedex": 25,
+      "name": "Pikachu",
+      "slug": "pikachu",
+      "types": [
+        "Electric"
+      ],
+      "stats": {
+        "hp": 35,
+        "attack": 55,
+        "defense": 40,
+        "special_attack": 50,
+        "special_defense": 50,
+        "speed": 90,
+        "height_m": 0.4,
+        "weight_kg": 6.0
+      },
+      "base_stat_total": 320,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+      "genus": "Mouse Pokémon",
+      "blurb": "Pikachu that can generate powerful electricity have cheek sacs that are extra soft and super stretchy.",
+      "caption": "It raises its tail to check its surroundings. The tail is sometimes struck by lightning in this pose.",
+      "caption_source": "Pokédex — Silver"
+    },
+    {
+      "card_number": 5,
+      "pokedex": 26,
+      "name": "Raichu",
+      "slug": "raichu",
+      "types": [
+        "Electric"
+      ],
+      "stats": {
+        "hp": 60,
+        "attack": 90,
+        "defense": 55,
+        "special_attack": 90,
+        "special_defense": 80,
+        "speed": 110,
+        "height_m": 0.8,
+        "weight_kg": 30.0
+      },
+      "base_stat_total": 485,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/26.png",
+      "genus": "Mouse Pokémon",
+      "blurb": "It can discharge bursts of electricity exceeding 100,000 volts— a single strike with that amount of power would incapacitate one of the Copperajah of my homeland.",
+      "caption": "Its long tail serves as a ground to protect itself from its own high-voltage power.",
+      "caption_source": "Pokédex — LeafGreen"
+    },
+    {
+      "card_number": 6,
+      "pokedex": 34,
+      "name": "Nidoking",
+      "slug": "nidoking",
+      "mirror": true,
+      "types": [
+        "Poison",
+        "Ground"
+      ],
+      "stats": {
+        "hp": 81,
+        "attack": 102,
+        "defense": 77,
+        "special_attack": 85,
+        "special_defense": 75,
+        "speed": 85,
+        "height_m": 1.4,
+        "weight_kg": 62.0
+      },
+      "base_stat_total": 505,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/34.png",
+      "genus": "Drill Pokémon",
+      "blurb": "Nidoking prides itself on its strength. It’s forceful and spirited in battle, making use of its thick tail and diamond-crushing horn.",
+      "caption": "One swing of its mighty tail can snap a telephone pole as if it were a matchstick.",
+      "caption_source": "Pokédex — Diamond"
+    },
+    {
+      "card_number": 7,
+      "pokedex": 38,
+      "name": "Ninetales",
+      "slug": "ninetales",
+      "types": [
+        "Fire"
+      ],
+      "stats": {
+        "hp": 73,
+        "attack": 76,
+        "defense": 75,
+        "special_attack": 81,
+        "special_defense": 100,
+        "speed": 100,
+        "height_m": 1.1,
+        "weight_kg": 19.9
+      },
+      "base_stat_total": 505,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/38.png",
+      "genus": "Fox Pokémon",
+      "blurb": "The coat of gleaming golden fur is quite magnificent. This species is said to store sacred power in its nine long tails and to live for a millennium.",
+      "caption": "Some legends claim that each of its nine tails has its own unique type of special mystical power.",
+      "caption_source": "Pokédex — Gold"
+    },
+    {
+      "card_number": 8,
+      "pokedex": 39,
+      "name": "Jigglypuff",
+      "slug": "jigglypuff",
+      "types": [
+        "Normal",
+        "Fairy"
+      ],
+      "stats": {
+        "hp": 115,
+        "attack": 45,
+        "defense": 20,
+        "special_attack": 45,
+        "special_defense": 25,
+        "speed": 20,
+        "height_m": 0.5,
+        "weight_kg": 5.5
+      },
+      "base_stat_total": 270,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/39.png",
+      "genus": "Balloon Pokémon",
+      "blurb": "By freely changing the wavelength of its voice, Jigglypuff sings a mysterious melody sure to make any listener sleepy.",
+      "caption": "It rolls its cute eyes as it sings a soothing lullaby. Its gentle song puts anyone who hears it to sleep.",
+      "caption_source": "Pokédex — Crystal"
+    },
+    {
+      "card_number": 9,
+      "pokedex": 52,
+      "name": "Meowth",
+      "slug": "meowth",
+      "types": [
+        "Normal"
+      ],
+      "stats": {
+        "hp": 40,
+        "attack": 45,
+        "defense": 35,
+        "special_attack": 40,
+        "special_defense": 40,
+        "speed": 90,
+        "height_m": 0.4,
+        "weight_kg": 4.2
+      },
+      "base_stat_total": 290,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/52.png",
+      "genus": "Scratch Cat Pokémon",
+      "blurb": "It washes its face regularly to keep the coin on its forehead spotless. It doesn’t get along with Galarian Meowth.",
+      "caption": "It loves anything that shines. It especially adores coins that it picks up and secretly hoards.",
+      "caption_source": "Pokédex — Silver"
+    },
+    {
+      "card_number": 10,
+      "pokedex": 54,
+      "name": "Psyduck",
+      "slug": "psyduck",
+      "types": [
+        "Water"
+      ],
+      "stats": {
+        "hp": 50,
+        "attack": 52,
+        "defense": 48,
+        "special_attack": 65,
+        "special_defense": 50,
+        "speed": 55,
+        "height_m": 0.8,
+        "weight_kg": 19.6
+      },
+      "base_stat_total": 320,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/54.png",
+      "genus": "Duck Pokémon",
+      "blurb": "Suffers perpetual headaches. If the agony grows too great, Psyduck's latent power erupts, contrary to Psyduck's intent. Ergo, I am exploring ways to ease the pain.",
+      "caption": "It has mystical powers but doesn’t recall that it has used them. That is why it always looks puzzled.",
+      "caption_source": "Pokédex — Gold"
+    },
+    {
+      "card_number": 11,
+      "pokedex": 59,
+      "name": "Arcanine",
+      "slug": "arcanine",
+      "types": [
+        "Fire"
+      ],
+      "stats": {
+        "hp": 90,
+        "attack": 110,
+        "defense": 80,
+        "special_attack": 100,
+        "special_defense": 80,
+        "speed": 95,
+        "height_m": 1.9,
+        "weight_kg": 155.0
+      },
+      "base_stat_total": 555,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/59.png",
+      "genus": "Legendary Pokémon",
+      "blurb": "The sight of it running over 6,200 miles in a single day and night has captivated many people.",
+      "caption": "A Pokémon that is described in Chinese legends. It is said to race at an unbelievable speed.",
+      "caption_source": "Pokédex — FireRed"
+    },
+    {
+      "card_number": 12,
+      "pokedex": 65,
+      "name": "Alakazam",
+      "slug": "alakazam",
+      "types": [
+        "Psychic"
+      ],
+      "stats": {
+        "hp": 55,
+        "attack": 50,
+        "defense": 45,
+        "special_attack": 135,
+        "special_defense": 95,
+        "speed": 120,
+        "height_m": 1.5,
+        "weight_kg": 48.0
+      },
+      "base_stat_total": 500,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/65.png",
+      "genus": "Psi Pokémon",
+      "blurb": "It has an incredibly high level of intelligence. Some say that Alakazam remembers everything that ever happens to it, from birth till death.",
+      "caption": "Closing both its eyes heightens all its other senses.",
+      "caption_source": "Pokédex — Gold"
+    },
+    {
+      "card_number": 13,
+      "pokedex": 68,
+      "name": "Machamp",
+      "slug": "machamp",
+      "types": [
+        "Fighting"
+      ],
+      "stats": {
+        "hp": 90,
+        "attack": 130,
+        "defense": 80,
+        "special_attack": 65,
+        "special_defense": 85,
+        "speed": 55,
+        "height_m": 1.6,
+        "weight_kg": 130.0
+      },
+      "base_stat_total": 505,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/68.png",
+      "genus": "Superpower Pokémon",
+      "blurb": "It quickly swings its four arms to rock its opponents with ceaseless punches and chops from all angles.",
+      "caption": "One arm alone can move mountains.",
+      "caption_source": "Pokédex — Yellow"
+    },
+    {
+      "card_number": 14,
+      "pokedex": 76,
+      "name": "Golem",
+      "slug": "golem",
+      "types": [
+        "Rock",
+        "Ground"
+      ],
+      "stats": {
+        "hp": 80,
+        "attack": 120,
+        "defense": 130,
+        "special_attack": 55,
+        "special_defense": 65,
+        "speed": 45,
+        "height_m": 1.4,
+        "weight_kg": 300.0
+      },
+      "base_stat_total": 495,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/76.png",
+      "genus": "Megaton Pokémon",
+      "blurb": "The rocklike shell is shed each year. The cast-off shell then crumbles, reverting to a mass of soil, which can be spread across fields to promote crop growth.",
+      "caption": "Its boulder-like body is extremely hard. It can easily withstand dynamite blasts without taking damage.",
+      "caption_source": "Pokédex — LeafGreen"
+    },
+    {
+      "card_number": 15,
+      "pokedex": 80,
+      "name": "Slowbro",
+      "slug": "slowbro",
+      "types": [
+        "Water",
+        "Psychic"
+      ],
+      "stats": {
+        "hp": 95,
+        "attack": 75,
+        "defense": 110,
+        "special_attack": 100,
+        "special_defense": 80,
+        "speed": 30,
+        "height_m": 1.6,
+        "weight_kg": 78.5
+      },
+      "base_stat_total": 490,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/80.png",
+      "genus": "Hermit Crab Pokémon",
+      "blurb": "Being bitten by a Shellder shocked this Pokémon into standing on two legs. If the Shellder lets go, it seems Slowbro will turn back into a Slowpoke.",
+      "caption": "Lives lazily by the sea. If the Shellder on its tail comes off, it becomes a Slowpoke again.",
+      "caption_source": "Pokédex — Yellow"
+    },
+    {
+      "card_number": 16,
+      "pokedex": 91,
+      "name": "Cloyster",
+      "slug": "cloyster",
+      "types": [
+        "Water",
+        "Ice"
+      ],
+      "stats": {
+        "hp": 50,
+        "attack": 95,
+        "defense": 180,
+        "special_attack": 85,
+        "special_defense": 45,
+        "speed": 70,
+        "height_m": 1.5,
+        "weight_kg": 132.5
+      },
+      "base_stat_total": 525,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/91.png",
+      "genus": "Bivalve Pokémon",
+      "blurb": "Once it slams its shell shut, it is impossible to open, even by those with superior strength.",
+      "caption": "Its shell is extremely hard. It cannot be shattered, even with a bomb. The shell opens only when it is attacking.",
+      "caption_source": "Pokédex — FireRed"
+    },
+    {
+      "card_number": 17,
+      "pokedex": 94,
+      "name": "Gengar",
+      "slug": "gengar",
+      "types": [
+        "Ghost",
+        "Poison"
+      ],
+      "stats": {
+        "hp": 60,
+        "attack": 65,
+        "defense": 60,
+        "special_attack": 130,
+        "special_defense": 75,
+        "speed": 110,
+        "height_m": 1.5,
+        "weight_kg": 40.5
+      },
+      "base_stat_total": 500,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png",
+      "genus": "Shadow Pokémon",
+      "blurb": "On the night of a full moon, if shadows move on their own and laugh, it must be Gengar’s doing.",
+      "caption": "It is said to emerge from darkness to steal the lives of those who become lost in mountains.",
+      "caption_source": "Pokédex — FireRed"
+    },
+    {
+      "card_number": 18,
+      "pokedex": 95,
+      "name": "Onix",
+      "slug": "onix",
+      "mirror": true,
+      "types": [
+        "Rock",
+        "Ground"
+      ],
+      "stats": {
+        "hp": 35,
+        "attack": 45,
+        "defense": 160,
+        "special_attack": 30,
+        "special_defense": 45,
+        "speed": 70,
+        "height_m": 8.8,
+        "weight_kg": 210.0
+      },
+      "base_stat_total": 385,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/95.png",
+      "genus": "Rock Snake Pokémon",
+      "blurb": "This chain of immense stones resembles a giant serpent. Tremors shake the earth above as it burrows deep beneath the ground, feeding on boulders as it goes.",
+      "caption": "It twists and squirms through the ground. The thunderous roar of its tunneling echoes a long way.",
+      "caption_source": "Pokédex — Gold"
+    },
+    {
+      "card_number": 19,
+      "pokedex": 101,
+      "name": "Electrode",
+      "slug": "electrode",
+      "types": [
+        "Electric"
+      ],
+      "stats": {
+        "hp": 60,
+        "attack": 50,
+        "defense": 70,
+        "special_attack": 80,
+        "special_defense": 80,
+        "speed": 150,
+        "height_m": 1.2,
+        "weight_kg": 66.6
+      },
+      "base_stat_total": 490,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/101.png",
+      "genus": "Ball Pokémon",
+      "blurb": "The tissue on the surface of its body is curiously similar in composition to an Apricorn. When irritated, this Pokémon lets loose an electric current equal to 20 lightning bolts.",
+      "caption": "The more energy it charges up, the faster it gets. But this also makes it more likely to explode.",
+      "caption_source": "Pokédex — Crystal"
+    },
+    {
+      "card_number": 20,
+      "pokedex": 104,
+      "name": "Cubone",
+      "slug": "cubone",
+      "types": [
+        "Ground"
+      ],
+      "stats": {
+        "hp": 50,
+        "attack": 50,
+        "defense": 95,
+        "special_attack": 40,
+        "special_defense": 50,
+        "speed": 35,
+        "height_m": 0.4,
+        "weight_kg": 6.5
+      },
+      "base_stat_total": 320,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/104.png",
+      "genus": "Lonely Pokémon",
+      "blurb": "This Pokémon wears the skull of its deceased mother. Sometimes Cubone’s dreams make it cry, but each tear Cubone sheds makes it stronger.",
+      "caption": "It lost its mother after its birth. It wears its mother’s skull, never revealing its true face.",
+      "caption_source": "Pokédex — Crystal"
+    },
+    {
+      "card_number": 21,
+      "pokedex": 112,
+      "name": "Rhydon",
+      "slug": "rhydon",
+      "types": [
+        "Ground",
+        "Rock"
+      ],
+      "stats": {
+        "hp": 105,
+        "attack": 130,
+        "defense": 120,
+        "special_attack": 45,
+        "special_defense": 45,
+        "speed": 40,
+        "height_m": 1.9,
+        "weight_kg": 120.0
+      },
+      "base_stat_total": 485,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/112.png",
+      "genus": "Drill Pokémon",
+      "blurb": "Rapidly rotates its horn to bore through bedrock. It swaggers around volcanic regions, protected from the lava's heat by its tough, armorlike hide.",
+      "caption": "By lightly spinning its drill-like horn, it can easily shatter even a diamond in the rough.",
+      "caption_source": "Pokédex — Crystal"
+    },
+    {
+      "card_number": 22,
+      "pokedex": 113,
+      "name": "Chansey",
+      "slug": "chansey",
+      "types": [
+        "Normal"
+      ],
+      "stats": {
+        "hp": 250,
+        "attack": 5,
+        "defense": 5,
+        "special_attack": 35,
+        "special_defense": 105,
+        "speed": 50,
+        "height_m": 1.1,
+        "weight_kg": 34.6
+      },
+      "base_stat_total": 450,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/113.png",
+      "genus": "Egg Pokémon",
+      "blurb": "This purehearted Pokémon shares its eggs with the injured.",
+      "caption": "It is said to deliver happiness. Being compassionate, it shares its eggs with injured people.",
+      "caption_source": "Pokédex — Diamond"
+    },
+    {
+      "card_number": 23,
+      "pokedex": 123,
+      "name": "Scyther",
+      "slug": "scyther",
+      "types": [
+        "Bug",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 70,
+        "attack": 110,
+        "defense": 80,
+        "special_attack": 55,
+        "special_defense": 80,
+        "speed": 105,
+        "height_m": 1.5,
+        "weight_kg": 56.0
+      },
+      "base_stat_total": 500,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/123.png",
+      "genus": "Mantis Pokémon",
+      "blurb": "The large, wickedly sharp scythes on its forearms are truly fearsome weapons. Prey's attempts to flee are unfailingly thwarted by this Pokémon's nimble motions.",
+      "caption": "It slashes through grass with its sharp scythes, moving too fast for the human eye to track.",
+      "caption_source": "Pokédex — Gold"
+    },
+    {
+      "card_number": 24,
+      "pokedex": 129,
+      "name": "Magikarp",
+      "slug": "magikarp",
+      "mirror": true,
+      "types": [
+        "Water"
+      ],
+      "stats": {
+        "hp": 20,
+        "attack": 10,
+        "defense": 55,
+        "special_attack": 15,
+        "special_defense": 20,
+        "speed": 80,
+        "height_m": 0.9,
+        "weight_kg": 10.0
+      },
+      "base_stat_total": 200,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/129.png",
+      "genus": "Fish Pokémon",
+      "blurb": "A feeble, pitiful imbecile of a Pokémon that is nonetheless very hardy. Unperturbed by turbid water, it can be found living in all sorts of places.",
+      "caption": "It is said to be the world’s weakest Pokémon. No one knows why it has managed to survive.",
+      "caption_source": "Pokédex — Diamond"
+    },
+    {
+      "card_number": 25,
+      "pokedex": 130,
+      "name": "Gyarados",
+      "slug": "gyarados",
+      "types": [
+        "Water",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 95,
+        "attack": 125,
+        "defense": 79,
+        "special_attack": 60,
+        "special_defense": 100,
+        "speed": 81,
+        "height_m": 6.5,
+        "weight_kg": 235.0
+      },
+      "base_stat_total": 540,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/130.png",
+      "genus": "Atrocious Pokémon",
+      "blurb": "It has an extremely aggressive nature. The Hyper Beam it shoots from its mouth totally incinerates all targets.",
+      "caption": "Brutally vicious and enormously destructive. Known for totally destroying cities in ancient times.",
+      "caption_source": "Pokédex — Yellow"
+    },
+    {
+      "card_number": 26,
+      "pokedex": 131,
+      "name": "Lapras",
+      "slug": "lapras",
+      "types": [
+        "Water",
+        "Ice"
+      ],
+      "stats": {
+        "hp": 130,
+        "attack": 85,
+        "defense": 80,
+        "special_attack": 85,
+        "special_defense": 95,
+        "speed": 60,
+        "height_m": 2.5,
+        "weight_kg": 220.0
+      },
+      "base_stat_total": 535,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/131.png",
+      "genus": "Transport Pokémon",
+      "blurb": "A smart and kindhearted Pokémon, it glides across the surface of the sea while its beautiful song echoes around it.",
+      "caption": "Its high intelligence enables it to understand human speech. It likes to ferry people on its back.",
+      "caption_source": "Pokédex — FireRed"
+    },
+    {
+      "card_number": 27,
+      "pokedex": 133,
+      "name": "Eevee",
+      "slug": "eevee",
+      "types": [
+        "Normal"
+      ],
+      "stats": {
+        "hp": 55,
+        "attack": 55,
+        "defense": 50,
+        "special_attack": 45,
+        "special_defense": 65,
+        "speed": 55,
+        "height_m": 0.3,
+        "weight_kg": 6.5
+      },
+      "base_stat_total": 325,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png",
+      "genus": "Evolution Pokémon",
+      "blurb": "Harbors the potential to evolve into manifold forms. Within Eevee lies the key to the mysteries of Pokémon evolution—I'm certain of it.",
+      "caption": "A rare Pokémon that adapts to harsh environments by taking on different evolutionary forms.",
+      "caption_source": "Pokédex — Diamond"
+    },
+    {
+      "card_number": 28,
+      "pokedex": 134,
+      "name": "Vaporeon",
+      "slug": "vaporeon",
+      "types": [
+        "Water"
+      ],
+      "stats": {
+        "hp": 130,
+        "attack": 65,
+        "defense": 60,
+        "special_attack": 110,
+        "special_defense": 95,
+        "speed": 65,
+        "height_m": 1.0,
+        "weight_kg": 29.0
+      },
+      "base_stat_total": 525,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/134.png",
+      "genus": "Bubble Jet Pokémon",
+      "blurb": "Tests show that its cells closely resemble water molecules, which perhaps explains its ability to conceal its form while submerged. I believe the origins of mermaid folklore lie with this Pokémon.",
+      "caption": "Lives close to water. Its long tail is ridged with a fin which is often mistaken for a mermaid’s.",
+      "caption_source": "Pokédex — LeafGreen"
+    },
+    {
+      "card_number": 29,
+      "pokedex": 135,
+      "name": "Jolteon",
+      "slug": "jolteon",
+      "types": [
+        "Electric"
+      ],
+      "stats": {
+        "hp": 65,
+        "attack": 65,
+        "defense": 60,
+        "special_attack": 110,
+        "special_defense": 95,
+        "speed": 130,
+        "height_m": 0.8,
+        "weight_kg": 24.5
+      },
+      "base_stat_total": 525,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/135.png",
+      "genus": "Lightning Pokémon",
+      "blurb": "Bristles its fur into sharp, needlelike points when enraged. One can hear electricity crackle in its breath when it exhales.",
+      "caption": "It accumulates negative ions in the atmosphere to blast out 10,000-volt lightning bolts.",
+      "caption_source": "Pokédex — LeafGreen"
+    },
+    {
+      "card_number": 30,
+      "pokedex": 136,
+      "name": "Flareon",
+      "slug": "flareon",
+      "types": [
+        "Fire"
+      ],
+      "stats": {
+        "hp": 65,
+        "attack": 130,
+        "defense": 60,
+        "special_attack": 95,
+        "special_defense": 110,
+        "speed": 65,
+        "height_m": 0.9,
+        "weight_kg": 25.0
+      },
+      "base_stat_total": 525,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/136.png",
+      "genus": "Flame Pokémon",
+      "blurb": "Flames burn within a saclike organ inside this Pokémon. When Flareon inhales, these flames grow in intensity, reaching a mighty 3,000 degrees Fahrenheit.",
+      "caption": "When storing thermal energy in its body, its temperature can soar to over 1,600 degrees Fahrenheit.",
+      "caption_source": "Pokédex — LeafGreen"
+    },
+    {
+      "card_number": 31,
+      "pokedex": 142,
+      "name": "Aerodactyl",
+      "slug": "aerodactyl",
+      "mirror": true,
+      "types": [
+        "Rock",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 80,
+        "attack": 105,
+        "defense": 65,
+        "special_attack": 60,
+        "special_defense": 75,
+        "speed": 130,
+        "height_m": 1.8,
+        "weight_kg": 59.0
+      },
+      "base_stat_total": 515,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/142.png",
+      "genus": "Fossil Pokémon",
+      "blurb": "Aerodactyl’s sawlike fangs can shred skin to tatters—even the skin of Steel-type Pokémon.",
+      "caption": "In prehistoric times, this Pokémon flew freely and fearlessly through the skies.",
+      "caption_source": "Pokédex — Crystal"
+    },
+    {
+      "card_number": 32,
+      "pokedex": 143,
+      "name": "Snorlax",
+      "slug": "snorlax",
+      "types": [
+        "Normal"
+      ],
+      "stats": {
+        "hp": 160,
+        "attack": 110,
+        "defense": 65,
+        "special_attack": 65,
+        "special_defense": 110,
+        "speed": 30,
+        "height_m": 2.1,
+        "weight_kg": 460.0
+      },
+      "base_stat_total": 540,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/143.png",
+      "genus": "Sleeping Pokémon",
+      "blurb": "It is not satisfied unless it eats over 880 pounds of food every day. When it is done eating, it goes promptly to sleep.",
+      "caption": "What sounds like its cry may actually be its snores or the rumblings of its hungry belly.",
+      "caption_source": "Pokédex — Gold"
+    },
+    {
+      "card_number": 33,
+      "pokedex": 144,
+      "name": "Articuno",
+      "slug": "articuno",
+      "types": [
+        "Ice",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 90,
+        "attack": 85,
+        "defense": 100,
+        "special_attack": 95,
+        "special_defense": 125,
+        "speed": 85,
+        "height_m": 1.7,
+        "weight_kg": 55.4
+      },
+      "base_stat_total": 580,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/144.png",
+      "genus": "Freeze Pokémon",
+      "blurb": "It’s said that this Pokémon’s beautiful blue wings are made of ice. Articuno flies over snowy mountains, its long tail fluttering along behind it.",
+      "caption": "One of the legendary bird Pokémon. With its long tail trailing behind, its flying form is magnificent.",
+      "caption_source": "Pokédex — FireRed"
+    },
+    {
+      "card_number": 34,
+      "pokedex": 145,
+      "name": "Zapdos",
+      "slug": "zapdos",
+      "types": [
+        "Electric",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 90,
+        "attack": 90,
+        "defense": 85,
+        "special_attack": 125,
+        "special_defense": 90,
+        "speed": 100,
+        "height_m": 1.6,
+        "weight_kg": 52.6
+      },
+      "base_stat_total": 580,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/145.png",
+      "genus": "Electric Pokémon",
+      "blurb": "This Pokémon has complete control over electricity. There are tales of Zapdos nesting in the dark depths of pitch-black thunderclouds.",
+      "caption": "One of the legendary bird Pokémon. While it is flying, it makes crackling and snapping sounds.",
+      "caption_source": "Pokédex — FireRed"
+    },
+    {
+      "card_number": 35,
+      "pokedex": 146,
+      "name": "Moltres",
+      "slug": "moltres",
+      "types": [
+        "Fire",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 90,
+        "attack": 100,
+        "defense": 90,
+        "special_attack": 125,
+        "special_defense": 85,
+        "speed": 90,
+        "height_m": 2.0,
+        "weight_kg": 60.0
+      },
+      "base_stat_total": 580,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/146.png",
+      "genus": "Flame Pokémon",
+      "blurb": "It’s one of the legendary bird Pokémon. When Moltres flaps its flaming wings, they glimmer with a dazzling red glow.",
+      "caption": "One of the legendary bird Pokémon. Those seeing it are overwhelmed by its orange wings that seem to be on fire.",
+      "caption_source": "Pokédex — FireRed"
+    },
+    {
+      "card_number": 36,
+      "pokedex": 149,
+      "name": "Dragonite",
+      "slug": "dragonite",
+      "types": [
+        "Dragon",
+        "Flying"
+      ],
+      "stats": {
+        "hp": 91,
+        "attack": 134,
+        "defense": 95,
+        "special_attack": 100,
+        "special_defense": 100,
+        "speed": 80,
+        "height_m": 2.2,
+        "weight_kg": 210.0
+      },
+      "base_stat_total": 600,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/149.png",
+      "genus": "Dragon Pokémon",
+      "blurb": "It’s a kindhearted Pokémon. If it spots a drowning person or Pokémon, Dragonite simply must help them.",
+      "caption": "It is said that somewhere in the ocean lies an island where these gather. Only they live there.",
+      "caption_source": "Pokédex — Crystal"
+    },
+    {
+      "card_number": 37,
+      "pokedex": 150,
+      "name": "Mewtwo",
+      "slug": "mewtwo",
+      "types": [
+        "Psychic"
+      ],
+      "stats": {
+        "hp": 106,
+        "attack": 110,
+        "defense": 90,
+        "special_attack": 154,
+        "special_defense": 90,
+        "speed": 130,
+        "height_m": 2.0,
+        "weight_kg": 122.0
+      },
+      "base_stat_total": 680,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png",
+      "genus": "Genetic Pokémon",
+      "blurb": "It was created by a scientist after years of horrific gene-splicing and DNA-engineering experiments.",
+      "caption": "Said to rest quietly in an undiscovered cave, this Pokémon was created solely for battling.",
+      "caption_source": "Pokédex — Crystal"
+    },
+    {
+      "card_number": 38,
+      "pokedex": 151,
+      "name": "Mew",
+      "slug": "mew",
+      "mirror": true,
+      "types": [
+        "Psychic"
+      ],
+      "stats": {
+        "hp": 100,
+        "attack": 100,
+        "defense": 100,
+        "special_attack": 100,
+        "special_defense": 100,
+        "speed": 100,
+        "height_m": 0.4,
+        "weight_kg": 4.0
+      },
+      "base_stat_total": 600,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/151.png",
+      "genus": "New Species Pokémon",
+      "blurb": "When viewed through a microscope, this Pokémon’s short, fine, delicate hair can be seen.",
+      "caption": "Apparently, it appears only to those people who are pure of heart and have a strong desire to see it.",
+      "caption_source": "Pokédex — Gold"
+    },
+    {
+      "card_number": 39,
+      "pokedex": 248,
+      "name": "Tyranitar",
+      "slug": "tyranitar",
+      "mirror": true,
+      "types": [
+        "Rock",
+        "Dark"
+      ],
+      "stats": {
+        "hp": 100,
+        "attack": 134,
+        "defense": 110,
+        "special_attack": 95,
+        "special_defense": 100,
+        "speed": 61,
+        "height_m": 2.0,
+        "weight_kg": 202.0
+      },
+      "base_stat_total": 600,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/248.png",
+      "genus": "Armor Pokémon",
+      "blurb": "Its body can’t be harmed by any sort of attack, so it is very eager to make challenges against enemies.",
+      "caption": "If it rampages, it knocks down mountains and buries rivers. Maps must be redrawn afterward.",
+      "caption_source": "Pokédex — Diamond"
+    },
+    {
+      "card_number": 40,
+      "pokedex": 448,
+      "name": "Lucario",
+      "slug": "lucario",
+      "mirror": true,
+      "types": [
+        "Fighting",
+        "Steel"
+      ],
+      "stats": {
+        "hp": 70,
+        "attack": 110,
+        "defense": 70,
+        "special_attack": 115,
+        "special_defense": 70,
+        "speed": 90,
+        "height_m": 1.2,
+        "weight_kg": 54.0
+      },
+      "base_stat_total": 525,
+      "artwork": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/448.png",
+      "genus": "Aura Pokémon",
+      "blurb": "It controls waves known as auras, which are powerful enough to pulverize huge rocks. It uses these waves to take down its prey.",
+      "caption": "It has the ability to sense the auras of all things. It understands human speech.",
+      "caption_source": "Pokédex — Diamond"
+    }
+  ]
+}

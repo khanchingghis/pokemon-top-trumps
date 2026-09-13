@@ -10,13 +10,21 @@ https://khanchingghis.github.io/pokemon-top-trumps/
 
 https://khanchingghis.github.io/pokemon-top-trumps/draft.html
 
-Print files (PDF spec for a print shop):
+Print files (HTML + spec for a print shop). Cards are 62 × 100 mm:
 
 https://khanchingghis.github.io/pokemon-top-trumps/print.html
 
-Ready-made 31-page PDF (30 fronts + 1 back):
+30-card PDF (31 pages):
 
-https://khanchingghis.github.io/pokemon-top-trumps/pokemon-top-trumps.pdf
+https://khanchingghis.github.io/pokemon-top-trumps/pokemon-top-trumps-30.pdf
+
+40-card PDF (41 pages):
+
+https://khanchingghis.github.io/pokemon-top-trumps/pokemon-top-trumps-40.pdf
+
+40-card gallery:
+
+https://khanchingghis.github.io/pokemon-top-trumps/index.html?set=40
 
 Numbered card design options (photo backgrounds + typefaces):
 
@@ -32,7 +40,7 @@ One-time setup: Settings → Pages → Source → **GitHub Actions**. If the dep
 
 ## Deck
 
-A 30-card pack of household names (mostly the original 151, plus Tyranitar and Lucario) lives in `data/deck.json`. Two players deal 15 each; three players deal 10 each. Playable stats: HP, Attack, Defence, Sp. Attack, Speed, Height, Weight. Artwork and Pokédex lines come from [PokeAPI](https://pokeapi.co).
+A 30-card pack lives in `data/deck.json` and a 40-card pack in `data/deck-40.json`. Cards print at official Winning Moves Top Trumps size: **62 × 100 mm** (the plastic case is 85 × 140 × 20 mm). Two players deal 15 each from the 30, or 20 each from the 40. Playable stats: HP, Attack, Defence, Sp. Attack, Speed, Height, Weight. Artwork and Pokédex lines come from [PokeAPI](https://pokeapi.co).
 
 ## Planned features
 

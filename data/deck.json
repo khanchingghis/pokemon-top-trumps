@@ -36,7 +36,7 @@
     ],
     "tie": "Both cards go to a pile; next winner takes the pile."
   },
-  "notes": "30-card pack of household names, mostly from the original 151, plus Tyranitar and Lucario. Specialists so most categories have a unique champion (Chansey HP, Cloyster Defence, Mewtwo Sp. Attack, Electrode Speed, Onix Height, Snorlax Weight). Attack is a close cluster (Dragonite and Tyranitar 134). Base stats only (no Mega, Gigantamax, or regional forms). Locked look: folklore captions, cinematic type photos, inset type bars.",
+  "notes": "30-card pack of household names, mostly from the original 151, plus Tyranitar and Lucario. Printed at official Winning Moves Top Trumps size (62 × 100 mm) to fit a real plastic case. Specialists so most categories have a unique champion (Chansey HP, Cloyster Defence, Mewtwo Sp. Attack, Electrode Speed, Onix Height, Snorlax Weight). Attack is a close cluster (Dragonite and Tyranitar 134). Base stats only (no Mega, Gigantamax, or regional forms). Locked look: folklore captions, cinematic type photos, inset type bars.",
   "cards": [
     {
       "card_number": 1,
@@ -141,7 +141,7 @@
       "caption_source": "Pokédex — Silver"
     },
     {
-      "card_number": 5,
+      "card_number": 6,
       "pokedex": 34,
       "name": "Nidoking",
       "slug": "nidoking",
@@ -168,7 +168,7 @@
       "caption_source": "Pokédex — Diamond"
     },
     {
-      "card_number": 6,
+      "card_number": 11,
       "pokedex": 59,
       "name": "Arcanine",
       "slug": "arcanine",
@@ -193,7 +193,7 @@
       "caption_source": "Pokédex — FireRed"
     },
     {
-      "card_number": 7,
+      "card_number": 12,
       "pokedex": 65,
       "name": "Alakazam",
       "slug": "alakazam",
@@ -218,7 +218,7 @@
       "caption_source": "Pokédex — Gold"
     },
     {
-      "card_number": 8,
+      "card_number": 13,
       "pokedex": 68,
       "name": "Machamp",
       "slug": "machamp",
@@ -243,7 +243,7 @@
       "caption_source": "Pokédex — Yellow"
     },
     {
-      "card_number": 9,
+      "card_number": 14,
       "pokedex": 76,
       "name": "Golem",
       "slug": "golem",
@@ -269,7 +269,7 @@
       "caption_source": "Pokédex — LeafGreen"
     },
     {
-      "card_number": 10,
+      "card_number": 16,
       "pokedex": 91,
       "name": "Cloyster",
       "slug": "cloyster",
@@ -295,7 +295,7 @@
       "caption_source": "Pokédex — FireRed"
     },
     {
-      "card_number": 11,
+      "card_number": 17,
       "pokedex": 94,
       "name": "Gengar",
       "slug": "gengar",
@@ -321,7 +321,7 @@
       "caption_source": "Pokédex — FireRed"
     },
     {
-      "card_number": 12,
+      "card_number": 18,
       "pokedex": 95,
       "name": "Onix",
       "slug": "onix",
@@ -348,7 +348,7 @@
       "caption_source": "Pokédex — Gold"
     },
     {
-      "card_number": 13,
+      "card_number": 19,
       "pokedex": 101,
       "name": "Electrode",
       "slug": "electrode",
@@ -373,7 +373,7 @@
       "caption_source": "Pokédex — Crystal"
     },
     {
-      "card_number": 14,
+      "card_number": 22,
       "pokedex": 113,
       "name": "Chansey",
       "slug": "chansey",
@@ -398,7 +398,7 @@
       "caption_source": "Pokédex — Diamond"
     },
     {
-      "card_number": 15,
+      "card_number": 23,
       "pokedex": 123,
       "name": "Scyther",
       "slug": "scyther",
@@ -424,7 +424,7 @@
       "caption_source": "Pokédex — Gold"
     },
     {
-      "card_number": 16,
+      "card_number": 25,
       "pokedex": 130,
       "name": "Gyarados",
       "slug": "gyarados",
@@ -450,7 +450,7 @@
       "caption_source": "Pokédex — Yellow"
     },
     {
-      "card_number": 17,
+      "card_number": 26,
       "pokedex": 131,
       "name": "Lapras",
       "slug": "lapras",
@@ -476,7 +476,7 @@
       "caption_source": "Pokédex — FireRed"
     },
     {
-      "card_number": 18,
+      "card_number": 27,
       "pokedex": 133,
       "name": "Eevee",
       "slug": "eevee",
@@ -501,7 +501,7 @@
       "caption_source": "Pokédex — Diamond"
     },
     {
-      "card_number": 19,
+      "card_number": 28,
       "pokedex": 134,
       "name": "Vaporeon",
       "slug": "vaporeon",
@@ -526,7 +526,7 @@
       "caption_source": "Pokédex — LeafGreen"
     },
     {
-      "card_number": 20,
+      "card_number": 29,
       "pokedex": 135,
       "name": "Jolteon",
       "slug": "jolteon",
@@ -551,7 +551,7 @@
       "caption_source": "Pokédex — LeafGreen"
     },
     {
-      "card_number": 21,
+      "card_number": 30,
       "pokedex": 136,
       "name": "Flareon",
       "slug": "flareon",
@@ -576,7 +576,7 @@
       "caption_source": "Pokédex — LeafGreen"
     },
     {
-      "card_number": 22,
+      "card_number": 31,
       "pokedex": 142,
       "name": "Aerodactyl",
       "slug": "aerodactyl",
@@ -603,7 +603,7 @@
       "caption_source": "Pokédex — Crystal"
     },
     {
-      "card_number": 23,
+      "card_number": 32,
       "pokedex": 143,
       "name": "Snorlax",
       "slug": "snorlax",
@@ -628,7 +628,7 @@
       "caption_source": "Pokédex — Gold"
     },
     {
-      "card_number": 24,
+      "card_number": 33,
       "pokedex": 144,
       "name": "Articuno",
       "slug": "articuno",
@@ -654,7 +654,7 @@
       "caption_source": "Pokédex — FireRed"
     },
     {
-      "card_number": 25,
+      "card_number": 34,
       "pokedex": 145,
       "name": "Zapdos",
       "slug": "zapdos",
@@ -680,7 +680,7 @@
       "caption_source": "Pokédex — FireRed"
     },
     {
-      "card_number": 26,
+      "card_number": 35,
       "pokedex": 146,
       "name": "Moltres",
       "slug": "moltres",
@@ -706,7 +706,7 @@
       "caption_source": "Pokédex — FireRed"
     },
     {
-      "card_number": 27,
+      "card_number": 36,
       "pokedex": 149,
       "name": "Dragonite",
       "slug": "dragonite",
@@ -732,7 +732,7 @@
       "caption_source": "Pokédex — Crystal"
     },
     {
-      "card_number": 28,
+      "card_number": 37,
       "pokedex": 150,
       "name": "Mewtwo",
       "slug": "mewtwo",
@@ -757,7 +757,7 @@
       "caption_source": "Pokédex — Crystal"
     },
     {
-      "card_number": 29,
+      "card_number": 39,
       "pokedex": 248,
       "name": "Tyranitar",
       "slug": "tyranitar",
@@ -784,7 +784,7 @@
       "caption_source": "Pokédex — Diamond"
     },
     {
-      "card_number": 30,
+      "card_number": 40,
       "pokedex": 448,
       "name": "Lucario",
       "slug": "lucario",

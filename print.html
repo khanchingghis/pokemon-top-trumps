@@ -8,7 +8,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@500;700&display=swap" rel="stylesheet" />
   <style>
-    :root { --table: #151814; }
+    :root {
+      --table: #151814;
+      --card-w: 372px;
+      --card-h: 600px;
+    }
 
     * { box-sizing: border-box; }
 
@@ -119,8 +123,8 @@
       --type: #888;
       --bg: none;
       position: relative;
-      width: 300px;
-      height: 560px;
+      width: var(--card-w);
+      height: var(--card-h);
       overflow: hidden;
       color: #fff;
     }
@@ -174,7 +178,7 @@
     }
 
     .front .name {
-      font-size: 32px;
+      font-size: 28px;
       line-height: 0.9;
       transform: rotate(-2deg);
       text-shadow: 3px 3px 0 #000, 6px 6px 0 var(--type);
@@ -184,10 +188,10 @@
 
     .front .types {
       position: absolute;
-      top: 42px;
+      top: 38px;
       left: 12px;
       z-index: 4;
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: color-mix(in srgb, var(--type) 45%, #ffde00);
@@ -222,20 +226,20 @@
     }
 
     .front .caption {
-      margin: 0 12px 8px;
+      margin: 0 10px 6px;
       font-family: Georgia, "Times New Roman", serif;
       font-style: italic;
-      font-size: 11px;
-      line-height: 1.35;
+      font-size: 10px;
+      line-height: 1.3;
       color: rgba(255, 246, 220, 0.92);
       text-shadow: 0 1px 8px #000, 0 0 12px #000;
     }
 
     .front .board {
-      margin: 0 8px 8px;
+      margin: 0 8px 7px;
       display: grid;
       grid-template-columns: 1fr;
-      gap: 3px;
+      gap: 2px;
     }
 
     .front .stat {
@@ -243,7 +247,7 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      padding: 4px 16px 3px 9px;
+      padding: 3px 14px 2px 8px;
       clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
       background: rgba(10, 8, 6, 0.78);
       box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--type) 70%, #fff);
@@ -252,7 +256,7 @@
     .front .stat i {
       font-family: Oswald, sans-serif;
       font-style: normal;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 500;
       letter-spacing: 0.06em;
       text-transform: uppercase;
@@ -261,7 +265,7 @@
 
     .front .stat b {
       font-family: Oswald, sans-serif;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 700;
       line-height: 1;
       color: #fff;
@@ -279,19 +283,19 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      gap: 14px;
-      padding: 16px 12px 18px;
+      gap: 10px;
+      padding: 12px 10px 14px;
     }
 
     .pk-logo {
-      width: 96%;
-      max-width: 280px;
-      margin-top: 70px;
+      width: 92%;
+      max-width: 300px;
+      margin-top: 28px;
       filter: drop-shadow(0 6px 12px rgba(0,0,0,.65));
     }
 
     .tt-img {
-      width: 78%;
+      width: 70%;
       max-width: 230px;
       border-radius: 8px;
       box-shadow: 0 8px 20px rgba(0,0,0,.4);
@@ -307,7 +311,7 @@
 
     @media print {
       @page {
-        size: 69mm 123.6mm;
+        size: 68mm 106mm;
         margin: 0;
       }
 
@@ -322,8 +326,8 @@
       .sheet { display: block; gap: 0; }
 
       .print-page {
-        width: 69mm;
-        height: 123.6mm;
+        width: 68mm;
+        height: 106mm;
         page-break-after: always;
         break-after: page;
         overflow: hidden;
@@ -341,15 +345,15 @@
       .trim {
         position: absolute;
         inset: 3mm;
-        width: 63mm;
-        height: 117.6mm;
+        width: 62mm;
+        height: 100mm;
         overflow: hidden;
       }
 
       .scale {
-        width: 300px;
-        height: 560px;
-        transform: scale(calc(63mm / 300px));
+        width: 372px;
+        height: 600px;
+        transform: scale(calc(62mm / 372px));
         transform-origin: top left;
       }
 
@@ -361,8 +365,8 @@
       .back-key {
         box-shadow: none;
         border-radius: 0;
-        width: 300px;
-        height: 560px;
+        width: 372px;
+        height: 600px;
       }
     }
 
@@ -379,51 +383,57 @@
         <a href="index.html">Card gallery</a> ·
         <a href="designs.html">Design options</a> ·
         <a href="draft.html">30-card set</a> ·
-        <a href="print.html">Print files</a> ·
-        <a href="pokemon-top-trumps.pdf" download>PDF</a> ·
+        <a href="index.html?set=40">40-card set</a> ·
+        Print files ·
         <a href="simulate.html">Balance sim</a>
       </nav>
       <h1>Print files</h1>
       <p class="lede">
-        Download the ready-made 31-page PDF, or print this page (Print → Save
-        as PDF). Turn off headers and footers, and do not scale — page size is
-        already the card plus bleed.
+        Cards are official Winning Moves Top Trumps size — <strong>62 × 100 mm</strong> —
+        so they drop into a real plastic case (the case itself is 85 × 140 × 20 mm).
+        Download a ready-made PDF, or print this page (Print → Save as PDF). Turn
+        off headers and footers, and do not scale.
       </p>
       <div class="spec">
         <h2>Give the shop this spec</h2>
         <dl>
+          <dt>Card size</dt>
+          <dd>Trim <strong>62 × 100 mm</strong> — standard Winning Moves Top Trumps (not poker 63 × 88 mm).</dd>
           <dt>File</dt>
-          <dd>PDF, 31 pages (30 fronts, then 1 back). RGB is fine for digital print.</dd>
+          <dd>30-card PDF: 31 pages. 40-card PDF: 41 pages. Fronts first, then 1 shared back. RGB is fine for digital print.</dd>
           <dt>Page size</dt>
-          <dd>69 × 123.6 mm (includes 3 mm bleed on every side)</dd>
+          <dd>68 × 106 mm (3 mm bleed on every side)</dd>
           <dt>Trim to</dt>
-          <dd>63 × 117.6 mm — same proportions as the on-screen card</dd>
+          <dd>62 × 100 mm. Cut on the inner yellow/black frame.</dd>
           <dt>Bleed</dt>
-          <dd>3 mm. Photo runs to the page edge. Cut on the inner yellow/black frame.</dd>
+          <dd>3 mm. Photo runs to the page edge.</dd>
           <dt>Resolution</dt>
           <dd>Export/print at 300 dpi or higher. Do not “fit to paper”.</dd>
           <dt>Backs</dt>
-          <dd>Page 31 is the common back. Print it on the reverse of every front.</dd>
+          <dd>Last page is the common back. Print it on the reverse of every front.</dd>
           <dt>Stock</dt>
           <dd>300–350 gsm card, optionally with a matte or linen laminate.</dd>
           <dt>Finish</dt>
-          <dd>Rounded corners ~3 mm radius if they can match the screen cards.</dd>
+          <dd>Rounded corners ~3 mm radius, matching a real Top Trumps pack.</dd>
+          <dt>Case</dt>
+          <dd>A normal 30-card case is packed for 30. Forty cards are the same size but the stack is thicker and may not snap shut.</dd>
         </dl>
-        <p>
-          This is a custom size, not a poker card (63 × 88 mm). If they can only
-          print poker size, the art will be cropped or letterboxed — ask them
-          to cut 63 × 118 mm instead.
-        </p>
       </div>
       <div class="toolbar">
-        <a class="download" href="pokemon-top-trumps.pdf" download>Download PDF</a>
-        <button type="button" id="print-btn" disabled>Print to PDF</button>
+        <a class="download" id="dl-30" href="pokemon-top-trumps-30.pdf" download>30-card PDF</a>
+        <a class="download" id="dl-40" href="pokemon-top-trumps-40.pdf" download>40-card PDF</a>
+        <a class="download" href="print.html">30-card HTML</a>
+        <a class="download" href="print.html?set=40">40-card HTML</a>
+        <button type="button" id="print-btn" disabled>Print this set</button>
       </div>
       <p class="status" id="status">Loading cards…</p>
     </div>
     <div class="sheet" id="sheet"></div>
   </div>
   <script>
+    const SET40 = new URLSearchParams(location.search).get("set") === "40";
+    const DECK_FILE = SET40 ? "data/deck-40.json" : "data/deck.json";
+    if (SET40) document.title = "Print files — 40-card set";
     const STATS = [
       { id: "hp", label: "HP" },
       { id: "attack", label: "Attack" },
@@ -613,9 +623,9 @@
       });
     }
 
-    fetch("data/deck.json")
+    fetch(DECK_FILE)
       .then((r) => {
-        if (!r.ok) throw new Error("Could not load data/deck.json");
+        if (!r.ok) throw new Error("Could not load " + DECK_FILE);
         return r.json();
       })
       .then(async (deck) => {
@@ -648,7 +658,7 @@
 
         const btn = document.getElementById("print-btn");
         const status = document.getElementById("status");
-        status.textContent = "31 pages ready · 30 fronts + 1 back";
+        status.textContent = (SET40 ? "40" : "30") + " cards · " + (cards.length + 1) + " pages (fronts + 1 back) · trim 62 × 100 mm";
         btn.disabled = false;
         btn.addEventListener("click", () => window.print());
       })
