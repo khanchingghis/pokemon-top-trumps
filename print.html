@@ -91,6 +91,19 @@
 
     button:disabled { opacity: 0.5; cursor: wait; }
 
+    a.download {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: #e8e2d4;
+      color: #1c1914;
+      border-radius: 6px;
+      padding: 10px 16px;
+      text-decoration: none;
+    }
+
     .status { color: #c9c2b3; font-size: 14px; margin: 0 0 16px; }
 
     .sheet {
@@ -366,14 +379,15 @@
         <a href="index.html">Card gallery</a> ·
         <a href="designs.html">Design options</a> ·
         <a href="draft.html">30-card set</a> ·
-        Print files ·
+        <a href="print.html">Print files</a> ·
+        <a href="pokemon-top-trumps.pdf" download>PDF</a> ·
         <a href="simulate.html">Balance sim</a>
       </nav>
       <h1>Print files</h1>
       <p class="lede">
-        Send the shop a PDF. Use this page: Print → Save as PDF (or Microsoft
-        Print to PDF). Turn off headers and footers, and do not scale — page
-        size is already the card plus bleed.
+        Download the ready-made 31-page PDF, or print this page (Print → Save
+        as PDF). Turn off headers and footers, and do not scale — page size is
+        already the card plus bleed.
       </p>
       <div class="spec">
         <h2>Give the shop this spec</h2>
@@ -402,6 +416,7 @@
         </p>
       </div>
       <div class="toolbar">
+        <a class="download" href="pokemon-top-trumps.pdf" download>Download PDF</a>
         <button type="button" id="print-btn" disabled>Print to PDF</button>
       </div>
       <p class="status" id="status">Loading cards…</p>
@@ -492,7 +507,9 @@
     }
 
     function wrapPage(inner, type, label) {
-      const bg = type ? `url("assets/bg/${type}.jpg")` : "url(\"assets/backs/pack-keyart.jpg\")";
+      const bg = type
+        ? `url('assets/bg/${type}.jpg')`
+        : "url('assets/backs/pack-keyart.jpg')";
       return `<div class="print-page" style="--bg:${bg}">
         <div class="page-label screen-only">${esc(label)}</div>
         <div class="bleed"></div>
@@ -571,12 +588,37 @@
       else img.addEventListener("load", run, { once: true });
     }
 
+    function preload(src) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve();
+        img.onerror = () => resolve();
+        img.src = src;
+      });
+    }
+
+    function waitSprite(img) {
+      return new Promise((resolve) => {
+        const run = () => {
+          opaqueBox(img).then((box) => {
+            if (box) placeSprite(img, box);
+            resolve();
+          });
+        };
+        if (img.complete && img.naturalWidth) run();
+        else {
+          img.addEventListener("load", run, { once: true });
+          img.addEventListener("error", resolve, { once: true });
+        }
+      });
+    }
+
     fetch("data/deck.json")
       .then((r) => {
         if (!r.ok) throw new Error("Could not load data/deck.json");
         return r.json();
       })
-      .then((deck) => {
+      .then(async (deck) => {
         const cards = deck.cards || [];
         const sheet = document.getElementById("sheet");
         sheet.innerHTML =
@@ -585,10 +627,24 @@
           ).join("") +
           wrapPage(renderBack(), null, "Back (print on every reverse)");
 
+        const types = [...new Set(cards.map(primary))];
+        await Promise.all([
+          document.fonts.ready,
+          preload(PK),
+          preload(TT),
+          ...types.map((t) => preload("assets/bg/" + t + ".jpg")),
+          ...sheet.querySelectorAll(".sprite"),
+        ].flatMap((item) => (item instanceof HTMLImageElement ? [waitSprite(item)] : [item])));
+
         sheet.querySelectorAll(".sprite").forEach(fitSprite);
-        document.fonts.ready.then(() => {
-          sheet.querySelectorAll(".sprite").forEach(fitSprite);
-        });
+        window.__refitSprites = function () {
+          sheet.querySelectorAll(".sprite").forEach((img) => {
+            const box = spriteBox.get(img.currentSrc || img.src);
+            if (box) placeSprite(img, box);
+            else fitSprite(img);
+          });
+        };
+        document.body.dataset.printReady = "1";
 
         const btn = document.getElementById("print-btn");
         const status = document.getElementById("status");

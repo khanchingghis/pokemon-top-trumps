@@ -14,6 +14,10 @@ Print files (PDF spec for a print shop):
 
 https://khanchingghis.github.io/pokemon-top-trumps/print.html
 
+Ready-made 31-page PDF (30 fronts + 1 back):
+
+https://khanchingghis.github.io/pokemon-top-trumps/pokemon-top-trumps.pdf
+
 Numbered card design options (photo backgrounds + typefaces):
 
 https://khanchingghis.github.io/pokemon-top-trumps/designs.html
