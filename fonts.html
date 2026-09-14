@@ -3,15 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pokémon Top Trumps — 30-card set</title>
+  <title>Flavour fonts — Pokémon Top Trumps</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Cormorant+Garamond:ital,wght@1,500&family=Fraunces:ital,opsz,wght@1,9..144,400&family=IM+Fell+English:ital@1&family=Lora:ital,wght@1,400&family=Newsreader:ital,opsz,wght@1,6..72,400&family=Oswald:wght@500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --table: #151814;
-      --bar: #f0c92a;
-      /* Official Winning Moves Top Trumps: 62 × 100 mm */
       --card-w: 372px;
       --card-h: 600px;
     }
@@ -50,73 +48,93 @@
       font-size: 15px;
     }
 
-    .lock {
-      margin: 0 0 18px;
-      color: #9a9182;
-      font-size: 14px;
-    }
-
-    .toolbar {
+    .picker {
+      position: sticky;
+      top: 0;
+      z-index: 20;
       display: flex;
       flex-wrap: wrap;
-      gap: 12px 18px;
+      gap: 8px;
+      padding: 10px 0 14px;
+      background: linear-gradient(var(--table) 70%, transparent);
+      margin-bottom: 8px;
+    }
+
+    .picker a {
+      display: inline-flex;
       align-items: center;
-      margin-bottom: 16px;
-    }
-
-    .toolbar label {
-      font-size: 12px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #9a9182;
-    }
-
-    .toolbar select {
-      font: inherit;
-      font-size: 14px;
-      padding: 6px 10px;
-      background: #1c1a16;
-      color: #f0e6c8;
+      justify-content: center;
+      min-width: 42px;
+      height: 42px;
+      padding: 0 12px;
       border: 1px solid #5a5040;
-      border-radius: 6px;
+      border-radius: 999px;
+      color: #f0e6c8;
+      text-decoration: none;
+      font-family: Oswald, sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      background: #1c1a16;
     }
 
-    .status { color: #c9c2b3; font-size: 14px; margin: 0 0 16px; }
+    .picker a:hover { border-color: #e2c01a; color: #fff; }
 
-    .table {
+    .option {
+      scroll-margin-top: 64px;
+      margin: 0 0 48px;
+      padding: 22px 22px 28px;
+      border: 1px solid #3a4038;
+      border-radius: 16px;
+      background: #1b1d1a;
+    }
+
+    .option h2 {
+      margin: 0 0 6px;
+      font-family: Oswald, sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .num-badge {
+      display: inline-block;
+      margin-right: 8px;
+      padding: 2px 9px;
+      border-radius: 999px;
+      background: #e2c01a;
+      color: #1c1914;
+      font-size: 14px;
+    }
+
+    .why {
+      margin: 0 0 14px;
+      max-width: 78ch;
+      color: #b7b0a2;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .sample {
+      margin: 0 0 18px;
+      padding: 14px 16px;
+      border-radius: 10px;
+      background: #111;
+      color: rgba(255, 246, 220, 0.92);
+      font-style: italic;
+      font-size: 20px;
+      line-height: 1.4;
+      text-align: center;
+      text-shadow: 0 1px 8px #000;
+    }
+
+    .row {
       display: flex;
       flex-wrap: wrap;
       gap: 24px 22px;
       align-items: flex-start;
     }
 
-    .flip-stage {
-      width: var(--card-w);
-      height: var(--card-h);
-      perspective: 1200px;
-    }
-
-    .flipper {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.7s ease;
-      cursor: pointer;
-    }
-
-    .flipper.is-flipped { transform: rotateY(180deg); }
-
-    .face {
-      position: absolute;
-      inset: 0;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-    }
-
-    .face-back { transform: rotateY(180deg); }
-
-    .card {
+    .front {
       --type: #888;
       --ink: #fff;
       --bg: none;
@@ -125,9 +143,6 @@
       height: var(--card-h);
       overflow: hidden;
       color: #fff;
-    }
-
-    .front {
       border-radius: 6px;
       border: 8px solid #ffde00;
       background: #111;
@@ -214,9 +229,7 @@
       filter: drop-shadow(0 10px 14px rgba(0,0,0,.55));
     }
 
-    .front .sprite.is-mirror {
-      transform: scaleX(-1);
-    }
+    .front .sprite.is-mirror { transform: scaleX(-1); }
 
     .front .copy {
       position: relative;
@@ -229,7 +242,6 @@
 
     .front .caption {
       margin: 0 12px 8px;
-      font-family: Georgia, "Times New Roman", serif;
       font-style: italic;
       font-size: 12px;
       line-height: 1.35;
@@ -274,89 +286,68 @@
       color: #fff;
     }
 
-    .back-key {
-      background: url("assets/backs/pack-keyart.jpg") center/cover no-repeat;
-      border: 8px solid #ffde00;
-      box-shadow: inset 0 0 0 12px #111, 8px 8px 0 #111;
-      border-radius: 8px;
+    .font-georgia .caption,
+    .font-georgia .sample {
+      font-family: Georgia, "Times New Roman", serif;
     }
 
-    .back-inner {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 10px;
-      padding: 22px 20px 24px;
+    .font-lora .caption,
+    .font-lora .sample {
+      font-family: Lora, Georgia, serif;
     }
 
-    .pk-logo {
-      width: 92%;
-      max-width: 300px;
-      margin-top: 28px;
-      filter: drop-shadow(0 6px 12px rgba(0,0,0,.65));
+    .font-newsreader .caption,
+    .font-newsreader .sample {
+      font-family: Newsreader, Georgia, serif;
+      font-optical-sizing: auto;
     }
 
-    .tt-img {
-      width: 70%;
-      max-width: 230px;
-      border-radius: 8px;
-      box-shadow: 0 8px 20px rgba(0,0,0,.4);
+    .font-cormorant .caption,
+    .font-cormorant .sample {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 500;
     }
 
-    .hint { margin: 18px 0 0; font-size: 13px; color: #9a9182; }
-    .set-links { font-size: 14px; }
-    .set-links a { color: #e8e2d4; }
+    .font-fraunces .caption,
+    .font-fraunces .sample {
+      font-family: Fraunces, Georgia, serif;
+      font-optical-sizing: auto;
+    }
+
+    .font-fell .caption,
+    .font-fell .sample {
+      font-family: "IM Fell English", Georgia, serif;
+    }
   </style>
 </head>
 <body>
   <div class="page">
     <nav>
-      Card gallery ·
+      <a href="index.html">Card gallery</a> ·
       <a href="designs.html">Design options</a> ·
-      <a href="fonts.html">Flavour fonts</a> ·
+      Flavour fonts ·
       <a href="draft.html">30-card set</a> ·
       <a href="index.html?set=40">40-card set</a> ·
       <a href="print.html">Print files</a> ·
       <a href="simulate.html">Balance sim</a>
     </nav>
-    <h1>Pokémon Top Trumps</h1>
-    <p class="lede" id="lede">
-      Household names, printed at official Winning Moves size (62 × 100 mm)
-      so they fit a real Top Trumps case. Folklore captions, cinematic type
-      photos, inset type bars. Click a card to flip.
+    <h1>Flavour text fonts</h1>
+    <p class="lede">
+      Same three cards in each row — short, medium, and long Pokédex lines —
+      all centred italic. The gallery still uses <strong>A Georgia</strong>
+      until you pick one. Reply with a letter.
     </p>
-    <p class="lock" id="lock">A / 2 / 5 Inset type · 62 × 100 mm</p>
-    <div class="toolbar">
-      <label for="sort">Sort</label>
-      <select id="sort">
-        <option value="n">Card number</option>
-        <option value="hp">HP</option>
-        <option value="attack">Attack</option>
-        <option value="defense">Defence</option>
-        <option value="special_attack">Sp. Attack</option>
-        <option value="speed">Speed</option>
-        <option value="height_m">Height</option>
-        <option value="weight_kg">Weight</option>
-        <option value="name">Name</option>
-      </select>
-      <span class="set-links">
-        <a href="index.html">30 cards</a>
-        ·
-        <a href="index.html?set=40">40 cards</a>
-      </span>
+    <div class="picker">
+      <a href="#font-a">A</a>
+      <a href="#font-b">B</a>
+      <a href="#font-c">C</a>
+      <a href="#font-d">D</a>
+      <a href="#font-e">E</a>
+      <a href="#font-f">F</a>
     </div>
-    <p class="status" id="status">Loading deck…</p>
-    <div class="table" id="table"></div>
-    <p class="hint">
-      Folklore captions from Yellow / Gold / Crystal / FireRed / LeafGreen / Emerald / Sapphire / Diamond via PokeAPI.
-      Card trim 62 × 100 mm (Winning Moves). Sprites fit to opaque pixels. Back 2 unchanged.
-    </p>
+    <div id="options"></div>
   </div>
   <script>
-    const SET40 = new URLSearchParams(location.search).get("set") === "40";
-    const DECK_FILE = SET40 ? "data/deck-40.json" : "data/deck.json";
     const STATS = [
       { id: "hp", label: "HP" },
       { id: "attack", label: "Attack" },
@@ -375,8 +366,54 @@
       steel: "#8a8aa0", fairy: "#c46a96",
     };
 
-    const PK = "assets/backs/pokemon-logo.png";
-    const TT = "assets/backs/tt-wordmark.jpg";
+    const FONTS = [
+      {
+        id: "font-a",
+        cls: "font-georgia",
+        letter: "A",
+        name: "Georgia",
+        why: "What the cards use now. Classic italic serif, no extra font file, very clear at 12px on a dark card.",
+      },
+      {
+        id: "font-b",
+        cls: "font-lora",
+        letter: "B",
+        name: "Lora",
+        why: "Warmer old-style italic. Still sturdy in print, a bit more ‘book’ than Georgia without getting fancy.",
+      },
+      {
+        id: "font-c",
+        cls: "font-newsreader",
+        letter: "C",
+        name: "Newsreader",
+        why: "Designed for small caption sizes. Tighter italic, so the long Cloyster line wraps less.",
+      },
+      {
+        id: "font-d",
+        cls: "font-cormorant",
+        letter: "D",
+        name: "Cormorant Garamond",
+        why: "Storybook / Pokédex italic. More elegant and a little lighter — the folklore tone, if you want it to feel written.",
+      },
+      {
+        id: "font-e",
+        cls: "font-fraunces",
+        letter: "E",
+        name: "Fraunces",
+        why: "Softer, slightly wonky italic with character. Reads as a flavour quote rather than a rules line.",
+      },
+      {
+        id: "font-f",
+        cls: "font-fell",
+        letter: "F",
+        name: "IM Fell English",
+        why: "Old manuscript italic. The most ‘folklore’ of the set — irregular and antique. Can feel busy at 12px.",
+      },
+    ];
+
+    const SAMPLE =
+      "Its shell is extremely hard. It cannot be shattered, even with a bomb. The shell opens only when it is attacking.";
+
     const spriteBox = new Map();
 
     function esc(value) {
@@ -430,15 +467,6 @@
       </article>`;
     }
 
-    function renderBack() {
-      return `<article class="card back-key">
-        <div class="back-inner">
-          <img class="tt-img" src="${TT}" alt="Top Trumps">
-          <img class="pk-logo" src="${PK}" alt="Pokémon">
-        </div>
-      </article>`;
-    }
-
     function opaqueBox(img) {
       const src = img.currentSrc || img.src;
       if (spriteBox.has(src)) return Promise.resolve(spriteBox.get(src));
@@ -455,11 +483,7 @@
             const ctx = canvas.getContext("2d", { willReadFrequently: true });
             ctx.drawImage(probe, 0, 0);
             const data = ctx.getImageData(0, 0, w, h).data;
-            let minX = w;
-            let minY = h;
-            let maxX = 0;
-            let maxY = 0;
-            let found = false;
+            let minX = w, minY = h, maxX = 0, maxY = 0, found = false;
             for (let y = 0; y < h; y++) {
               for (let x = 0; x < w; x++) {
                 if (data[(y * w + x) * 4 + 3] > 16) {
@@ -516,56 +540,30 @@
       else img.addEventListener("load", run, { once: true });
     }
 
-    function fitAllSprites(root) {
-      (root || document).querySelectorAll(".sprite").forEach(fitSprite);
-    }
-
-    let cards = [];
-
-    function renderSet() {
-      const key = document.getElementById("sort").value;
-      const sorted = [...cards].sort((a, b) => {
-        if (key === "n") return a.card_number - b.card_number;
-        if (key === "name") return a.name.localeCompare(b.name);
-        return (b.stats[key] ?? 0) - (a.stats[key] ?? 0);
-      });
-      document.getElementById("table").innerHTML = sorted.map((card) => {
-        return `<div class="flip-stage">
-          <div class="flipper" title="Click to flip">
-            <div class="face face-front">${renderFront(card)}</div>
-            <div class="face face-back">${renderBack()}</div>
-          </div>
-        </div>`;
-      }).join("");
-      document.getElementById("status").textContent =
-        cards.length + " cards · 62 × 100 mm · inset type · back 2";
-      fitAllSprites(document.getElementById("table"));
-    }
-
-    fetch(DECK_FILE)
+    fetch("data/deck.json")
       .then((r) => {
-        if (!r.ok) throw new Error("Could not load " + DECK_FILE);
+        if (!r.ok) throw new Error("Could not load deck");
         return r.json();
       })
       .then((deck) => {
-        cards = deck.cards || [];
-        if (SET40) {
-          document.title = "Pokémon Top Trumps — 40-card set";
-          const lede = document.getElementById("lede");
-          if (lede) {
-            lede.textContent = "40-card pack of household names — mostly the original 151, plus Tyranitar and Lucario. Official Winning Moves size (62 × 100 mm). Two players deal 20 each. Click a card to flip.";
-          }
-        }
-        renderSet();
-        document.getElementById("table").addEventListener("click", (e) => {
-          const flipper = e.target.closest(".flipper");
-          if (flipper) flipper.classList.toggle("is-flipped");
-        });
-        document.getElementById("sort").addEventListener("change", renderSet);
-        document.fonts.ready.then(() => fitAllSprites());
+        const byName = Object.fromEntries((deck.cards || []).map((c) => [c.name, c]));
+        const picks = ["Machamp", "Venusaur", "Cloyster"]
+          .map((name) => byName[name])
+          .filter(Boolean);
+        document.getElementById("options").innerHTML = FONTS.map((font) => `
+          <section class="option ${font.cls}" id="${font.id}">
+            <h2><span class="num-badge">${font.letter}</span>${esc(font.name)}</h2>
+            <p class="why">${esc(font.why)}</p>
+            <p class="sample">${esc(SAMPLE)}</p>
+            <div class="row">
+              ${picks.map(renderFront).join("")}
+            </div>
+          </section>
+        `).join("");
+        document.querySelectorAll(".sprite").forEach(fitSprite);
       })
       .catch((err) => {
-        document.getElementById("status").textContent = err.message;
+        document.getElementById("options").textContent = err.message;
       });
   </script>
 </body>
