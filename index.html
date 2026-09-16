@@ -6,7 +6,7 @@
   <title>Pokémon Top Trumps — 30-card set</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fraunces:ital,opsz,wght@1,9..144,400&family=Oswald:wght@500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --table: #151814;
@@ -229,8 +229,10 @@
 
     .front .caption {
       margin: 0 12px 8px;
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: Fraunces, Georgia, serif;
+      font-optical-sizing: auto;
       font-style: italic;
+      font-weight: 400;
       font-size: 12px;
       line-height: 1.35;
       text-align: center;
@@ -327,7 +329,7 @@
       so they fit a real Top Trumps case. Folklore captions, cinematic type
       photos, inset type bars. Click a card to flip.
     </p>
-    <p class="lock" id="lock">A / 2 / 5 Inset type · 62 × 100 mm</p>
+    <p class="lock" id="lock">A / 2 / 5 Inset type · Fraunces italic · 62 × 100 mm</p>
     <div class="toolbar">
       <label for="sort">Sort</label>
       <select id="sort">
@@ -350,8 +352,8 @@
     <p class="status" id="status">Loading deck…</p>
     <div class="table" id="table"></div>
     <p class="hint">
-      Folklore captions from Yellow / Gold / Crystal / FireRed / LeafGreen / Emerald / Sapphire / Diamond via PokeAPI.
-      Card trim 62 × 100 mm (Winning Moves). Sprites fit to opaque pixels. Back 2 unchanged.
+      Folklore captions from Yellow / Gold / Crystal / FireRed / LeafGreen / Emerald / Sapphire / Diamond via PokeAPI,
+      set in Fraunces italic. Card trim 62 × 100 mm (Winning Moves). Sprites fit to opaque pixels. Back 2 unchanged.
     </p>
   </div>
   <script>

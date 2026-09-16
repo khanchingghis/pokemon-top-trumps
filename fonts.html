@@ -106,6 +106,22 @@
       font-size: 14px;
     }
 
+    .option.is-locked {
+      border-color: #e2c01a;
+    }
+
+    .locked-tag {
+      display: inline-block;
+      margin-left: 10px;
+      padding: 2px 9px;
+      border-radius: 999px;
+      background: #e2c01a;
+      color: #1c1914;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      vertical-align: middle;
+    }
+
     .why {
       margin: 0 0 14px;
       max-width: 78ch;
@@ -334,8 +350,8 @@
     <h1>Flavour text fonts</h1>
     <p class="lede">
       Same three cards in each row — short, medium, and long Pokédex lines —
-      all centred italic. The gallery still uses <strong>A Georgia</strong>
-      until you pick one. Reply with a letter.
+      all centred italic. <strong>E Fraunces</strong> is locked on the gallery
+      and the shop PDFs.
     </p>
     <div class="picker">
       <a href="#font-a">A</a>
@@ -372,7 +388,7 @@
         cls: "font-georgia",
         letter: "A",
         name: "Georgia",
-        why: "What the cards use now. Classic italic serif, no extra font file, very clear at 12px on a dark card.",
+        why: "Classic italic serif, no extra font file. Clear at 12px — the runner-up, not used on the cards now.",
       },
       {
         id: "font-b",
@@ -400,7 +416,8 @@
         cls: "font-fraunces",
         letter: "E",
         name: "Fraunces",
-        why: "Softer, slightly wonky italic with character. Reads as a flavour quote rather than a rules line.",
+        locked: true,
+        why: "Locked. Softer, slightly wonky italic with character. Reads as a flavour quote rather than a rules line.",
       },
       {
         id: "font-f",
@@ -551,8 +568,8 @@
           .map((name) => byName[name])
           .filter(Boolean);
         document.getElementById("options").innerHTML = FONTS.map((font) => `
-          <section class="option ${font.cls}" id="${font.id}">
-            <h2><span class="num-badge">${font.letter}</span>${esc(font.name)}</h2>
+          <section class="option ${font.cls}${font.locked ? " is-locked" : ""}" id="${font.id}">
+            <h2><span class="num-badge">${font.letter}</span>${esc(font.name)}${font.locked ? ' <span class="locked-tag">Locked</span>' : ""}</h2>
             <p class="why">${esc(font.why)}</p>
             <p class="sample">${esc(SAMPLE)}</p>
             <div class="row">
